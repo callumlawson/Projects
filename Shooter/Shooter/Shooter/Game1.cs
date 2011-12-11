@@ -17,7 +17,8 @@ namespace Shooter
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        
+        int bob;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Player player;
@@ -140,13 +141,6 @@ namespace Shooter
             // TODO: use this.Content to load your game content here
         }
 
-        private void AddProjectile(Vector2 position)
-        {
-            Projectile projectile = new Projectile();
-            projectile.Initialize(GraphicsDevice.Viewport, projectileTexture, position);
-            projectiles.Add(projectile);
-        }
-
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
         /// all content.
@@ -255,6 +249,57 @@ namespace Shooter
                 if (projectiles[i].Active == false)
                 {
                     projectiles.RemoveAt(i);
+                }
+            }
+        }
+
+        private void AddProjectile(Vector2 position)
+        {
+            Projectile projectile = new Projectile();
+            projectile.Initialize(GraphicsDevice.Viewport, projectileTexture, position);
+            projectiles.Add(projectile);
+        }
+
+        private void AddEnemy()
+        {
+            // Create the animation object
+            Animation enemyAnimation = new Animation();
+
+            // Initialize the animation with the correct animation information
+            enemyAnimation.Initialize(enemyTexture, Vector2.Zero, 47, 61, 8, 30, Color.White, 1f, true);
+
+            // Randomly generate the position of the enemy
+            Vector2 position = new Vector2(GraphicsDevice.Viewport.Width + enemyTexture.Width / 2, random.Next(100, GraphicsDevice.Viewport.Height - 100));
+
+            // Create an enemy
+            Enemy enemy = new Enemy();
+
+            // Initialize the enemy
+            enemy.Initialize(enemyAnimation, position);
+
+            // Add the enemy to the active enemies list
+            enemies.Add(enemy);
+        }
+
+        private void UpdateEnemies(GameTime gameTime)
+        {
+            // Spawn a new enemy enemy every 1.5 seconds
+            if (gameTime.TotalGameTime - previousSpawnTime > enemySpawnTime)
+            {
+                previousSpawnTime = gameTime.TotalGameTime;
+
+                // Add an Enemy
+                AddEnemy();
+            }
+
+            // Update the Enemies
+            for (int i = enemies.Count - 1; i >= 0; i--)
+            {
+                enemies[i].Update(gameTime);
+
+                if (enemies[i].Active == false)
+                {
+                    enemies.RemoveAt(i);
                 }
             }
         }
@@ -407,51 +452,5 @@ namespace Shooter
             }
             return false;
         }
-
-        private void AddEnemy()
-        {
-            // Create the animation object
-            Animation enemyAnimation = new Animation();
-
-            // Initialize the animation with the correct animation information
-            enemyAnimation.Initialize(enemyTexture, Vector2.Zero, 47, 61, 8, 30, Color.White, 1f, true);
-
-            // Randomly generate the position of the enemy
-            Vector2 position = new Vector2(GraphicsDevice.Viewport.Width + enemyTexture.Width / 2, random.Next(100, GraphicsDevice.Viewport.Height - 100));
-
-            // Create an enemy
-            Enemy enemy = new Enemy();
-
-            // Initialize the enemy
-            enemy.Initialize(enemyAnimation, position);
-
-            // Add the enemy to the active enemies list
-            enemies.Add(enemy);
-        }
-
-        private void UpdateEnemies(GameTime gameTime)
-        {
-            // Spawn a new enemy enemy every 1.5 seconds
-            if (gameTime.TotalGameTime - previousSpawnTime > enemySpawnTime)
-            {
-                previousSpawnTime = gameTime.TotalGameTime;
-
-                // Add an Enemy
-                AddEnemy();
-            }
-
-            // Update the Enemies
-            for (int i = enemies.Count - 1; i >= 0; i--)
-            {
-                enemies[i].Update(gameTime);
-
-                if (enemies[i].Active == false)
-                {
-                    enemies.RemoveAt(i);
-                }
-            }
-        }
-
-
     }
 }
