@@ -24,6 +24,11 @@ namespace Shooter
 
         // The amount of score the enemy will give to the player
         public int Value;
+        
+        // Cool gravity thing
+        public float DownwardsVelocity = 0;
+        public float Gravity = 0.3f;
+        public Boolean Exploded = false;
 
         // Get the width of the enemy ship
         public int Width
@@ -77,11 +82,17 @@ namespace Shooter
             EnemyAnimation.Update(gameTime);
 
             // If the enemy is past the screen or its health reaches 0 then deactivateit
-            if (Position.X < -Width || Health <= 0)
+            if (Position.X < -Width || Position.Y > 480)
             {
                 // By setting the Active flag to false, the game will remove this object from the 
                 // active game list
                 Active = false;
+            }
+
+            if (Health <= 0)
+            {
+                DownwardsVelocity += Gravity;
+                Position.Y += DownwardsVelocity;
             }
         }
 

@@ -17,8 +17,6 @@ namespace Shooter
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        int bob;
-
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Player player;
@@ -62,6 +60,15 @@ namespace Shooter
         Texture2D explosionTexture;
         List<Animation> explosions;
 
+        // The sound that is played when a laser is fired
+        SoundEffect laserSound;
+
+        // The sound used when the player or an enemy dies
+        SoundEffect explosionSound;
+
+        // The music played during gameplay
+        Song gameplayMusic;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -84,6 +91,8 @@ namespace Shooter
 
             // Set a constant player move speed
             playerMoveSpeed = 8.0f;
+            // Set the laser to fire every quarter second
+            fireTime = TimeSpan.FromSeconds(.15f);
 
             //Enable the FreeDrag gesture.
             TouchPanel.EnabledGestures = GestureType.FreeDrag;
@@ -104,9 +113,6 @@ namespace Shooter
             random = new Random();
 
             projectiles = new List<Projectile>();
-
-            // Set the laser to fire every quarter second
-            fireTime = TimeSpan.FromSeconds(.15f);
 
             explosions = new List<Animation>();
 
@@ -137,8 +143,33 @@ namespace Shooter
 
             enemyTexture = Content.Load<Texture2D>("mineAnimation");
             projectileTexture = Content.Load<Texture2D>("laser");
+            explosionTexture = Content.Load<Texture2D>("explosion");
             mainBackground = Content.Load<Texture2D>("mainbackground");
             // TODO: use this.Content to load your game content here
+            // Load the music
+            gameplayMusic = Content.Load<Song>("sound/gameMusic");
+
+            // Load the laser and explosion sound effect
+            laserSound = Content.Load<SoundEffect>("sound/laserFire");
+            explosionSound = Content.Load<SoundEffect>("sound/explosion");
+
+            // Start the music right away
+            PlayMusic(gameplayMusic);
+        }
+
+        private void PlayMusic(Song song)
+        {
+            // Due to the way the MediaPlayer plays music,
+            // we have to catch the exception. Music will play when the game is not tethered
+            try
+            {
+                // Play the music
+                MediaPlayer.Play(song);
+
+                // Loop the currently playing song
+                MediaPlayer.IsRepeating = true;
+            }
+            catch { }
         }
 
         /// <summary>
@@ -170,6 +201,7 @@ namespace Shooter
             currentGamePadState = GamePad.GetState(PlayerIndex.One);
 
             //Update the player
+            UpdateExplosions(gameTime);
             UpdatePlayer(gameTime);
             UpdateEnemies(gameTime);
             UpdateCollision();
@@ -236,6 +268,21 @@ namespace Shooter
 
                 // Add the projectile, but add it to the front and center of the player
                 AddProjectile(player.Position + new Vector2(player.Width / 2, 0));
+                // Play the laser sound
+                laserSound.Play();
+            }
+        }
+
+        private void UpdateExplosions(GameTime gameTime)
+        {
+            for (int i = explosions.Count - 1; i >= 0; i--)
+            {
+                explosions[i].Update(gameTime);
+
+                if (explosions[i].Active == false)
+                {
+                    explosions.RemoveAt(i);
+                }
             }
         }
 
@@ -258,6 +305,15 @@ namespace Shooter
             Projectile projectile = new Projectile();
             projectile.Initialize(GraphicsDevice.Viewport, projectileTexture, position);
             projectiles.Add(projectile);
+        }
+
+        private void AddExplosion(Vector2 position)
+        {
+            Animation explosion = new Animation();
+            explosion.Initialize(explosionTexture, new Vector2(position.X - 35, position.Y - 35), 134, 134, 12, 45, Color.White, 1f, false);
+            explosions.Add(explosion);
+            // Play the explosion sound
+            explosionSound.Play();
         }
 
         private void AddEnemy()
@@ -297,8 +353,16 @@ namespace Shooter
             {
                 enemies[i].Update(gameTime);
 
-                if (enemies[i].Active == false)
+                // If not active and health <= 0
+                if (enemies[i].Health <= 0 && enemies[i].Exploded==false)
                 {
+                    // Add an explosion
+                    AddExplosion(enemies[i].Position);
+                    enemies[i].Exploded = true;
+                }
+
+                if (enemies[i].Active == false)
+                { 
                     enemies.RemoveAt(i);
                 }
             }
@@ -398,7 +462,14 @@ namespace Shooter
                 projectiles[i].Draw(spriteBatch);
             }
 
+            // Draw the explosions
+            for (int i = 0; i < explosions.Count; i++)
+            {
+                explosions[i].Draw(spriteBatch);
+            }
+
             player.Draw(spriteBatch);
+
 
             spriteBatch.End();
 
