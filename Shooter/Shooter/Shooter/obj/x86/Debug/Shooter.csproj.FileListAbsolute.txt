@@ -1,0 +1,48 @@
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Content\bgLayer1.xnb
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Content\bgLayer2.xnb
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Content\endMenu.xnb
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Content\explosion.xnb
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Content\laser.xnb
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Content\mainbackground.xnb
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Content\mainMenu.xnb
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Content\mine.xnb
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Content\mineAnimation.xnb
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Content\player.xnb
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Content\shipAnimation.xnb
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Sound\explosion.xnb
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Sound\laserFire.xnb
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Sound\gameMusic.xnb
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Sound\menuMusic.xnb
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Content\gameFont.xnb
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Sound\gameMusic.wma
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Sound\menuMusic.wma
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Shooter.exe
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\bin\x86\Debug\Shooter.pdb
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\obj\x86\Debug\Shooter.exe
+C:\Users\Callum\Downloads\Shooter_Project_Windows\Shooter\Shooter\Shooter\obj\x86\Debug\Shooter.pdb
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\bgLayer1.xnb
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\bgLayer2.xnb
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\endMenu.xnb
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\explosion.xnb
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\laser.xnb
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\mainbackground.xnb
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\mainMenu.xnb
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\mine.xnb
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\mineAnimation.xnb
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\player.xnb
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\shipAnimation.xnb
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Sound\explosion.xnb
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Sound\laserFire.xnb
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Sound\gameMusic.xnb
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Sound\menuMusic.xnb
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\gameFont.xnb
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Sound\gameMusic.wma
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Sound\menuMusic.wma
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Shooter.exe
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Shooter.pdb
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\obj\x86\Debug\Shooter.exe
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\obj\x86\Debug\Shooter.pdb
