@@ -13,6 +13,9 @@ namespace Shooter
         // The position of the enemy ship relative to the top left corner of thescreen
         public Vector2 Position;
 
+        //Angle of rotation
+        public float Rotation;
+
         // The state of the Enemy Ship
         public bool Active;
 
@@ -93,6 +96,8 @@ namespace Shooter
             {
                 DownwardsVelocity += Gravity;
                 Position.Y += DownwardsVelocity;
+                Rotation -= 0.05f;
+                EnemyAnimation.Rotation = Rotation;
             }
         }
 

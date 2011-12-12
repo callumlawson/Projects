@@ -15,6 +15,9 @@ namespace Shooter
         // The scale used to display the sprite strip
         float scale;
 
+        // Angle
+        public float Rotation;
+
         // The time since we last updated the frame
         int elapsedTime;
 
@@ -107,9 +110,7 @@ namespace Shooter
             // Grab the correct frame in the image strip by multiplying the currentFrame index by the frame width
             sourceRect = new Rectangle(currentFrame * FrameWidth, 0, FrameWidth, FrameHeight);
 
-            destinationRect = new Rectangle((int)Position.X ,(int)Position.Y ,
-            (int)(FrameWidth * scale),
-            (int)(FrameHeight * scale));
+            destinationRect = new Rectangle((int)Position.X ,(int)Position.Y ,(int)(FrameWidth * scale),(int)(FrameHeight * scale));
 
             /*destinationRect = new Rectangle((int)Position.X - (int)(FrameWidth * scale) / 2,(int)Position.Y - (int)(FrameHeight * scale) / 2,
             (int)(FrameWidth * scale),
@@ -122,7 +123,9 @@ namespace Shooter
             // Only draw the animation when we are active
             if (Active)
             {
-                spriteBatch.Draw(spriteStrip, destinationRect, sourceRect, color);
+               // Vector2 origin = new Vector2(destinationRect.Center.X,destinationRect.Center.Y)
+                Vector2 origin = new Vector2(0,0);
+                spriteBatch.Draw(spriteStrip, destinationRect, sourceRect, color, Rotation, origin , SpriteEffects.None, 1.0f);
             }
         }
 

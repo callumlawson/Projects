@@ -21,12 +21,21 @@ namespace Shooter
         // Amount of hit points that player has
         public int Health;
 
+        //Random number gen
+        Random random;
+        double sinNumber = 0d;
+
         public void Initialize(Animation animation, Vector2 position)
         {
             PlayerAnimation = animation;
 
+            //Stop the player animation rotating to much
+            //PlayerAnimation.Rotation = MathHelper.Clamp(PlayerAnimation.Rotation, -0.4f, 0.4f);
+           
             // Set the starting position of the player around the middle of the screen and to the back
             Position = position;
+
+            random = new Random();
 
             // Set the player to be active
             Active = true;
@@ -38,6 +47,10 @@ namespace Shooter
         public void Update(GameTime gameTime)
         {
             PlayerAnimation.Position = Position;
+
+            sinNumber += 0.05;
+            PlayerAnimation.Rotation = (float) Math.Sin(sinNumber)*0.02f;
+
             PlayerAnimation.Update(gameTime);
         }
 
