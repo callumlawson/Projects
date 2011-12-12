@@ -64,13 +64,13 @@ C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\bin\x86\Debug\Content\S
 C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\bin\x86\Debug\Content\gameFont.xnb
 C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Sound\gameMusic.wma
 C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Sound\menuMusic.wma
+C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\bin\x86\Debug\Shooter.exe.manifest
+C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\bin\x86\Debug\Shooter.application
 C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\bin\x86\Debug\Shooter.exe
 C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\bin\x86\Debug\Shooter.pdb
 C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\obj\x86\Debug\Shooter.exe
-C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\obj\x86\Debug\Shooter.pdb
-C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\bin\x86\Debug\Shooter.exe.manifest
-C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\bin\x86\Debug\Shooter.application
 C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\obj\x86\Debug\Shooter.exe.manifest
 C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\obj\x86\Debug\Shooter.application
+C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\obj\x86\Debug\Shooter.exe
+C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\obj\x86\Debug\Shooter.pdb
