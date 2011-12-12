@@ -59,6 +59,8 @@ namespace Shooter
         // The rate of fire of the player laser
         TimeSpan fireTime;
         TimeSpan previousFireTime;
+        TimeSpan difficultyRampUp;
+        TimeSpan timeSinceDiffcultyRampUp;
 
         Texture2D explosionTexture;
         List<Animation> explosions;
@@ -76,6 +78,12 @@ namespace Shooter
         int score;
         // The font used to display UI elements
         SpriteFont font;
+
+        //Gamestate
+        Boolean startMenu = true;
+        Boolean gameOver = false;
+        Texture2D startMenuImage;
+        Texture2D gameOverImage;
 
         public Game1()
         {
@@ -115,6 +123,8 @@ namespace Shooter
             // Set the time keepers to zero
             previousSpawnTimeEnemy = TimeSpan.Zero;
             previousSpawnTimeBackgroundEnemy = TimeSpan.Zero;
+            difficultyRampUp = TimeSpan.FromSeconds(10);
+            timeSinceDiffcultyRampUp = TimeSpan.FromSeconds(0);
 
             // Used to determine how fast enemy respawns
             enemySpawnTime = TimeSpan.FromSeconds(1.0f);
@@ -170,6 +180,10 @@ namespace Shooter
             // Load the score font
             font = Content.Load<SpriteFont>("gameFont");
 
+            // Load the game start and end images
+            startMenuImage = Content.Load<Texture2D>("mainMenu");
+            gameOverImage = Content.Load<Texture2D>("endMenu");
+
             // Start the music right away
             PlayMusic(gameplayMusic);
         }
@@ -206,8 +220,27 @@ namespace Shooter
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || currentKeyboardState.IsKeyDown(Keys.Escape))
+            {
                 this.Exit();
+            }
+
+            //Any key closes the start menu
+            if (startMenu == true)
+            {
+                if (currentGamePadState.Buttons.Start == ButtonState.Pressed || currentKeyboardState.IsKeyDown(Keys.Enter))
+                {
+                    startMenu = false;
+                }
+            }
+
+            if (gameOver == true)
+            {
+                if (currentGamePadState.Buttons.Start == ButtonState.Pressed || currentKeyboardState.IsKeyDown(Keys.Enter))
+                {
+                    gameOver = false;
+                }
+            }
 
             // Save the previous state of the keyboard and game pad so we can determinesingle key/button presses
             previousGamePadState = currentGamePadState;
@@ -217,21 +250,24 @@ namespace Shooter
             currentKeyboardState = Keyboard.GetState();
             currentGamePadState = GamePad.GetState(PlayerIndex.One);
 
-            UpdateBackgroundEnemies(gameTime);
-            //Update the player
-            UpdateExplosions(gameTime);
-            UpdatePlayer(gameTime);
-            UpdateEnemies(gameTime);
-        
-            UpdateBackgroundEnemies(gameTime);
-            UpdateCollision();
+            if (startMenu == false && gameOver == false)
+            {
+                UpdateBackgroundEnemies(gameTime);
+                //Update the player
+                UpdateExplosions(gameTime);
+                UpdatePlayer(gameTime);
+                UpdateEnemies(gameTime);
 
-            // Update the projectiles
-            UpdateProjectiles();
+                UpdateBackgroundEnemies(gameTime);
+                UpdateCollision();
 
-            // Update the parallaxing background
-            bgLayer1.Update();
-            bgLayer2.Update();
+                // Update the projectiles
+                UpdateProjectiles();
+
+                // Update the parallaxing background
+                bgLayer1.Update();
+                bgLayer2.Update();
+            }
 
             base.Update(gameTime);
         }
@@ -255,22 +291,22 @@ namespace Shooter
             player.Position.Y -= currentGamePadState.ThumbSticks.Left.Y * playerMoveSpeed;
 
             // Use the Keyboard / Dpad
-            if (currentKeyboardState.IsKeyDown(Keys.Left) ||
+            if (currentKeyboardState.IsKeyDown(Keys.Left) || currentKeyboardState.IsKeyDown(Keys.A) ||
             currentGamePadState.DPad.Left == ButtonState.Pressed)
             {
                 player.Position.X -= playerMoveSpeed;
             }
-            if (currentKeyboardState.IsKeyDown(Keys.Right) ||
+            if (currentKeyboardState.IsKeyDown(Keys.Right) || currentKeyboardState.IsKeyDown(Keys.D) ||
             currentGamePadState.DPad.Right == ButtonState.Pressed)
             {
                 player.Position.X += playerMoveSpeed;
             }
-            if (currentKeyboardState.IsKeyDown(Keys.Up) ||
+            if (currentKeyboardState.IsKeyDown(Keys.Up) || currentKeyboardState.IsKeyDown(Keys.W) ||
             currentGamePadState.DPad.Up == ButtonState.Pressed)
             {
                 player.Position.Y -= playerMoveSpeed;
             }
-            if (currentKeyboardState.IsKeyDown(Keys.Down) ||
+            if (currentKeyboardState.IsKeyDown(Keys.Down) || currentKeyboardState.IsKeyDown(Keys.S) ||
             currentGamePadState.DPad.Down == ButtonState.Pressed)
             {
                 player.Position.Y += playerMoveSpeed;
@@ -292,10 +328,13 @@ namespace Shooter
                 laserSound.Play();
             }
 
-            // reset score if player health goes to zero
+            // restart the game
             if (player.Health <= 0)
             {
                 player.Health = 100;
+                gameOver = true;
+                enemies.Clear();
+                backgroundEnemies.Clear();
                 score = 0;
             }
         }
@@ -456,26 +495,29 @@ namespace Shooter
             // Do the collision between the player and the enemies
             for (int i = 0; i < enemies.Count; i++)
             {
-                rectangle2 = new Rectangle((int)enemies[i].Position.X,
-                (int)enemies[i].Position.Y,
-                enemies[i].Width,
-                enemies[i].Height);
-
-                // Determine if the two objects collided with each
-                // other
-                if (rectangle1.Intersects(rectangle2))
+                if (enemies[i].Health > 0)
                 {
-                    // Subtract the health from the player based on
-                    // the enemy damage
-                    player.Health -= enemies[i].Damage;
+                    rectangle2 = new Rectangle((int)enemies[i].Position.X,
+                    (int)enemies[i].Position.Y,
+                    enemies[i].Width,
+                    enemies[i].Height);
 
-                    // Since the enemy collided with the player
-                    // destroy it
-                    enemies[i].Health = 0;
+                    // Determine if the two objects collided with each
+                    // other
+                    if (rectangle1.Intersects(rectangle2))
+                    {
+                        // Subtract the health from the player based on
+                        // the enemy damage
+                        player.Health -= enemies[i].Damage;
 
-                    // If the player health is less than zero we died
-                    if (player.Health <= 0)
-                        player.Active = false;
+                        // Since the enemy collided with the player
+                        // destroy it
+                        enemies[i].Health = 0;
+
+                        // If the player health is less than zero we died
+                        if (player.Health <= 0)
+                            player.Active = false;
+                    }
                 }
 
             }
@@ -551,6 +593,9 @@ namespace Shooter
             spriteBatch.DrawString(font, "score: " + score, new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X+ 10, GraphicsDevice.Viewport.TitleSafeArea.Y+ 10), Color.White);
             // Draw the player health
             spriteBatch.DrawString(font, "health: " + player.Health, new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X + 10, GraphicsDevice.Viewport.TitleSafeArea.Y + 40), Color.White);
+
+            if (startMenu){ spriteBatch.Draw(startMenuImage, Vector2.Zero, Color.White);}
+            if (gameOver) { spriteBatch.Draw(gameOverImage, Vector2.Zero, Color.White); }
 
             spriteBatch.End();
 
