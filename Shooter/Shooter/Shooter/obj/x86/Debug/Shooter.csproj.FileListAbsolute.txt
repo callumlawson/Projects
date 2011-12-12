@@ -70,3 +70,7 @@ C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\obj\x86\Debug\ResolveAs
 C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\obj\x86\Debug\Shooter.exe
 C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\obj\x86\Debug\Shooter.pdb
+C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\bin\x86\Debug\Shooter.exe.manifest
+C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\bin\x86\Debug\Shooter.application
+C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\obj\x86\Debug\Shooter.exe.manifest
+C:\Users\Callum\ChristmasProject\Shooter\Shooter\Shooter\obj\x86\Debug\Shooter.application

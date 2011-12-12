@@ -85,7 +85,7 @@ namespace Shooter
             EnemyAnimation.Update(gameTime);
 
             // If the enemy is past the screen or its health reaches 0 then deactivateit
-            if (Position.X < -Width || Position.Y > 480)
+            if (Position.X < -Width || Position.Y > 520)
             {
                 // By setting the Active flag to false, the game will remove this object from the 
                 // active game list
