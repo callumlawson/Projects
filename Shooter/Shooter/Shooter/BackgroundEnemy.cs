@@ -4,9 +4,8 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Shooter
 {
-    class Enemy
+    class BackgroundEnemy
     {
-
         // Animation representing the enemy
         public Animation EnemyAnimation;
 
@@ -19,18 +18,9 @@ namespace Shooter
         // The state of the Enemy Ship
         public bool Active;
 
-        // The hit points of the enemy, if this goes to zero the enemy dies
-        public int Health;
-
-        // The amount of damage the enemy inflicts on the player ship
-        public int Damage;
-
-        // The amount of score the enemy will give to the player
-        public int Value;
-        
         // Cool gravity thing
         public float DownwardsVelocity = 0;
-        public float Gravity = 0.3f;
+        public float Gravity = 0.01f;
         public Boolean Exploded = false;
 
         // Get the width of the enemy ship
@@ -48,6 +38,10 @@ namespace Shooter
         // The speed at which the enemy moves
         float enemyMoveSpeed;
 
+        //Random
+        Random random;
+        Boolean crashing;
+
         public void Initialize(Animation animation, Vector2 position)
         {
             // Load the enemy ship texture
@@ -59,18 +53,10 @@ namespace Shooter
             // We initialize the enemy to be active so it will be update in the game
             Active = true;
 
-            // Set the health of the enemy
-            Health = 10;
-
-            // Set the amount of damage the enemy can do
-            Damage = 10;
-
             // Set how fast the enemy moves
-            enemyMoveSpeed = 4f;
+            enemyMoveSpeed = 1.3f;
 
-           
-            // Set the score value of the enemy
-            Value = 100;
+            random = new Random();
         }
 
         public void Update(GameTime gameTime)
@@ -92,13 +78,17 @@ namespace Shooter
                 Active = false;
             }
 
-            if (Health <= 0)
+            /*
+            if (random.NextDouble() > 0.9995) { crashing = true; }
+            
+            if(crashing)
             {
                 DownwardsVelocity += Gravity;
                 Position.Y += DownwardsVelocity;
-                Rotation -= 0.05f;
+                Rotation -= 0.03f;
                 EnemyAnimation.Rotation = Rotation;
             }
+            */
         }
 
         public void Draw(SpriteBatch spriteBatch)

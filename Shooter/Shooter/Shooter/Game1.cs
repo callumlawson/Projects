@@ -42,10 +42,13 @@ namespace Shooter
         // Enemies
         Texture2D enemyTexture;
         List<Enemy> enemies;
+        List<BackgroundEnemy> backgroundEnemies;
 
         // The rate at which the enemies appear
         TimeSpan enemySpawnTime;
-        TimeSpan previousSpawnTime;
+        TimeSpan backgroundEnemySpawnTime;
+        TimeSpan previousSpawnTimeEnemy;
+        TimeSpan previousSpawnTimeBackgroundEnemy;
 
         // A random number generator
         Random random;
@@ -107,12 +110,15 @@ namespace Shooter
 
             // Initialize the enemies list
             enemies = new List<Enemy>();
+            backgroundEnemies = new List<BackgroundEnemy>();
 
             // Set the time keepers to zero
-            previousSpawnTime = TimeSpan.Zero;
+            previousSpawnTimeEnemy = TimeSpan.Zero;
+            previousSpawnTimeBackgroundEnemy = TimeSpan.Zero;
 
             // Used to determine how fast enemy respawns
             enemySpawnTime = TimeSpan.FromSeconds(1.0f);
+            backgroundEnemySpawnTime = TimeSpan.FromSeconds(1.0f);
 
             // Initialize our random number generator
             random = new Random();
@@ -146,8 +152,8 @@ namespace Shooter
             player.Initialize(playerAnimation, playerPosition);
 
             // Load the parallaxing background
-            bgLayer1.Initialize(Content, "bgLayer1", GraphicsDevice.Viewport.Width, -1);
-            bgLayer2.Initialize(Content, "bgLayer2", GraphicsDevice.Viewport.Width, -2);
+            bgLayer1.Initialize(Content, "bgLayer1", GraphicsDevice.Viewport.Width, -1,230);
+            bgLayer2.Initialize(Content, "bgLayer2", GraphicsDevice.Viewport.Width, -2,120);
 
             enemyTexture = Content.Load<Texture2D>("mineAnimation");
             projectileTexture = Content.Load<Texture2D>("laser");
@@ -211,10 +217,13 @@ namespace Shooter
             currentKeyboardState = Keyboard.GetState();
             currentGamePadState = GamePad.GetState(PlayerIndex.One);
 
+            UpdateBackgroundEnemies(gameTime);
             //Update the player
             UpdateExplosions(gameTime);
             UpdatePlayer(gameTime);
             UpdateEnemies(gameTime);
+        
+            UpdateBackgroundEnemies(gameTime);
             UpdateCollision();
 
             // Update the projectiles
@@ -355,12 +364,34 @@ namespace Shooter
             enemies.Add(enemy);
         }
 
+        private void AddBackgroundEnemy()
+        {
+            // Create the animation object
+            Animation enemyAnimation = new Animation();
+
+            // Initialize the animation with the correct animation information
+            enemyAnimation.Initialize(enemyTexture, Vector2.Zero, 47, 61, 8, 30, Color.Gray, (float)(random.NextDouble()*0.5+0.4), true);
+            enemyAnimation.Fade = true;
+
+            // Randomly generate the position of the enemy
+            Vector2 position = new Vector2(GraphicsDevice.Viewport.Width + enemyTexture.Width / 2, random.Next(100, GraphicsDevice.Viewport.Height - 100));
+
+            // Create an enemy
+            BackgroundEnemy backgroundEnemy = new BackgroundEnemy();
+
+            // Initialize the enemy
+            backgroundEnemy.Initialize(enemyAnimation, position);
+
+            // Add the enemy to the active enemies list
+            backgroundEnemies.Add(backgroundEnemy);
+        }
+
         private void UpdateEnemies(GameTime gameTime)
         {
             // Spawn a new enemy enemy every 1.5 seconds
-            if (gameTime.TotalGameTime - previousSpawnTime > enemySpawnTime)
+            if (gameTime.TotalGameTime - previousSpawnTimeEnemy > enemySpawnTime)
             {
-                previousSpawnTime = gameTime.TotalGameTime;
+                previousSpawnTimeEnemy = gameTime.TotalGameTime;
 
                 // Add an Enemy
                 AddEnemy();
@@ -384,6 +415,26 @@ namespace Shooter
                 if (enemies[i].Active == false)
                 { 
                     enemies.RemoveAt(i);
+                }
+            }
+        }
+
+
+        private void UpdateBackgroundEnemies(GameTime gameTime)
+        {
+            if (gameTime.TotalGameTime - previousSpawnTimeBackgroundEnemy > backgroundEnemySpawnTime)
+            {
+                previousSpawnTimeBackgroundEnemy = gameTime.TotalGameTime;
+                AddBackgroundEnemy();
+            }
+
+            for (int i = backgroundEnemies.Count - 1; i >= 0; i--)
+            {
+                backgroundEnemies[i].Update(gameTime);
+
+                if (backgroundEnemies[i].Active == false)
+                {
+                    backgroundEnemies.RemoveAt(i);
                 }
             }
         }
@@ -468,6 +519,12 @@ namespace Shooter
 
             // Draw the moving background
             bgLayer1.Draw(spriteBatch);
+
+            for (int i = 0; i < backgroundEnemies.Count; i++)
+            {
+                backgroundEnemies[i].Draw(spriteBatch);
+            }
+
             bgLayer2.Draw(spriteBatch);
 
             // Draw the Enemies

@@ -16,10 +16,20 @@ namespace Shooter
         // The speed which the background is moving
         int speed;
 
-        public void Initialize(ContentManager content, String texturePath, int screenWidth, int speed)
+        Color color;
+
+        public void Initialize(ContentManager content, String texturePath, int screenWidth, int speed, int alpha)
         {
             // Load the background texture we will be using
             texture = content.Load<Texture2D>(texturePath);
+
+            //set color
+            color = new Color();
+            alpha = (byte)MathHelper.Clamp(alpha, 0, 255);
+            color.A = (byte)alpha;
+            color.R = 210;
+            color.G = 210;
+            color.B = 210;
 
             // Set the speed of the background
             this.speed = speed;
@@ -69,7 +79,7 @@ namespace Shooter
         {
             for (int i = 0; i < positions.Length; i++)
             {
-                spriteBatch.Draw(texture, positions[i], Color.White);
+                spriteBatch.Draw(texture, positions[i], color);
             }
         }
     }

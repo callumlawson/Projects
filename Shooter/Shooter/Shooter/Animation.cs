@@ -18,6 +18,14 @@ namespace Shooter
         // Angle
         public float Rotation;
 
+        // Fading and Alpha
+        public Boolean LoopFade;
+        public Boolean Fade;
+        public int AlphaValue;
+        public int FadeIncrement;
+        public float FadeDelay;
+        private float currentFadeDelay;
+
         // The time since we last updated the frame
         int elapsedTime;
 
@@ -31,7 +39,7 @@ namespace Shooter
         int currentFrame;
 
         // The color of the frame we will be displaying
-        Color color;
+        public Color Color;
 
         // The area of the image strip we want to display
         Rectangle sourceRect = new Rectangle();
@@ -59,7 +67,7 @@ namespace Shooter
                                 int frametime, Color color, float scale, bool looping)
         {
             // Keep a local copy of the values passed in
-            this.color = color;
+            this.Color = color;
             this.FrameWidth = frameWidth;
             this.FrameHeight = frameHeight;
             this.frameCount = frameCount;
@@ -69,6 +77,14 @@ namespace Shooter
             Looping = looping;
             Position = position;
             spriteStrip = texture;
+
+            // Fading and Alpha init
+            LoopFade = true;
+            Fade = false;
+            AlphaValue = 255;
+            FadeIncrement = 1;
+            FadeDelay = 0.5f;
+            currentFadeDelay = FadeDelay;
 
             // Set the time to zero
             elapsedTime = 0;
@@ -107,6 +123,25 @@ namespace Shooter
                 elapsedTime = 0;
             }
 
+
+            //Fading
+            if (Fade)
+            {
+                currentFadeDelay -= elapsedTime;
+                if (currentFadeDelay < 0)
+                {
+                    currentFadeDelay = FadeDelay;
+                    AlphaValue += FadeIncrement;
+
+                    if ((AlphaValue >= 255 || AlphaValue <= 0) && LoopFade)
+                    {
+                        FadeIncrement *= -1;
+                    }
+                }
+                AlphaValue = (byte)MathHelper.Clamp(AlphaValue, 0, 255);
+                Color.A = (byte)AlphaValue;
+            }
+
             // Grab the correct frame in the image strip by multiplying the currentFrame index by the frame width
             sourceRect = new Rectangle(currentFrame * FrameWidth, 0, FrameWidth, FrameHeight);
 
@@ -125,7 +160,7 @@ namespace Shooter
             {
                // Vector2 origin = new Vector2(destinationRect.Center.X,destinationRect.Center.Y)
                 Vector2 origin = new Vector2(0,0);
-                spriteBatch.Draw(spriteStrip, destinationRect, sourceRect, color, Rotation, origin , SpriteEffects.None, 1.0f);
+                spriteBatch.Draw(spriteStrip, destinationRect, sourceRect, Color, Rotation, origin , SpriteEffects.None, 1.0f);
             }
         }
 
