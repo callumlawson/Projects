@@ -1,21 +1,64 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+# Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platformer (Windows)", "Platformer\Platformer\Platformer (Windows).csproj", "{932C3D56-99F8-4A20-AD55-D46BE7DA09C8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0A850700-1ABB-4288-A391-6726B90EBEB9} = {0A850700-1ABB-4288-A391-6726B90EBEB9}
+		{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3} = {B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}
+		{FC7845FA-13FE-4FF8-822A-A577F3F59B00} = {FC7845FA-13FE-4FF8-822A-A577F3F59B00}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content", "Platformer\Content\Content.contentproj", "{2FDB7EF3-D3C4-47A3-8E75-C901A05B8574}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Farseer Physics XNA", "..\..\Downloads\Farseer Physics Engine 3.3.1 Samples XNA\Farseer Physics Engine 3.3.1 Samples XNA\Farseer Physics Engine 3.3 XNA\Farseer Physics XNA.csproj", "{0A850700-1ABB-4288-A391-6726B90EBEB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugView XNA", "..\..\Downloads\Farseer Physics Engine 3.3.1 Samples XNA\Farseer Physics Engine 3.3.1 Samples XNA\DebugView XNA\DebugView XNA.csproj", "{FC7845FA-13FE-4FF8-822A-A577F3F59B00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton", "..\..\Downloads\krypton-3296\Krypton\Krypton\Krypton.csproj", "{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KryptonTestbedContent", "..\..\Downloads\krypton-3296\Krypton\KryptonTestbed\KryptonTestbedContent\KryptonTestbedContent.contentproj", "{EA878F1A-4714-4377-8E6A-4947ACFF386A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{932C3D56-99F8-4A20-AD55-D46BE7DA09C8}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{932C3D56-99F8-4A20-AD55-D46BE7DA09C8}.Debug|x86.ActiveCfg = Debug|x86
 		{932C3D56-99F8-4A20-AD55-D46BE7DA09C8}.Debug|x86.Build.0 = Debug|x86
+		{932C3D56-99F8-4A20-AD55-D46BE7DA09C8}.Release|Any CPU.ActiveCfg = Release|x86
 		{932C3D56-99F8-4A20-AD55-D46BE7DA09C8}.Release|x86.ActiveCfg = Release|x86
 		{932C3D56-99F8-4A20-AD55-D46BE7DA09C8}.Release|x86.Build.0 = Release|x86
-		EndGlobalSection
+		{2FDB7EF3-D3C4-47A3-8E75-C901A05B8574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FDB7EF3-D3C4-47A3-8E75-C901A05B8574}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2FDB7EF3-D3C4-47A3-8E75-C901A05B8574}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FDB7EF3-D3C4-47A3-8E75-C901A05B8574}.Release|x86.ActiveCfg = Debug|Any CPU
+		{0A850700-1ABB-4288-A391-6726B90EBEB9}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{0A850700-1ABB-4288-A391-6726B90EBEB9}.Debug|x86.ActiveCfg = Debug|x86
+		{0A850700-1ABB-4288-A391-6726B90EBEB9}.Debug|x86.Build.0 = Debug|x86
+		{0A850700-1ABB-4288-A391-6726B90EBEB9}.Release|Any CPU.ActiveCfg = Release|x86
+		{0A850700-1ABB-4288-A391-6726B90EBEB9}.Release|x86.ActiveCfg = Release|x86
+		{0A850700-1ABB-4288-A391-6726B90EBEB9}.Release|x86.Build.0 = Release|x86
+		{FC7845FA-13FE-4FF8-822A-A577F3F59B00}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{FC7845FA-13FE-4FF8-822A-A577F3F59B00}.Debug|x86.ActiveCfg = Debug|x86
+		{FC7845FA-13FE-4FF8-822A-A577F3F59B00}.Debug|x86.Build.0 = Debug|x86
+		{FC7845FA-13FE-4FF8-822A-A577F3F59B00}.Release|Any CPU.ActiveCfg = Release|x86
+		{FC7845FA-13FE-4FF8-822A-A577F3F59B00}.Release|x86.ActiveCfg = Release|x86
+		{FC7845FA-13FE-4FF8-822A-A577F3F59B00}.Release|x86.Build.0 = Release|x86
+		{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}.Debug|x86.ActiveCfg = Debug|x86
+		{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}.Debug|x86.Build.0 = Debug|x86
+		{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}.Release|Any CPU.ActiveCfg = Release|x86
+		{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}.Release|x86.ActiveCfg = Release|x86
+		{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}.Release|x86.Build.0 = Release|x86
+		{EA878F1A-4714-4377-8E6A-4947ACFF386A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA878F1A-4714-4377-8E6A-4947ACFF386A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EA878F1A-4714-4377-8E6A-4947ACFF386A}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA878F1A-4714-4377-8E6A-4947ACFF386A}.Release|x86.ActiveCfg = Debug|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
