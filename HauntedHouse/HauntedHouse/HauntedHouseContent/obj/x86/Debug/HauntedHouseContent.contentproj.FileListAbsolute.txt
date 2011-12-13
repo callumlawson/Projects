@@ -1,0 +1,2 @@
+C:\Users\Callum\Documents\Visual Studio 2010\Projects\HauntedHouse\HauntedHouse\HauntedHouseContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouseContent\obj\x86\Debug\ResolveAssemblyReference.cache

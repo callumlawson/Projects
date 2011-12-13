@@ -44,6 +44,7 @@ namespace Platformer
         private Texture2D winOverlay;
         private Texture2D loseOverlay;
         private Texture2D diedOverlay;
+        private Texture2D exitSign;
 
         // Meta-level game state.
         private int levelIndex = -1;
@@ -67,16 +68,16 @@ namespace Platformer
         private const int numberOfLevels = 3;
 
         //Farseer
-        private Vector2 _origin;
-        private Texture2D _polygonTexture;
-        private float _scale;
-        private Body _compound;
         protected World World;
+        private Texture2D _polygonTexture;
 
         //Krypton
         private Texture2D mLightTexture;
         KryptonEngine krypton;
-        private float mVerticalUnits = 50;
+
+        private float mVerticalUnits = 30;
+
+        Camera2D camera2D;
 
         Random random = new Random();
 
@@ -85,6 +86,8 @@ namespace Platformer
 
         private Light2D mLight2D;
 
+        List<Sprite> sprites;
+
         public PlatformerGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -92,6 +95,7 @@ namespace Platformer
 
             // Create Krypton
             this.krypton = new KryptonEngine(this, "KryptonEffect");
+            krypton.AmbientColor = new Color(130, 130, 150);
 
             Accelerometer.Initialize();
         }
@@ -100,7 +104,14 @@ namespace Platformer
         {
             // Make sure to initialize krpyton, unless it has been added to the Game's list of Components
             this.krypton.Initialize();
+            sprites = new List<Sprite>();
+            camera2D = new Camera2D(GraphicsDevice);
 
+            //Vector2 amount = new Vector2(-GraphicsDevice.Viewport.Width/2,-GraphicsDevice.Viewport.Height/2);
+            Vector2 amount = new Vector2(-1, -3);
+
+            camera2D.Position = Vector2.Zero;
+            
             base.Initialize();
         }
 
@@ -145,10 +156,17 @@ namespace Platformer
             loadConvexHulls();
 
             // Create a new simple point light texture to use for the lights
-            this.mLightTexture = LightTextureBuilder.CreatePointLight(this.GraphicsDevice, 512);
+            this.mLightTexture = LightTextureBuilder.CreatePointLight(this.GraphicsDevice, 200);
             // Create some lights and hulls
             CreateLights(mLightTexture);
             CreateShadowHulls();
+
+            exitSign = Content.Load<Texture2D>("Tiles/exit");
+
+            Sprite sprite = new Sprite(winOverlay, new Vector2(20,20), krypton);
+            Sprite sprite2 = new Sprite(exitSign, new Vector2(0, 0), krypton);
+            sprites.Add(sprite);
+            sprites.Add(sprite2);
 
             LoadNextLevel();
         }
@@ -158,7 +176,6 @@ namespace Platformer
             // Make some random lights!
             for (int i = 0; i < 1; i++)
             {
-
                 Light2D light = new Light2D()
                 {
                     Texture = texture,
@@ -167,8 +184,8 @@ namespace Platformer
                     //Intensity = (float)(this.mRandom.NextDouble() * 0.25 + 0.75),
                     Intensity = 0.8f,
                     Angle = MathHelper.TwoPi * (float)0,
-                    X = (float)(-20),
-                    Y = (float)(0),
+                    X = (float)(10),
+                    Y = (float)(-10),
                 };
 
                 // Here we set the light's field of view
@@ -177,6 +194,8 @@ namespace Platformer
                     light.Fov = MathHelper.PiOver2 * (float)(1);
                 }
 
+                light.ShadowType = ShadowType.Illuminated;
+
                 this.krypton.Lights.Add(light);
             }
         }
@@ -184,25 +203,18 @@ namespace Platformer
         public void CreateShadowHulls()
         {
             var hull2 = ShadowHull.CreateRectangle(new Vector2(7,7));
-            hull2.Position.X = 10;
-            hull2.Position.Y = 10;
+            hull2.Position.X = 30;
+            hull2.Position.Y = -20;
             hull2.Scale.X = (float)(1);
             hull2.Scale.Y = (float)(1);
             krypton.Hulls.Add(hull2);
-
-            foreach (Vertices vertices in list)
-            {
-                Vector2[] verticesArray = vertices.ToArray();
-                var hull = ShadowHull.CreateConvex(ref verticesArray);
-                krypton.Hulls.Add(hull);
-            }
         }
 
         public void loadConvexHulls()
         {
-            World.Gravity = Vector2.Zero;
+            //World.Gravity = Vector2.Zero;
             //load texture that will represent the physics body
-            _polygonTexture = Content.Load<Texture2D>("Tiles/BlockA0");
+            _polygonTexture = Content.Load<Texture2D>("Tiles/Exit");
 
             //Create an array to hold the data from the texture
             uint[] data = new uint[_polygonTexture.Width * _polygonTexture.Height];
@@ -217,36 +229,29 @@ namespace Platformer
             //We need to find the real center (centroid) of the vertices for 2 reasons:
 
             //1. To translate the vertices so the polygon is centered around the centroid.
-            Vector2 centroid = -textureVertices.GetCentroid();
-            textureVertices.Translate(ref centroid);
+            //Vector2 centroid = -textureVertices.GetCentroid();
+            //textureVertices.Translate(ref centroid);
 
             //2. To draw the texture the correct place.
-            _origin = -centroid;
-
+            //_origin = -centroid;
+           
             //We simplify the vertices found in the texture.
-            textureVertices = SimplifyTools.DouglasPeuckerSimplify(textureVertices, 0f);
+            textureVertices = SimplifyTools.CollinearSimplify(textureVertices, 1f);
 
             //Since it is a concave polygon, we need to partition it into several smaller convex polygons
-            list = FlipcodeDecomposer.ConvexPartition(textureVertices);
+            list = BayazitDecomposer.ConvexPartition(textureVertices);
 
-            //Adjust the scale of the object for WP7's lower resolution
-            //Adjust the scale of the object for WP7's lower resolution
-#if WINDOWS_PHONE
-            _scale = 0.6f;
-#else
-            _scale = 10f;
-#endif
             //scale the vertices from graphics space to sim space
-            Vector2 vertScale = new Vector2(ConvertUnits.ToSimUnits(1)) * _scale;
-            foreach (Vertices vertices in list)
-            {
-                vertices.Scale(ref vertScale);
+           // Vector2 vertScale = new Vector2(ConvertUnits.ToSimUnits(1)) * _scale;
+            //foreach (Vertices vertices in list)
+            //{
+           //     vertices.Scale(ref vertScale);
 
-            }
+           // }
 
             //Create a single body with multiple fixtures
-            _compound = BodyFactory.CreateCompoundPolygon(World, list, 1f, BodyType.Dynamic);
-            _compound.BodyType = BodyType.Dynamic;
+          // _compound = BodyFactory.CreateCompoundPolygon(World, list, 1f, BodyType.Dynamic);
+           // _compound.BodyType = BodyType.Dynamic;
    
         }
 
@@ -259,12 +264,15 @@ namespace Platformer
         {
             // Handle polling for our input and handling high-level input
             HandleInput();
-
             // update our level, passing down the GameTime along with all of our input states
             level.Update(gameTime, keyboardState, gamePadState, touchState, 
                          accelerometerState, Window.CurrentOrientation);
 
-
+            //Update all the sprites in the game
+            foreach (Sprite sprite in sprites)
+            {
+                sprite.Update(gameTime);
+            }
 
             base.Update(gameTime);
         }
@@ -338,15 +346,13 @@ namespace Platformer
             Matrix view = Matrix.CreateTranslation(new Vector3(0, 0, 0) * -1f);
             Matrix projection = Matrix.CreateOrthographic(this.mVerticalUnits * this.GraphicsDevice.Viewport.AspectRatio, this.mVerticalUnits, 0, 1);
             Matrix wvp = world * view * projection;
-
+             //this.krypton.CullMode = CullMode.None;
             // Assign the matrix and pre-render the lightmap.
             // Make sure not to change the position of any lights or shadow hulls after this call, as it won't take effect till the next frame!
-            this.krypton.Matrix = wvp;
             this.krypton.LightMapPrepare();
 
             // Make sure we clear the backbuffer *after* Krypton is done pre-rendering
             this.GraphicsDevice.Clear(Color.White);
-
 
             spriteBatch.Begin();
 
@@ -354,14 +360,19 @@ namespace Platformer
 
             DrawHud();
 
-            spriteBatch.Draw(_polygonTexture, ConvertUnits.ToDisplayUnits(_compound.Position),
-                                      null, Color.Tomato, _compound.Rotation, _origin, _scale, SpriteEffects.None,
-                                        0f);
+            foreach (Sprite sprite in sprites)
+            {
+                sprite.Draw(spriteBatch);
+            }
+
+            //spriteBatch.Draw(_polygonTexture, ConvertUnits.ToDisplayUnits(_compound.Position),
+            //                          null, Color.Tomato, _compound.Rotation, _origin, _scale, SpriteEffects.None,
+            //                            0f);
 
             spriteBatch.End();
 
             // Draw hulls
-            this.DebugDrawHulls(true);
+            //this.DebugDrawHulls(true);
 
             // Draw krypton (This can be omited if krypton is in the Component list. It will simply draw krypton when base.Draw is called
             this.krypton.Draw(gameTime);

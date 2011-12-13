@@ -101,6 +101,8 @@
     <Compile Include="ScreenSystem\SpriteFonts.cs" />
     <Compile Include="ScreenSystem\VirtualButton.cs" />
     <Compile Include="ScreenSystem\VirtualStick.cs" />
+    <Compile Include="Sprite.cs" />
+    <Compile Include="SpriteAnimation.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="TouchCollectionExtensions.cs" />
   </ItemGroup>
