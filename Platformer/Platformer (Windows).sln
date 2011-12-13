@@ -10,13 +10,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platformer (Windows)", "Pla
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content", "Platformer\Content\Content.contentproj", "{2FDB7EF3-D3C4-47A3-8E75-C901A05B8574}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Farseer Physics XNA", "..\..\Downloads\Farseer Physics Engine 3.3.1 Samples XNA\Farseer Physics Engine 3.3.1 Samples XNA\Farseer Physics Engine 3.3 XNA\Farseer Physics XNA.csproj", "{0A850700-1ABB-4288-A391-6726B90EBEB9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Farseer Physics XNA", "..\Farseer Physics Engine 3.3.1 Samples XNA\Farseer Physics Engine 3.3.1 Samples XNA\Farseer Physics Engine 3.3 XNA\Farseer Physics XNA.csproj", "{0A850700-1ABB-4288-A391-6726B90EBEB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugView XNA", "..\..\Downloads\Farseer Physics Engine 3.3.1 Samples XNA\Farseer Physics Engine 3.3.1 Samples XNA\DebugView XNA\DebugView XNA.csproj", "{FC7845FA-13FE-4FF8-822A-A577F3F59B00}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugView XNA", "..\Farseer Physics Engine 3.3.1 Samples XNA\Farseer Physics Engine 3.3.1 Samples XNA\DebugView XNA\DebugView XNA.csproj", "{FC7845FA-13FE-4FF8-822A-A577F3F59B00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton", "..\..\Downloads\krypton-3296\Krypton\Krypton\Krypton.csproj", "{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton", "..\krypton-3296\Krypton\Krypton\Krypton.csproj", "{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KryptonTestbedContent", "..\..\Downloads\krypton-3296\Krypton\KryptonTestbed\KryptonTestbedContent\KryptonTestbedContent.contentproj", "{EA878F1A-4714-4377-8E6A-4947ACFF386A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KryptonTestbedContent", "..\krypton-3296\Krypton\KryptonTestbed\KryptonTestbedContent\KryptonTestbedContent.contentproj", "{EA878F1A-4714-4377-8E6A-4947ACFF386A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

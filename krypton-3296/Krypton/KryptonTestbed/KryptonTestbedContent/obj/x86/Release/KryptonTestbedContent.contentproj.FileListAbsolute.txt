@@ -1,0 +1,2 @@
+C:\Users\Callum\Downloads\krypton-3296\Krypton\KryptonTestbed\KryptonTestbedContent\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Callum\Projects\krypton-3296\Krypton\KryptonTestbed\KryptonTestbedContent\obj\x86\Release\ResolveAssemblyReference.cache

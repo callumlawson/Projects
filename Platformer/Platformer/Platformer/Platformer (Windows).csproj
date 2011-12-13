@@ -170,15 +170,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Downloads\Farseer Physics Engine 3.3.1 Samples XNA\Farseer Physics Engine 3.3.1 Samples XNA\DebugView XNA\DebugView XNA.csproj">
+    <ProjectReference Include="..\..\..\Farseer Physics Engine 3.3.1 Samples XNA\Farseer Physics Engine 3.3.1 Samples XNA\DebugView XNA\DebugView XNA.csproj">
       <Project>{FC7845FA-13FE-4FF8-822A-A577F3F59B00}</Project>
       <Name>DebugView XNA</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\Downloads\Farseer Physics Engine 3.3.1 Samples XNA\Farseer Physics Engine 3.3.1 Samples XNA\Farseer Physics Engine 3.3 XNA\Farseer Physics XNA.csproj">
+    <ProjectReference Include="..\..\..\Farseer Physics Engine 3.3.1 Samples XNA\Farseer Physics Engine 3.3.1 Samples XNA\Farseer Physics Engine 3.3 XNA\Farseer Physics XNA.csproj">
       <Project>{0A850700-1ABB-4288-A391-6726B90EBEB9}</Project>
       <Name>Farseer Physics XNA</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\Downloads\krypton-3296\Krypton\Krypton\Krypton.csproj">
+    <ProjectReference Include="..\..\..\krypton-3296\Krypton\Krypton\Krypton.csproj">
       <Project>{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}</Project>
       <Name>Krypton</Name>
     </ProjectReference>

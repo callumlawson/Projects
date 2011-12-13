@@ -1,0 +1,75 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton", "Krypton\Krypton.csproj", "{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3A5C565D-761D-484C-B0BB-57BA2AC2A909}"
+	ProjectSection(SolutionItems) = preProject
+		Krypton.vsmdi = Krypton.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KryptonTestbed", "KryptonTestbed\KryptonTestbed\KryptonTestbed.csproj", "{E9787BEE-7290-4C74-B919-79DC70AABE87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KryptonTestbedContent", "KryptonTestbed\KryptonTestbedContent\KryptonTestbedContent.contentproj", "{EA878F1A-4714-4377-8E6A-4947ACFF386A}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs24
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Krypton\\Krypton.csproj
+		SccProjectName1 = Krypton
+		SccLocalPath1 = Krypton
+		SccProjectUniqueName2 = KryptonTestbed\\KryptonTestbed\\KryptonTestbed.csproj
+		SccProjectName2 = KryptonTestbed/KryptonTestbed
+		SccLocalPath2 = KryptonTestbed\\KryptonTestbed
+		SccProjectUniqueName3 = KryptonTestbed\\KryptonTestbedContent\\KryptonTestbedContent.contentproj
+		SccProjectName3 = KryptonTestbed/KryptonTestbedContent
+		SccLocalPath3 = KryptonTestbed\\KryptonTestbedContent
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Krypton.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}.Debug|x86.ActiveCfg = Debug|x86
+		{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}.Debug|x86.Build.0 = Debug|x86
+		{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}.Release|Any CPU.ActiveCfg = Release|x86
+		{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}.Release|Mixed Platforms.Build.0 = Release|x86
+		{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}.Release|x86.ActiveCfg = Release|x86
+		{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}.Release|x86.Build.0 = Release|x86
+		{E9787BEE-7290-4C74-B919-79DC70AABE87}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{E9787BEE-7290-4C74-B919-79DC70AABE87}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{E9787BEE-7290-4C74-B919-79DC70AABE87}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{E9787BEE-7290-4C74-B919-79DC70AABE87}.Debug|x86.ActiveCfg = Debug|x86
+		{E9787BEE-7290-4C74-B919-79DC70AABE87}.Debug|x86.Build.0 = Debug|x86
+		{E9787BEE-7290-4C74-B919-79DC70AABE87}.Release|Any CPU.ActiveCfg = Release|x86
+		{E9787BEE-7290-4C74-B919-79DC70AABE87}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{E9787BEE-7290-4C74-B919-79DC70AABE87}.Release|Mixed Platforms.Build.0 = Release|x86
+		{E9787BEE-7290-4C74-B919-79DC70AABE87}.Release|x86.ActiveCfg = Release|x86
+		{E9787BEE-7290-4C74-B919-79DC70AABE87}.Release|x86.Build.0 = Release|x86
+		{EA878F1A-4714-4377-8E6A-4947ACFF386A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA878F1A-4714-4377-8E6A-4947ACFF386A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{EA878F1A-4714-4377-8E6A-4947ACFF386A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EA878F1A-4714-4377-8E6A-4947ACFF386A}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA878F1A-4714-4377-8E6A-4947ACFF386A}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{EA878F1A-4714-4377-8E6A-4947ACFF386A}.Release|x86.ActiveCfg = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
