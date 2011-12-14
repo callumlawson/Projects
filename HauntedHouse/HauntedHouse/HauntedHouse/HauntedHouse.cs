@@ -40,6 +40,10 @@ namespace HauntedHouse
         //Player
         Player player;
 
+        //TestSprite
+        Sprite testSprite;
+        Sprite testSprite2;
+
         //Torch
         Light2D torch;
 
@@ -77,9 +81,6 @@ namespace HauntedHouse
             //Sprites list
             sprites = new List<Sprite>();
 
-            //Create player
-            player = new Player();
-
             //Create camera
             camera = new Camera2D(GraphicsDevice);
             
@@ -105,12 +106,28 @@ namespace HauntedHouse
             playerImage = Content.Load<Texture2D>("player");
             gemImage = Content.Load<Texture2D>("gem");
 
+            //Create player
+            player = new Player();
+            
             // Load the player resources
             Animation playerAnimation = new Animation();
             Texture2D playerTexture = Content.Load<Texture2D>("shipAnimation");
-            playerAnimation.Initialize(playerTexture, Vector2.Zero, 115, 69, 8, 45, Color.White, 1f, true);
+            playerAnimation.Initialize(playerTexture, Vector2.Zero, 115, 69, 8, 45, Color.White, 1f, true, this.GraphicsDevice);
             player.Initialize(playerAnimation, Vector2.Zero);
+            player.Position = new Vector2(200, 200);
+            player.Velocity = new Vector2(0f, 0f);
             sprites.Add(player);
+           
+            //Test Sprite
+            testSprite = new Sprite(playerImage,new Vector2(100,-100),krypton);
+            testSprite.Position = new Vector2(200,20);
+            testSprite.Velocity = new Vector2(0.2f, 0f);
+            sprites.Add(testSprite);
+
+            testSprite2 = new Sprite(playerImage, new Vector2(100, -100), krypton);
+            testSprite2.Position = new Vector2(100, 20);
+            testSprite2.Velocity = new Vector2(0f, 0.1f);
+            sprites.Add(testSprite2);
 
             // Create a light we can control
             torch = new Light2D()
@@ -121,13 +138,13 @@ namespace HauntedHouse
                 Range = 600,
                 Intensity = 0.5f,
                 Color = Color.White,
-                ShadowType = ShadowType.Occluded,
+                ShadowType = ShadowType.Illuminated,
                 Fov = MathHelper.PiOver2 * (float)(0.5)
             };
 
             this.krypton.Lights.Add(this.torch);
 
-            
+            /*
             // Make some random lights!
             for (int i = 0; i < 9; i++)
             {
@@ -155,7 +172,9 @@ namespace HauntedHouse
 
                 this.krypton.Lights.Add(light);
             }
-
+             */
+            
+            /*
             int x = 10;
             int y = 10;
             float w = 1000;
@@ -179,7 +198,7 @@ namespace HauntedHouse
                     krypton.Hulls.Add(hull);
                 }
             }
-
+            */
         }
 
         /// <summary>
@@ -198,6 +217,9 @@ namespace HauntedHouse
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            //Clear Hulls from last cycle
+            krypton.Hulls.Clear();
+
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
@@ -213,6 +235,7 @@ namespace HauntedHouse
 
             //Update the camera
             camera.Update(gameTime);
+            //Follow the player
             camera.setTarget(player.Position);
 
             // update the matrix, per camera
@@ -256,20 +279,19 @@ namespace HauntedHouse
             }
 
             //Test Images
-            spriteBatch.Draw(playerImage, Vector2.Zero, Color.White);
-            spriteBatch.Draw(gemImage, new Vector2(-20, -20), Color.White);
-            spriteBatch.Draw(gemImage, new Vector2(-200, -20), Color.White);
-            spriteBatch.Draw(gemImage, new Vector2(-50, 20), Color.White);
-            spriteBatch.Draw(gemImage, new Vector2(12, 400), Color.White);
-            spriteBatch.Draw(gemImage, new Vector2(67, 134), Color.White);
-            
-
             //spriteBatch.Draw(playerImage, Vector2.Zero, Color.White);
+           // spriteBatch.Draw(gemImage, new Vector2(-20, -20), Color.White);
+           // spriteBatch.Draw(gemImage, new Vector2(-200, -20), Color.White);
+            spriteBatch.Draw(gemImage, new Vector2(-50, 20), Color.White);
+           // spriteBatch.Draw(gemImage, new Vector2(12, 400), Color.White);
+           // spriteBatch.Draw(gemImage, new Vector2(67, 134), Color.White);
+            
+            //spriteBatch.Draw(playerImage, new Vector2(200,200), Color.White);
 
             spriteBatch.End();
 
             // Draw hulls
-            this.DebugDrawHulls(true);
+            //this.DebugDrawHulls(true);
 
             // Draw krypton (This can be omited if krypton is in the Component list. It will simply draw krypton when base.Draw is called
             this.krypton.Draw(gameTime);

@@ -23,19 +23,22 @@ namespace HauntedHouse
         public Texture2D Texture;
 
         // The position of the Sprite relative to the top left corner of thescreen
-        public Vector2 Position;
+        public Vector2 Position = Vector2.Zero;
+
+        // The velocity of the Sprite which is added to the Position each step
+        public Vector2 Velocity = Vector2.Zero;
 
         //Angle of rotation
-        public float Angle;
+        public float Angle = 0.0f;
 
         //Alpha
-        public float Opacity;
+        public float Opacity = 255;
 
         //Scale
-        public float Scale;
+        public float Scale = 1f;
 
         // The state of the Sprite
-        public bool Active;
+        public bool Active = true;
 
         // Get the width of the Sprite
         public int Width;
@@ -43,6 +46,7 @@ namespace HauntedHouse
         // Get the height of the Sprite
         public int Height;
 
+        //Krypton
         KryptonEngine krypton;
 
         //List of the shadowhulls which represent this object
@@ -77,22 +81,19 @@ namespace HauntedHouse
         {
             Initialize();
             Active = true;
-            Position = position;
+            this.Position = position;
+
             Texture = texture;
             Width = texture.Width;
             Height = texture.Height;
+
             this.krypton = krypton;
-
-
             hulls = new List<ShadowHull>();
             findShadowHull(Texture);
         }
 
         public void Initialize()
         {
-            Scale = 1.0f;
-            Opacity = 255;
-            Angle = 0;
 
         }
 
@@ -108,24 +109,11 @@ namespace HauntedHouse
             //Find the vertices that makes up the outline of the shape in the texture
             textureVertices = PolygonTools.CreatePolygon(data, texture.Width, false);
 
-            //The tool return vertices as they were found in the texture.
-            //We need to find the real center (centroid) of the vertices for 2 reasons:
-
-            //1. To translate the vertices so the polygon is centered around the centroid.
-            Vector2 centroid = -textureVertices.GetCentroid();
-            textureVertices.Translate(ref centroid);
-
-            //2. To draw the texture the correct place.
-            _origin = -centroid;
-
             //We simplify the vertices found in the texture.
-            textureVertices = SimplifyTools.CollinearSimplify(textureVertices, 0f);
+            textureVertices = SimplifyTools.DouglasPeuckerSimplify(textureVertices, 0.5f);
 
             //Since it is a concave polygon, we need to partition it into several smaller convex polygons
             vertices = BayazitDecomposer.ConvexPartition(textureVertices);
-
-            //Adjust the scale of the object for WP7's lower resolution
-            //Adjust the scale of the object for WP7's lower resolution
            
             _scale = 1f;
 
@@ -142,12 +130,19 @@ namespace HauntedHouse
 
         virtual public void Update(GameTime gameTime)
         {
-             //Update the position of the Animation
-            Animation.Position = Position;
-             //Update Animation
-            Animation.Update(gameTime);
+            Position += Velocity;
 
-            //updateHulls();
+            if (Animated)
+            {
+                //Update the position of the Animation
+                Animation.Position = Position;
+                //Update Animation
+                Animation.Update(gameTime);
+            }
+            else
+            {
+                updateHulls(gameTime);
+            }
 
             // If the enemy is past the screen or its health reaches 0 then deactivateit
             //if (Position.X < -Width || Position.Y > 520)
@@ -158,14 +153,15 @@ namespace HauntedHouse
             //}
         }
 
-        public void updateHulls()
+        public void updateHulls(GameTime gameTime)
         {
             foreach (ShadowHull hull in hulls)
             {
-                hull.Position = Position;
-                //hull.Angle = this.Angle;
-                //hull.Scale = new Vector2(this.Scale);
-                //hull.Opacity = this.Opacity;
+               hull.Position = this.Position;
+               hull.Angle = this.Angle;
+               hull.Scale = new Vector2(this.Scale);
+               hull.Opacity = this.Opacity;
+               krypton.Hulls.Add(hull);
             }
         }
 
@@ -176,8 +172,7 @@ namespace HauntedHouse
             {
                 Animation.Draw(spriteBatch);
             }
-            else spriteBatch.Draw(Texture, this.Position, null, Color.White, Angle, new Vector2(Position.X - Width / 2, Position.Y - Height / 2), Scale, SpriteEffects.None, 0f);
-           
+            else spriteBatch.Draw(Texture, Position, null, Color.White, Angle, Vector2.Zero, Scale, SpriteEffects.None, 0f);
         }
     }
 }

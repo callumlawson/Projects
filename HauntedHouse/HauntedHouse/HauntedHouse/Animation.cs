@@ -13,6 +13,13 @@ namespace HauntedHouse
         Texture2D spriteStrip;
         Texture2D firstFrame;
 
+        // Render the first frame of the animation so it can be used to create a shadow hull for the sprite
+        RenderTarget2D renderTarget;
+        Texture2D firstFrameRender;
+
+        //Graphics device
+        GraphicsDevice device;
+
         // The scale used to display the sprite strip
         float scale;
 
@@ -65,7 +72,7 @@ namespace HauntedHouse
 
         public void Initialize(Texture2D texture, Vector2 position,
                                 int frameWidth, int frameHeight, int frameCount,
-                                int frametime, Color color, float scale, bool looping)
+                                int frametime, Color color, float scale, bool looping, GraphicsDevice device)
         {
             // Keep a local copy of the values passed in
             this.Color = color;
@@ -93,6 +100,14 @@ namespace HauntedHouse
 
             // Set the Animation to active by default
             Active = true;
+
+            //Render the first frame as a texture
+        }
+
+        public void renderFirstFrame()
+        {
+            PresentationParameters pp = new PresentationParameters();
+            renderTarget = new RenderTarget2D(device, FrameWidth, FrameWidth, true, device.DisplayMode.Format, DepthFormat.Depth24);
         }
 
         public void Update(GameTime gameTime)
