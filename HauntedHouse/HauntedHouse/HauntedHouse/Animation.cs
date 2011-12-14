@@ -148,9 +148,10 @@ namespace HauntedHouse
 
             destinationRect = new Rectangle((int)Position.X ,(int)Position.Y ,(int)(FrameWidth * scale),(int)(FrameHeight * scale));
 
-            /*destinationRect = new Rectangle((int)Position.X - (int)(FrameWidth * scale) / 2,(int)Position.Y - (int)(FrameHeight * scale) / 2,
+            //TODO decide on centering
+            destinationRect = new Rectangle((int)Position.X - (int)(FrameWidth * scale) / 2,(int)Position.Y - (int)(FrameHeight * scale) / 2,
             (int)(FrameWidth * scale),
-            (int)(FrameHeight * scale));*/
+            (int)(FrameHeight * scale));
         }
 
         // Draw the Animation Strip

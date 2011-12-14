@@ -32,12 +32,16 @@ namespace HauntedHouse
         int verticalUnits;
 
         Texture2D playerImage;
+        Texture2D gemImage;
 
         //List of all the active sprites
         List<Sprite> sprites;
 
         //Player
         Player player;
+
+        //Torch
+        Light2D torch;
 
         public HauntedHouse()
         {
@@ -68,7 +72,7 @@ namespace HauntedHouse
             this.krypton.Initialize();
             krypton.SpriteBatchCompatablityEnabled = true;
             krypton.CullMode = CullMode.None;
-            krypton.AmbientColor = new Color(150, 150, 150);
+            krypton.AmbientColor = new Color(10, 20, 10);
 
             //Sprites list
             sprites = new List<Sprite>();
@@ -99,6 +103,7 @@ namespace HauntedHouse
 
             // Load sprites
             playerImage = Content.Load<Texture2D>("player");
+            gemImage = Content.Load<Texture2D>("gem");
 
             // Load the player resources
             Animation playerAnimation = new Animation();
@@ -108,18 +113,73 @@ namespace HauntedHouse
             sprites.Add(player);
 
             // Create a light we can control
-            this.light2D = new Light2D()
+            torch = new Light2D()
             {
                 Texture = this.lightTexture,
                 X = 0,
                 Y = 0,
-                Range = 500,
-                Intensity = 0.8f,
-                Color = Color.Multiply(Color.Blue, 2.0f),
-                ShadowType = ShadowType.Occluded
+                Range = 600,
+                Intensity = 0.5f,
+                Color = Color.White,
+                ShadowType = ShadowType.Occluded,
+                Fov = MathHelper.PiOver2 * (float)(0.5)
             };
 
-            this.krypton.Lights.Add(this.light2D);
+            this.krypton.Lights.Add(this.torch);
+
+            
+            // Make some random lights!
+            for (int i = 0; i < 9; i++)
+            {
+                byte r = (byte)(this.random.Next(255 - 32) + 32);
+                byte g = (byte)(this.random.Next(255 - 32) + 32);
+                byte b = (byte)(this.random.Next(255 - 32) + 32);
+
+                Light2D light = new Light2D()
+                {
+                    Texture = lightTexture,
+                    Range = (float)(this.random.NextDouble() * 200 + 100),
+                    Color = new Color(r, g, b),
+                    //Intensity = (float)(this.mRandom.NextDouble() * 0.25 + 0.75),
+                    Intensity = 0.8f,
+                    Angle = MathHelper.TwoPi * (float)this.random.NextDouble(),
+                    X = (float)(this.random.NextDouble() * 500),
+                    Y = (float)(this.random.NextDouble() * 500),
+                };
+
+                // Here we set the light's field of view
+                if (i % 2 == 0)
+                {
+                    light.Fov = MathHelper.PiOver2 * (float)(this.random.NextDouble() * 0.75 + 0.25);
+                }
+
+                this.krypton.Lights.Add(light);
+            }
+
+            int x = 10;
+            int y = 10;
+            float w = 1000;
+            float h = 1000;
+
+            // Make lines of lines of hulls!
+            for (int j = 0; j < y; j++)
+            {
+                // Make lines of hulls!
+                for (int i = 0; i < x; i++)
+                {
+                    var posX = (((i + 0.5f) * w) / x) - w / 2 + (j % 2 == 0 ? w / x / 2 : 0);
+                    var posY = (((j + 0.5f) * h) / y) - h / 2; // +(i % 2 == 0 ? h / y / 4 : 0);
+
+                    var hull = ShadowHull.CreateRectangle(Vector2.One * 10f);
+                    hull.Position.X = posX;
+                    hull.Position.Y = posY;
+                    hull.Scale.X = (float)(this.random.NextDouble() * 2.75f + 0.25f);
+                    hull.Scale.Y = (float)(this.random.NextDouble() * 2.75f + 0.25f);
+
+                    krypton.Hulls.Add(hull);
+                }
+            }
+
         }
 
         /// <summary>
@@ -148,9 +208,12 @@ namespace HauntedHouse
                 sprite.Update(gameTime);
             }
 
+            torch.Position = player.Position;
+            torch.Angle = player.TorchAngle;
+
             //Update the camera
             camera.Update(gameTime);
-            camera.MoveCamera(new Vector2(1, 0));
+            camera.setTarget(player.Position);
 
             // update the matrix, per camera
             krypton.Matrix = camera.View;
@@ -192,7 +255,16 @@ namespace HauntedHouse
                 sprite.Draw(spriteBatch);
             }
 
+            //Test Images
             spriteBatch.Draw(playerImage, Vector2.Zero, Color.White);
+            spriteBatch.Draw(gemImage, new Vector2(-20, -20), Color.White);
+            spriteBatch.Draw(gemImage, new Vector2(-200, -20), Color.White);
+            spriteBatch.Draw(gemImage, new Vector2(-50, 20), Color.White);
+            spriteBatch.Draw(gemImage, new Vector2(12, 400), Color.White);
+            spriteBatch.Draw(gemImage, new Vector2(67, 134), Color.White);
+            
+
+            //spriteBatch.Draw(playerImage, Vector2.Zero, Color.White);
 
             spriteBatch.End();
 

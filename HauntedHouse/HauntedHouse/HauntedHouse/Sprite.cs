@@ -170,7 +170,7 @@ namespace HauntedHouse
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        virtual public void Draw(SpriteBatch spriteBatch)
         {
             // Draw the animation
             if (Animated)

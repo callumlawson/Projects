@@ -15,3 +15,5 @@ C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Kr
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\KryptonEffect.xnb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\player.xnb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\shipAnimation.xnb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Run.xnb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Gem.xnb

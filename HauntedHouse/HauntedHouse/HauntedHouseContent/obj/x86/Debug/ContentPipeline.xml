@@ -19,6 +19,24 @@
       <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\shipAnimation.xnb</Output>
       <Time>2011-12-13T22:31:40.1816306+00:00</Time>
     </Item>
+    <Item>
+      <Source>Run.png</Source>
+      <Name>Run</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Run.xnb</Output>
+      <Time>2011-12-14T00:37:38.92525+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Gem.png</Source>
+      <Name>Gem</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Gem.xnb</Output>
+      <Time>2011-12-14T00:40:14.0865462+00:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

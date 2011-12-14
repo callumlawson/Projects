@@ -61,6 +61,11 @@ namespace HauntedHouse
             get { return _projection; }
         }
 
+        public void setTarget(Vector2 position)
+        {
+            _targetPosition = position;
+        }
+
         /// <summary>
         /// The current position of the camera.
         /// </summary>
@@ -223,6 +228,8 @@ namespace HauntedHouse
         public void Update(GameTime gameTime)
         {
             Vector2 delta = _targetPosition - _currentPosition;
+
+            /*
             float distance = delta.Length();
             if (distance > 0f)
             {
@@ -253,9 +260,10 @@ namespace HauntedHouse
             {
                 rotDelta /= Math.Abs(rotDelta);
             }
+             */
 
-            _currentPosition += 100f * delta * inertia * (float) gameTime.ElapsedGameTime.TotalSeconds;
-            _currentRotation += 80f * rotDelta * rotInertia * (float) gameTime.ElapsedGameTime.TotalSeconds;
+            _currentPosition += delta;
+            //_currentRotation += 80f * rotDelta * rotInertia * (float) gameTime.ElapsedGameTime.TotalSeconds;
 
             SetView();
         }
