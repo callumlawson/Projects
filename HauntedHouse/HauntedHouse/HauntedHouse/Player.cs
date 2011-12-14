@@ -11,6 +11,9 @@ namespace HauntedHouse
 {
     class Player : Sprite
     {
+        //The players sprite
+        Sprite sprite;
+
         // Amount of hit points that player has
         public int Health;
 

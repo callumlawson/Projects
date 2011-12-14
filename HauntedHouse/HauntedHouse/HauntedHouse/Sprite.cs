@@ -40,6 +40,9 @@ namespace HauntedHouse
         // The state of the Sprite
         public bool Active = true;
 
+        // Should the sprite be drawn? This would be set to false when it moves offscreen
+        public bool Drawn = true;
+
         // Get the width of the Sprite
         public int Width;
 
