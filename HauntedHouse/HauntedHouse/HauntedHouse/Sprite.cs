@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-//using FarseerPhysics.Common;
-//using FarseerPhysics.Common.PolygonManipulation;
-//using FarseerPhysics.Common.Decomposition;
-//using FarseerPhysics.SamplesFramework;
 using Krypton;
+using FarseerPhysics.Common;
+using FarseerPhysics.Common.PolygonManipulation;
+using FarseerPhysics.Common.Decomposition;
 
 namespace HauntedHouse
 {
@@ -46,7 +45,7 @@ namespace HauntedHouse
 
         KryptonEngine krypton;
 
-        //Shadowhull
+        //List of the shadowhulls which represent this object
         List<ShadowHull> hulls;
 
         //Convex hull
@@ -54,6 +53,8 @@ namespace HauntedHouse
         //Vertices textureVertices;
         private Vector2 _origin;
         private float _scale;
+        Vertices textureVertices;
+        List<Vertices> vertices;
 
         /*
         public Sprite(SpriteAnimation animation, Vector2 position)
@@ -69,7 +70,7 @@ namespace HauntedHouse
 
         public Sprite()
         {
-
+            Initialize();
         }
 
         public Sprite(Texture2D texture, Vector2 position, KryptonEngine krypton)
@@ -81,18 +82,21 @@ namespace HauntedHouse
             Width = texture.Width;
             Height = texture.Height;
             this.krypton = krypton;
-            //findShadowHull(Texture);
+
+
+            hulls = new List<ShadowHull>();
+            findShadowHull(Texture);
         }
 
         public void Initialize()
         {
             Scale = 1.0f;
-            Opacity = 200;
+            Opacity = 255;
             Angle = 0;
-            hulls = new List<ShadowHull>();
+
         }
 
-        /*
+        
         public void findShadowHull(Texture2D texture)
         {
             //Create an array to hold the data from the texture
@@ -118,28 +122,23 @@ namespace HauntedHouse
             textureVertices = SimplifyTools.CollinearSimplify(textureVertices, 0f);
 
             //Since it is a concave polygon, we need to partition it into several smaller convex polygons
-            list = BayazitDecomposer.ConvexPartition(textureVertices);
+            vertices = BayazitDecomposer.ConvexPartition(textureVertices);
 
             //Adjust the scale of the object for WP7's lower resolution
             //Adjust the scale of the object for WP7's lower resolution
-            #if WINDOWS_PHONE
-                _scale = 0.6f;
-            #else
+           
             _scale = 1f;
-            #endif
 
             //scale the vertices from graphics space to sim space
-            Vector2 vertScale = new Vector2(ConvertUnits.ToSimUnits(1)) * _scale;
-            foreach (Vertices vertices in list)
+            foreach (Vertices vertex in vertices)
             {
-                vertices.Scale(ref vertScale);
-                Vector2[] verticesArray = vertices.ToArray();
+                Vector2[] verticesArray = vertex.ToArray();
                 var hull = ShadowHull.CreateConvex(ref verticesArray);
                 hulls.Add(hull);
                 krypton.Hulls.Add(hull);
             }
         }
-         */
+        
 
         virtual public void Update(GameTime gameTime)
         {

@@ -120,6 +120,10 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Farseer Physics Engine 3.3.1 XNA\Farseer Physics Engine 3.3.1 XNA\Farseer Physics XNA.csproj">
+      <Project>{0A850700-1ABB-4288-A391-6726B90EBEB9}</Project>
+      <Name>Farseer Physics XNA</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HauntedHouseContent\HauntedHouseContent.contentproj">
       <Name>HauntedHouseContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
