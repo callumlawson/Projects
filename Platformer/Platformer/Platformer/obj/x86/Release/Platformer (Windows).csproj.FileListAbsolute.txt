@@ -54,12 +54,3 @@ C:\Users\Callum\Projects\Platformer\Platformer\Platformer\obj\x86\Release\Resolv
 C:\Users\Callum\Projects\Platformer\Platformer\Platformer\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Callum\Projects\Platformer\Platformer\Platformer\obj\x86\Release\Platformer.exe
 C:\Users\Callum\Projects\Platformer\Platformer\Platformer\obj\x86\Release\Platformer.pdb
-C:\Users\Callum\Projects\Platformer\Platformer\Platformer\bin\x86\Release\Content\font.xnb
-C:\Users\Callum\Projects\Platformer\Platformer\Platformer\bin\x86\Release\DebugViewXNA.dll
-C:\Users\Callum\Projects\Platformer\Platformer\Platformer\bin\x86\Release\FarseerPhysicsXNA.dll
-C:\Users\Callum\Projects\Platformer\Platformer\Platformer\bin\x86\Release\Krypton.dll
-C:\Users\Callum\Projects\Platformer\Platformer\Platformer\bin\x86\Release\DebugViewXNA.pdb
-C:\Users\Callum\Projects\Platformer\Platformer\Platformer\bin\x86\Release\FarseerPhysicsXNA.pdb
-C:\Users\Callum\Projects\Platformer\Platformer\Platformer\bin\x86\Release\FarseerPhysicsXNA.xml
-C:\Users\Callum\Projects\Platformer\Platformer\Platformer\bin\x86\Release\Krypton.pdb
-C:\Users\Callum\Projects\Platformer\Platformer\Platformer\bin\x86\Release\Content\KryptonEffect.xnb

@@ -69,6 +69,12 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemoContentPipeline\BasicDemoContentPipeline.csproj">
+      <Project>{FE73D860-B545-4E31-B33D-522CDDECC6F9}</Project>
+      <Name>BasicDemoContentPipeline</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

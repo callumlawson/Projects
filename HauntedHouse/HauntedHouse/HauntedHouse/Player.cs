@@ -12,7 +12,9 @@ namespace HauntedHouse
     class Player : Sprite
     {
         //The players sprite
-        Sprite sprite;
+        Sprite playerSprite;
+        Animation idleAnimation;
+        SpriteManager spriteManger;
 
         // Amount of hit points that player has
         public int Health;
@@ -38,6 +40,11 @@ namespace HauntedHouse
 
         //Torch
         public float TorchAngle = 0.0f;
+
+        public Player()
+        {
+
+        }
 
         public void Initialize(Animation animation, Vector2 position)
         {

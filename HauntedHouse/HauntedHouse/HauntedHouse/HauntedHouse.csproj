@@ -134,6 +134,10 @@
       <Project>{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}</Project>
       <Name>Krypton</Name>
     </ProjectReference>
+    <ProjectReference Include="..\nickgravelyn-tiledlib-d2571c771c93\TiledLib\TiledLib\TiledLib.csproj">
+      <Project>{EC3F6988-459C-4783-89E9-F34C0CC731C7}</Project>
+      <Name>TiledLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">

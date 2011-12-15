@@ -1,0 +1,10 @@
+syntax: glob
+
+*/Obj/*
+*/obj/*
+*/Bin/*
+*/bin/*
+*.suo
+*.csproj.*
+*.contentproj.*
+*.orig
