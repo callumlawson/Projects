@@ -2,3 +2,4 @@ Content\player.xnb
 Content\shipAnimation.xnb
 Content\Run.xnb
 Content\Gem.xnb
+Content\desert.xnb

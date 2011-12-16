@@ -7,9 +7,9 @@
       <Importer>TmxImporter</Importer>
       <Processor>MapProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Callum\Downloads\nickgravelyn-tiledlib-d2571c771c93\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\bin\x86\Debug\Content\desert.xnb</Output>
+      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\bin\x86\Debug\Content\desert.xnb</Output>
       <Time>2011-12-06T04:11:32+00:00</Time>
-      <Request>C:\Users\Callum\Downloads\nickgravelyn-tiledlib-d2571c771c93\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\bin\x86\Debug\Content\desert_tiles.xnb</Request>
+      <Request>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\bin\x86\Debug\Content\desert_tiles.xnb</Request>
     </Item>
     <Item>
       <Source>desert_tiles.png</Source>
@@ -23,7 +23,7 @@
         <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Callum\Downloads\nickgravelyn-tiledlib-d2571c771c93\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\bin\x86\Debug\Content\desert_tiles.xnb</Output>
+      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\bin\x86\Debug\Content\desert_tiles.xnb</Output>
       <Time>2011-12-06T04:11:32+00:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
@@ -32,14 +32,14 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Callum\Downloads\nickgravelyn-tiledlib-d2571c771c93\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemoContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Callum\Downloads\nickgravelyn-tiledlib-d2571c771c93\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Callum\Downloads\nickgravelyn-tiledlib-d2571c771c93\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemoContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Callum\Downloads\nickgravelyn-tiledlib-d2571c771c93\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemoContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemoContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
-        <Key>C:\Users\Callum\Downloads\nickgravelyn-tiledlib-d2571c771c93\nickgravelyn-tiledlib-d2571c771c93\TiledLib\TiledLib\bin\x86\Debug\TiledLib.dll</Key>
+        <Key>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\TiledLib\TiledLib\bin\x86\Debug\TiledLib.dll</Key>
         <Value>2011-12-15T00:43:03.656663+00:00</Value>
       </Assembly>
       <Assembly>
@@ -67,8 +67,8 @@
         <Value>2010-08-23T13:41:18+01:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Users\Callum\Downloads\nickgravelyn-tiledlib-d2571c771c93\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemoContentPipeline\bin\x86\Debug\BasicDemoContentPipeline.dll</Key>
-        <Value>2011-12-15T00:43:03.8166722+00:00</Value>
+        <Key>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemoContentPipeline\bin\x86\Debug\BasicDemoContentPipeline.dll</Key>
+        <Value>2011-12-16T17:12:00.0364119+00:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>

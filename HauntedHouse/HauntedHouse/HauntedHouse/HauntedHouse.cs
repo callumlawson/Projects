@@ -37,6 +37,9 @@ namespace HauntedHouse
         //List of all the active sprites
         List<Sprite> sprites;
 
+        //List of all the levels in the game
+        List<Level> levels;
+
         //Player
         Player player;
 
@@ -106,24 +109,23 @@ namespace HauntedHouse
             playerImage = Content.Load<Texture2D>("player");
             gemImage = Content.Load<Texture2D>("gem");
 
+            //Test Sprite
+            testSprite = new Sprite(playerImage, new Vector2(100, -100), krypton);
+            testSprite.Position = new Vector2(200, 20);
+            testSprite.Velocity = new Vector2(0.2f, 0f);
+
+            //Dont add it cuase
+            sprites.Add(testSprite);
+
             //Create player
-            player = new Player();
-            
+            player = new Player(Vector2.Zero,testSprite);
             // Load the player resources
             Animation playerAnimation = new Animation();
             Texture2D playerTexture = Content.Load<Texture2D>("shipAnimation");
             playerAnimation.Initialize(playerTexture, Vector2.Zero, 115, 69, 8, 45, Color.White, 1f, true, this.GraphicsDevice);
-            player.Initialize(playerAnimation, Vector2.Zero);
             player.Position = new Vector2(200, 200);
-            player.Velocity = new Vector2(0f, 0f);
-            sprites.Add(player);
+            //player.Velocity = new Vector2(0f, 0f);
            
-            //Test Sprite
-            testSprite = new Sprite(playerImage,new Vector2(100,-100),krypton);
-            testSprite.Position = new Vector2(200,20);
-            testSprite.Velocity = new Vector2(0.2f, 0f);
-            sprites.Add(testSprite);
-
             testSprite2 = new Sprite(playerImage, new Vector2(100, -100), krypton);
             testSprite2.Position = new Vector2(100, 20);
             testSprite2.Velocity = new Vector2(0f, 0.1f);
@@ -230,6 +232,8 @@ namespace HauntedHouse
                 sprite.Update(gameTime);
             }
 
+            player.Update(gameTime);
+
             torch.Position = player.Position;
             torch.Angle = player.TorchAngle;
 
@@ -278,11 +282,13 @@ namespace HauntedHouse
                 sprite.Draw(spriteBatch);
             }
 
+            player.Draw(spriteBatch);
+
             //Test Images
             //spriteBatch.Draw(playerImage, Vector2.Zero, Color.White);
            // spriteBatch.Draw(gemImage, new Vector2(-20, -20), Color.White);
            // spriteBatch.Draw(gemImage, new Vector2(-200, -20), Color.White);
-            spriteBatch.Draw(gemImage, new Vector2(-50, 20), Color.White);
+              spriteBatch.Draw(gemImage, new Vector2(-50, 20), Color.White);
            // spriteBatch.Draw(gemImage, new Vector2(12, 400), Color.White);
            // spriteBatch.Draw(gemImage, new Vector2(67, 134), Color.White);
             

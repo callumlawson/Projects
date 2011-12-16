@@ -31,15 +31,15 @@ namespace BasicDemo
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var level in Layers)
+            foreach (var l in Layers)
             {
                 spriteBatch.Begin();
 
-                for (int y = 0; y < level.Height; y++)
+                for (int y = 0; y < l.Height; y++)
                 {
-                    for (int x = 0; x < level.Width; x++)
+                    for (int x = 0; x < l.Width; x++)
                     {
-                        Tile t = level.Tiles[y * level.Width + x];
+                        Tile t = l.Tiles[y * l.Width + x];
                         spriteBatch.Draw(
                             t.Texture,
                             new Rectangle(x * TileWidth, y * TileHeight, TileWidth, TileHeight),

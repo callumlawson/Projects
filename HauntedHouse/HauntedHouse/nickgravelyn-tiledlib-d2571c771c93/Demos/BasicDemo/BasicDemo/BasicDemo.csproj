@@ -85,8 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BasicDemoContent\BasicDemoContent.contentproj">
-      <Name>BasicDemoContent</Name>
+      <Name>BasicDemoContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
+      <Project>{8D618B2B-7D2E-477A-9086-5710714226A3}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

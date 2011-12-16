@@ -109,12 +109,15 @@
   <ItemGroup>
     <Compile Include="Animation.cs" />
     <Compile Include="Camera2D.cs" />
+    <Compile Include="Level.cs" />
+    <Compile Include="Map.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="HauntedHouse.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="SpriteManager.cs" />
+    <Compile Include="Tile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
@@ -133,10 +136,6 @@
     <ProjectReference Include="..\Krypton\Krypton\Krypton.csproj">
       <Project>{B1BFCB2A-C001-4DAC-BA7D-B68BF28757F3}</Project>
       <Name>Krypton</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\nickgravelyn-tiledlib-d2571c771c93\TiledLib\TiledLib\TiledLib.csproj">
-      <Project>{EC3F6988-459C-4783-89E9-F34C0CC731C7}</Project>
-      <Name>TiledLib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -70,9 +70,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemoContentPipeline\BasicDemoContentPipeline.csproj">
+    <Compile Include="desert.tmx">
+      <Name>desert</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemoContentPipeline\HauntedHouseContentPipeline.csproj">
       <Project>{FE73D860-B545-4E31-B33D-522CDDECC6F9}</Project>
-      <Name>BasicDemoContentPipeline</Name>
+      <Name>HauntedHouseContentPipeline</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\nickgravelyn-tiledlib-d2571c771c93\TiledLib\TiledLib\TiledLib.csproj">
+      <Project>{EC3F6988-459C-4783-89E9-F34C0CC731C7}</Project>
+      <Name>TiledLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

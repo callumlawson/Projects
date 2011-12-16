@@ -22,8 +22,13 @@ namespace HauntedHouse
         // Texture2D representing the Sprite
         public Texture2D Texture;
 
-        // The position of the Sprite relative to the top left corner of thescreen
-        public Vector2 Position = Vector2.Zero;
+        // Physics state
+        public Vector2 Position
+        {
+            get { return position; }
+            set { position = value; }
+        }
+        Vector2 position = Vector2.Zero;
 
         // The velocity of the Sprite which is added to the Position each step
         public Vector2 Velocity = Vector2.Zero;
@@ -77,14 +82,12 @@ namespace HauntedHouse
 
         public Sprite()
         {
-            Initialize();
         }
 
         public Sprite(Texture2D texture, Vector2 position, KryptonEngine krypton)
         {
-            Initialize();
             Active = true;
-            this.Position = position;
+            this.position = position;
 
             Texture = texture;
             Width = texture.Width;
@@ -94,12 +97,6 @@ namespace HauntedHouse
             hulls = new List<ShadowHull>();
             findShadowHull(Texture);
         }
-
-        public void Initialize()
-        {
-
-        }
-
         
         public void findShadowHull(Texture2D texture)
         {

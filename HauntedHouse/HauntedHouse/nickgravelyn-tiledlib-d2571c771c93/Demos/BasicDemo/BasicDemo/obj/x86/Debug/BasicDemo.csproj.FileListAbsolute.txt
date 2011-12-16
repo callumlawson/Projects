@@ -6,3 +6,11 @@ C:\Users\Callum\Downloads\nickgravelyn-tiledlib-d2571c771c93\nickgravelyn-tiledl
 C:\Users\Callum\Downloads\nickgravelyn-tiledlib-d2571c771c93\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Callum\Downloads\nickgravelyn-tiledlib-d2571c771c93\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\obj\x86\Debug\BasicDemo.exe
 C:\Users\Callum\Downloads\nickgravelyn-tiledlib-d2571c771c93\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\obj\x86\Debug\BasicDemo.pdb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\bin\x86\Debug\Content\desert.xnb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\bin\x86\Debug\Content\desert_tiles.xnb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\bin\x86\Debug\BasicDemo.exe
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\bin\x86\Debug\BasicDemo.pdb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\obj\x86\Debug\BasicDemo.exe
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\obj\x86\Debug\BasicDemo.pdb

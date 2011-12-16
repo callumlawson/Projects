@@ -9,12 +9,20 @@ using Microsoft.Xna.Framework.Input;
 
 namespace HauntedHouse
 {
-    class Player : Sprite
+    class Player
     {
         //The players sprite
         Sprite playerSprite;
         Animation idleAnimation;
         SpriteManager spriteManger;
+
+        // Physics state
+        public Vector2 Position
+        {
+            get { return position; }
+            set { position = value; }
+        }
+        Vector2 position;
 
         // Amount of hit points that player has
         public int Health;
@@ -23,7 +31,7 @@ namespace HauntedHouse
         Random random;
         double sinNumber = 0d;
 
-        // Keyboard states used to determine key presses
+        //Input
         KeyboardState currentKeyboardState;
         KeyboardState previousKeyboardState;
 
@@ -39,42 +47,48 @@ namespace HauntedHouse
         int playerMoveSpeed = 2;
 
         //Torch
-        public float TorchAngle = 0.0f;
-
-        public Player()
+        public float TorchAngle
         {
-
+            get { return torchAngle; }
         }
-
-        public void Initialize(Animation animation, Vector2 position)
+        float torchAngle = 0.0f;   
+    
+        public Vector2 TorchPosition
         {
-            Animation = animation;
-            Animated = true;
+            get { return position; }
+        }
+        Vector2 torchPostion;
 
-            base.Width = animation.FrameWidth;
-            base.Height = animation.FrameHeight;
-            //Stop the player animation rotating to much
-            //PlayerAnimation.Rotation = MathHelper.Clamp(PlayerAnimation.Rotation, -0.4f, 0.4f);
-           
-            // Set the starting position of the player around the middle of the screen and to the back
-            base.Position = position;
+        /// <summary>
+        /// Is the players torch on or off?
+        /// </summary>
+        public bool IsTorchOn
+        {
+            get { return isTorchOn; }
+        }
+        bool isTorchOn;
+
+        public Player(Vector2 position,Sprite sprite)
+        {
+            playerSprite = sprite;
+            this.position = position;
 
             random = new Random();
 
-            // Set the player to be active
-            Active = true;
-
-            // Set the player health
             Health = 100;
         }
 
-        // TODO check inheritance stuff
-        override public void Update(GameTime gameTime)
+        /*
+        public void Initialize()
         {
-            base.Update(gameTime);
+        }
+        */
 
-            sinNumber += 0.05;
-            Animation.Rotation = (float)Math.Sin(sinNumber) * 0.02f;
+        // TODO check inheritance stuff
+        public void Update(GameTime gameTime)
+        {
+            playerSprite.Position = this.position;
+            playerSprite.Update(gameTime);
 
             updateInput(gameTime);
         }
@@ -92,55 +106,55 @@ namespace HauntedHouse
             currentMouseState = Mouse.GetState();
             
             // Get Thumbstick Controls
-            this.Position.X += currentGamePadState.ThumbSticks.Left.X * playerMoveSpeed;
-            this.Position.Y -= currentGamePadState.ThumbSticks.Left.Y * playerMoveSpeed;
+            position.X += currentGamePadState.ThumbSticks.Left.X * playerMoveSpeed;
+            position.Y -= currentGamePadState.ThumbSticks.Left.Y * playerMoveSpeed;
 
             Vector2 rightStickDirection = currentGamePadState.ThumbSticks.Right;
             rightStickDirection.Normalize();
-            TorchAngle = -(float)Math.Atan2(rightStickDirection.Y, rightStickDirection.X);
+            torchAngle = -(float)Math.Atan2(rightStickDirection.Y, rightStickDirection.X);
             //TODO make much betterer
             Vector2 mouseDirection = new Vector2(currentMouseState.X - 640, currentMouseState.Y - 480);
             mouseDirection.Normalize();
-            TorchAngle = (float)Math.Atan2(mouseDirection.Y, mouseDirection.X);
+            torchAngle = (float)Math.Atan2(mouseDirection.Y, mouseDirection.X);
 
             // Use the Keyboard / Dpad
             if (currentKeyboardState.IsKeyDown(Keys.Left) || currentKeyboardState.IsKeyDown(Keys.A) ||
             currentGamePadState.DPad.Left == ButtonState.Pressed)
             {
-                this.Position.X -= playerMoveSpeed;
+                position.X -= playerMoveSpeed;
             }
             if (currentKeyboardState.IsKeyDown(Keys.Right) || currentKeyboardState.IsKeyDown(Keys.D) ||
             currentGamePadState.DPad.Right == ButtonState.Pressed)
             {
-                this.Position.X += playerMoveSpeed;
+                position.X += playerMoveSpeed;
             }
             if (currentKeyboardState.IsKeyDown(Keys.Up) || currentKeyboardState.IsKeyDown(Keys.W) ||
             currentGamePadState.DPad.Up == ButtonState.Pressed)
             {
-                this.Position.Y -= playerMoveSpeed;
+                position.Y -= playerMoveSpeed;
             }
             if (currentKeyboardState.IsKeyDown(Keys.Down) || currentKeyboardState.IsKeyDown(Keys.S) ||
             currentGamePadState.DPad.Down == ButtonState.Pressed)
             {
-                this.Position.Y += playerMoveSpeed;
+                position.Y += playerMoveSpeed;
             }
         }
 
-        override public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            Animation.Draw(spriteBatch);
+            playerSprite.Draw(spriteBatch);
         }
 
-        // Get the width of the player ship
-        new public int Width
-        {
-            get { return Animation.FrameWidth; }
-        }
+       // Get the width of the player ship
+       //new public int Width
+       // {
+       //     get { return Animation.FrameWidth; }
+       // }
 
-        // Get the height of the player ship
-        new public int Height
-        {
-            get { return Animation.FrameHeight; }
-        }
+       // Get the height of the player ship
+       // new public int Height
+       //  {
+       //     get { return Animation.FrameHeight; }
+       // }
     }
 }

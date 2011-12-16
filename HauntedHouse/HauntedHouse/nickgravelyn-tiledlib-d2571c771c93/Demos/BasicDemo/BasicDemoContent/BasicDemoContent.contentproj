@@ -34,9 +34,9 @@
       <Project>{EC3F6988-459C-4783-89E9-F34C0CC731C7}</Project>
       <Name>TiledLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BasicDemoContentPipeline\BasicDemoContentPipeline.csproj">
+    <ProjectReference Include="..\BasicDemoContentPipeline\HauntedHouseContentPipeline.csproj">
       <Project>{FE73D860-B545-4E31-B33D-522CDDECC6F9}</Project>
-      <Name>BasicDemoContentPipeline</Name>
+      <Name>HauntedHouseContentPipeline</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
