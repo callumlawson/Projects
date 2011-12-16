@@ -114,16 +114,16 @@ namespace HauntedHouse
             this.lightTexture = LightTextureBuilder.CreatePointLight(this.GraphicsDevice, 512);
 
             // Load sprites
-            playerImage = Content.Load<Texture2D>("player");
+            playerImage = Content.Load<Texture2D>("playerDraft");
             gemImage = Content.Load<Texture2D>("gem");
 
             //Test Sprite
-            testSprite = new Sprite(playerImage, new Vector2(100, -100), krypton);
+            testSprite = new Sprite(playerImage, new Vector2(100, -100), false,krypton);
             testSprite.Position = new Vector2(200, 20);
             testSprite.Velocity = new Vector2(0.2f, 0f);
 
             //Dont add it cuase
-            sprites.Add(testSprite);
+            //sprites.Add(testSprite);
 
             //Create player
             player = new Player(Vector2.Zero,testSprite);
@@ -132,9 +132,8 @@ namespace HauntedHouse
             Texture2D playerTexture = Content.Load<Texture2D>("shipAnimation");
             playerAnimation.Initialize(playerTexture, Vector2.Zero, 115, 69, 8, 45, Color.White, 1f, true, this.GraphicsDevice);
             player.Position = new Vector2(200, 200);
-            //player.Velocity = new Vector2(0f, 0f);
-           
-            testSprite2 = new Sprite(playerImage, new Vector2(100, -100), krypton);
+
+            testSprite2 = new Sprite(playerImage, new Vector2(100, -100),true, krypton);
             testSprite2.Position = new Vector2(100, 20);
             testSprite2.Velocity = new Vector2(0f, 0.1f);
             sprites.Add(testSprite2);
@@ -235,6 +234,9 @@ namespace HauntedHouse
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
+            torch.Position = player.Position + new Vector2(80, 40);
+            torch.Angle = player.TorchAngle;
+
             //Update all the sprites
             foreach (Sprite sprite in sprites)
             {
@@ -242,9 +244,6 @@ namespace HauntedHouse
             }
 
             player.Update(gameTime);
-
-            torch.Position = player.Position;
-            torch.Angle = player.TorchAngle;
 
             //Update the camera
             camera.Update(gameTime);
@@ -286,12 +285,13 @@ namespace HauntedHouse
             // TODO: Add your drawing code here
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.View);
 
+            map.Draw(spriteBatch);
+
             foreach (Sprite sprite in sprites)
             {
                 sprite.Draw(spriteBatch);
             }
 
-            map.Draw(spriteBatch);
             player.Draw(spriteBatch);
 
             //Test Images

@@ -30,6 +30,14 @@ namespace HauntedHouse
         }
         Vector2 position = Vector2.Zero;
 
+        // Physics state
+        public bool IsShadowCaster
+        {
+            get { return isShadowCaster; }
+            set { isShadowCaster = value; }
+        }
+        bool isShadowCaster = true;
+
         // The velocity of the Sprite which is added to the Position each step
         public Vector2 Velocity = Vector2.Zero;
 
@@ -84,7 +92,7 @@ namespace HauntedHouse
         {
         }
 
-        public Sprite(Texture2D texture, Vector2 position, KryptonEngine krypton)
+        public Sprite(Texture2D texture, Vector2 position,bool isShadowCaster, KryptonEngine krypton)
         {
             Active = true;
             this.position = position;
@@ -94,8 +102,13 @@ namespace HauntedHouse
             Height = texture.Height;
 
             this.krypton = krypton;
-            hulls = new List<ShadowHull>();
-            findShadowHull(Texture);
+
+            this.isShadowCaster = isShadowCaster;
+            if (isShadowCaster)
+            {
+                hulls = new List<ShadowHull>();
+                findShadowHull(Texture);
+            }
         }
         
         public void findShadowHull(Texture2D texture)
@@ -141,7 +154,10 @@ namespace HauntedHouse
             }
             else
             {
-                updateHulls(gameTime);
+                if (isShadowCaster)
+                {
+                    updateHulls(gameTime);
+                }
             }
 
             // If the enemy is past the screen or its health reaches 0 then deactivateit

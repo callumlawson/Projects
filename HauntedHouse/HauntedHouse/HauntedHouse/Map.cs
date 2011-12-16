@@ -14,6 +14,7 @@ namespace HauntedHouse
         public Texture2D Texture;
         public Rectangle SourceRectangle;
         public SpriteEffects SpriteEffects;
+        public bool IsShadowCaster;
     }
 
     public class Layer
@@ -31,27 +32,20 @@ namespace HauntedHouse
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var l in Layers)
+            foreach (var layer in Layers)
             {
-
-                for (int y = 0; y < l.Height; y++)
+           
+                for (int y = 0; y < layer.Height; y++)
                 {
-                    for (int x = 0; x < l.Width; x++)
+                    for (int x = 0; x < layer.Width; x++)
                     {
-                        Tile t = l.Tiles[y * l.Width + x];
-                        spriteBatch.Draw(
-                            t.Texture,
-                            new Rectangle(x * TileWidth, y * TileHeight, TileWidth, TileHeight),
-                            t.SourceRectangle,
-                            Color.White,
-                            0,
-                            Vector2.Zero,
-                            t.SpriteEffects,
-                            0);
+                        Tile t = layer.Tiles[y * layer.Width + x];
+                        spriteBatch.Draw(t.Texture, new Rectangle(x * TileWidth, y * TileHeight, TileWidth, TileHeight), t.SourceRectangle, Color.White, 0, Vector2.Zero, t.SpriteEffects, 0);
                     }
                 }
-
             }
         }
     }
+
+
 }
