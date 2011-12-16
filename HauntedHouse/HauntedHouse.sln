@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiledPipelineExtensions", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiledLib", "HauntedHouse\TiledLib\TiledLib\TiledLib.csproj", "{EC3F6988-459C-4783-89E9-F34C0CC731C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugPipeline1", "DebugPipeline1\DebugPipeline1.csproj", "{920945F9-046D-46B4-9D3C-6E8C077303A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,12 @@ Global
 		{EC3F6988-459C-4783-89E9-F34C0CC731C7}.Release|Any CPU.Build.0 = Release|x86
 		{EC3F6988-459C-4783-89E9-F34C0CC731C7}.Release|x86.ActiveCfg = Release|x86
 		{EC3F6988-459C-4783-89E9-F34C0CC731C7}.Release|x86.Build.0 = Release|x86
+		{920945F9-046D-46B4-9D3C-6E8C077303A2}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{920945F9-046D-46B4-9D3C-6E8C077303A2}.Debug|x86.ActiveCfg = Debug|x86
+		{920945F9-046D-46B4-9D3C-6E8C077303A2}.Debug|x86.Build.0 = Debug|x86
+		{920945F9-046D-46B4-9D3C-6E8C077303A2}.Release|Any CPU.ActiveCfg = Release|x86
+		{920945F9-046D-46B4-9D3C-6E8C077303A2}.Release|x86.ActiveCfg = Release|x86
+		{920945F9-046D-46B4-9D3C-6E8C077303A2}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

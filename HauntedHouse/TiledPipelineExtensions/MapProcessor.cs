@@ -17,6 +17,7 @@ namespace HauntedHouseContentPipeline
         public Rectangle SourceRectangle;
         public SpriteEffects SpriteEffects;
         public bool IsShadowCaster;
+        public bool Drawable;
     }
 
     // For each layer, we store the size of the layer and the tiles.
@@ -76,41 +77,52 @@ namespace HauntedHouseContentPipeline
                         // get the ID of the tile
                         uint tileID = tileLayerContent.Data[i];
 
-                        // use that to get the actual index as well as the SpriteEffects
-                        int tileIndex;
-                        SpriteEffects spriteEffects;
-                        TiledHelpers.DecodeTileID(tileID, out tileIndex, out spriteEffects);
+                            // use that to get the actual index as well as the SpriteEffects
+                            int tileIndex;
+                            SpriteEffects spriteEffects;
+                            TiledHelpers.DecodeTileID(tileID, out tileIndex, out spriteEffects);
 
-                        // figure out which tile set has this tile index in it and grab
-                        // the texture reference and source rectangle.
-                        ExternalReference<Texture2DContent> textureContent = null;
-                        Rectangle sourceRect = new Rectangle();
-                        bool isShadowCaster = new bool();
+                            // figure out which tile set has this tile index in it and grab
+                            // the texture reference and source rectangle.
+                            ExternalReference<Texture2DContent> textureContent = null;
+                            Rectangle sourceRect = new Rectangle();
+                            bool isShadowCaster = new bool();
+                            bool drawable = new bool();
+                            drawable = true;
 
-                        // iterate all the tile sets
-                        foreach (var tileSet in input.TileSets)
-                        {
-                            // if our tile index is in this set
-                            if (tileIndex - tileSet.FirstId < tileSet.Tiles.Count)
+                            // iterate all the tile sets
+                            foreach (var tileSet in input.TileSets)
                             {
-                                // store the texture content and source rectangle
-                                textureContent = tileSet.Texture;
-                                sourceRect = tileSet.Tiles[(int)(tileIndex - tileSet.FirstId)].Source;
-                                //isShadowCaster = Convert.ToBoolean(tileSet.Tiles[(int)(tileIndex - tileSet.FirstId)].Properties["IsShadowCaster"]);
+                                if (tileIndex != 0)
+                                {
+                                    // if our tile index is in this set
+                                    if (tileIndex - tileSet.FirstId < tileSet.Tiles.Count)
+                                    {
+                                        // store the texture content and source rectangle
+                                        textureContent = tileSet.Texture;
+                                        sourceRect = tileSet.Tiles[(int)(tileIndex - tileSet.FirstId)].Source;
 
-                                // and break out of the foreach loop
-                                break;
+                                        //isShadowCaster = Convert.ToBoolean(tileSet.Tiles[(int)(tileIndex - tileSet.FirstId)].Properties["IsShadowCaster"]);
+                                        // and break out of the foreach loop
+                                        break;
+
+                                    }
+                                }
+                                else{
+                                    drawable = false;
+                                }
                             }
-                        }
 
-                        // now insert the tile into our output
-                        outLayer.Tiles[i] = new MapTileContent
-                        {
-                            Texture = textureContent,
-                            SourceRectangle = sourceRect,
-                            SpriteEffects = spriteEffects,
-                            IsShadowCaster = isShadowCaster
-                        };
+                            // now insert the tile into our output
+                            outLayer.Tiles[i] = new MapTileContent
+                            {
+                                Drawable = drawable,
+                                Texture = textureContent,
+                                SourceRectangle = sourceRect,
+                                SpriteEffects = spriteEffects,
+                                IsShadowCaster = isShadowCaster
+                            };
+                        
                     }
 
                     // add the layer to our output

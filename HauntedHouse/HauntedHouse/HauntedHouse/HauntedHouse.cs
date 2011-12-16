@@ -84,7 +84,7 @@ namespace HauntedHouse
             this.krypton.Initialize();
             krypton.SpriteBatchCompatablityEnabled = true;
             krypton.CullMode = CullMode.None;
-            krypton.AmbientColor = new Color(10, 20, 10);
+            krypton.AmbientColor = new Color(40, 50, 40);
 
             //Sprites list
             sprites = new List<Sprite>();
@@ -108,7 +108,7 @@ namespace HauntedHouse
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            map = Content.Load<Map>("desert");
+            map = Content.Load<Map>("testmap2");
 
             // Create a new simple point light texture to use for the lights
             this.lightTexture = LightTextureBuilder.CreatePointLight(this.GraphicsDevice, 512);
@@ -234,7 +234,7 @@ namespace HauntedHouse
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            torch.Position = player.Position + new Vector2(80, 40);
+            torch.Position = player.Position + new Vector2(57, 60);
             torch.Angle = player.TorchAngle;
 
             //Update all the sprites

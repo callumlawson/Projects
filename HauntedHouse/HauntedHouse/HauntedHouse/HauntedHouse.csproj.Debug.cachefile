@@ -1,8 +1,10 @@
 Content\player.xnb
 Content\shipAnimation.xnb
 Content\Gem.xnb
-Content\desert.xnb
-Content\desert_tiles.xnb
 Content\PlayerDraft.xnb
+Content\twolayers.xnb
 Content\Platform.xnb
+Content\TexturedStoneWall1024.xnb
+Content\testmap2.xnb
+Content\Impassable.xnb
 Content\KryptonEffect.xnb

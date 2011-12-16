@@ -15,6 +15,7 @@ namespace HauntedHouse
         public Rectangle SourceRectangle;
         public SpriteEffects SpriteEffects;
         public bool IsShadowCaster;
+        public bool Drawable;
     }
 
     public class Layer
@@ -40,7 +41,10 @@ namespace HauntedHouse
                     for (int x = 0; x < layer.Width; x++)
                     {
                         Tile t = layer.Tiles[y * layer.Width + x];
-                        spriteBatch.Draw(t.Texture, new Rectangle(x * TileWidth, y * TileHeight, TileWidth, TileHeight), t.SourceRectangle, Color.White, 0, Vector2.Zero, t.SpriteEffects, 0);
+                        if (t.Drawable)
+                        {
+                            spriteBatch.Draw(t.Texture, new Rectangle(x * TileWidth, y * TileHeight, TileWidth, TileHeight), t.SourceRectangle, Color.White, 0, Vector2.Zero, t.SpriteEffects, 0);
+                        }
                     }
                 }
             }

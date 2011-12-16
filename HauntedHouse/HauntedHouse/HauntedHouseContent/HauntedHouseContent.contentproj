@@ -63,13 +63,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="desert.tmx">
-      <Name>desert</Name>
-      <Importer>TmxImporter</Importer>
-      <Processor>MapProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\TiledPipelineExtensions\TiledPipelineExtensions.csproj">
       <Project>{8A0232DF-B771-4E46-A977-170C38C72C01}</Project>
       <Name>TiledPipelineExtensions</Name>
@@ -87,10 +80,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Platform.png">
-      <Name>Platform</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
+    <Compile Include="twolayers.tmx">
+      <Name>twolayers</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>MapProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="testmap2.tmx">
+      <Name>testmap2</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>MapProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
