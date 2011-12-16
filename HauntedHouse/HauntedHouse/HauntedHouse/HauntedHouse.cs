@@ -114,7 +114,7 @@ namespace HauntedHouse
             this.lightTexture = LightTextureBuilder.CreatePointLight(this.GraphicsDevice, 512);
 
             // Load sprites
-            playerImage = Content.Load<Texture2D>("player");
+            playerImage = Content.Load<Texture2D>("playerDraft");
             gemImage = Content.Load<Texture2D>("gem");
 
             //Test Sprite
@@ -133,7 +133,6 @@ namespace HauntedHouse
             playerAnimation.Initialize(playerTexture, Vector2.Zero, 115, 69, 8, 45, Color.White, 1f, true, this.GraphicsDevice);
             player.Position = new Vector2(200, 200);
 
-           
             testSprite2 = new Sprite(playerImage, new Vector2(100, -100),true, krypton);
             testSprite2.Position = new Vector2(100, 20);
             testSprite2.Velocity = new Vector2(0f, 0.1f);
