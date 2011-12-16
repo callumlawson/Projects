@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\player.xnb</Output>
-      <Time>2011-12-13T22:16:29.8834524+00:00</Time>
+      <Output>C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\player.xnb</Output>
+      <Time>2011-12-14T20:46:49.8883463+01:00</Time>
     </Item>
     <Item>
       <Source>shipAnimation.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\shipAnimation.xnb</Output>
-      <Time>2011-12-13T22:31:40.1816306+00:00</Time>
+      <Output>C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\shipAnimation.xnb</Output>
+      <Time>2011-12-14T20:46:49.8893464+01:00</Time>
     </Item>
     <Item>
       <Source>Run.png</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Run.xnb</Output>
-      <Time>2011-12-14T00:37:38.92525+00:00</Time>
+      <Output>C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Run.xnb</Output>
+      <Time>2011-12-14T20:46:49.8863462+01:00</Time>
     </Item>
     <Item>
       <Source>Gem.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Gem.xnb</Output>
-      <Time>2011-12-14T00:40:14.0865462+00:00</Time>
+      <Output>C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Gem.xnb</Output>
+      <Time>2011-12-14T20:46:49.8853462+01:00</Time>
     </Item>
     <Item>
       <Source>desert.tmx</Source>
@@ -43,9 +43,9 @@
       <Importer>TmxImporter</Importer>
       <Processor>MapProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\desert.xnb</Output>
-      <Time>2011-12-16T19:44:50.3709047+00:00</Time>
-      <Request>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\desert_tiles.xnb</Request>
+      <Output>C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\desert.xnb</Output>
+      <Time>2011-12-16T21:07:39.1702125+01:00</Time>
+      <Request>C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\desert_tiles.xnb</Request>
     </Item>
     <Item>
       <Source>desert_tiles.png</Source>
@@ -59,8 +59,8 @@
         <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\desert_tiles.xnb</Output>
-      <Time>2011-12-06T04:11:32+00:00</Time>
+      <Output>C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\desert_tiles.xnb</Output>
+      <Time>2011-12-16T21:25:26.1263082+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -68,47 +68,52 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouseContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouseContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\HauntedHouseContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\HauntedHouse\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\HauntedHouseContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
+<<<<<<< HEAD
         <Key>C:\Users\Callum\Projects\HauntedHouse\TiledPipelineExtensions\bin\x86\Debug\TiledPipelineExtensions.dll</Key>
         <Value>2011-12-16T21:50:23.1776999+00:00</Value>
+=======
+        <Key>C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\TiledPipelineExtensions\bin\x86\Debug\TiledPipelineExtensions.dll</Key>
+        <Value>2011-12-16T21:43:16.0045017+01:00</Value>
+>>>>>>> 25bf9d17baa1ebd8c4f7e18572fb4b7d4b9ff71d
       </Assembly>
       <Assembly>
-        <Key>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\bin\x86\Debug\TiledLib.dll</Key>
-        <Value>2011-12-16T19:52:00.7849573+00:00</Value>
+        <Key>C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\bin\x86\Debug\TiledLib.dll</Key>
+        <Value>2011-12-16T21:43:15.8624936+01:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
-        <Value>2010-08-23T13:41:18+01:00</Value>
+        <Value>2010-08-23T13:41:18+02:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
-        <Value>2010-08-23T13:41:18+01:00</Value>
+        <Value>2010-08-23T13:41:18+02:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
-        <Value>2010-08-23T13:41:18+01:00</Value>
+        <Value>2010-08-23T13:41:18+02:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
-        <Value>2010-08-23T13:41:18+01:00</Value>
+        <Value>2010-08-23T13:41:18+02:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
-        <Value>2010-08-23T13:41:18+01:00</Value>
+        <Value>2010-08-23T13:41:18+02:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
-        <Value>2010-08-23T13:41:18+01:00</Value>
+        <Value>2010-08-23T13:41:18+02:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2011-12-10T11:48:37.5916725+00:00</Value>
+        <Value>2011-12-14T15:00:24.7396973+01:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

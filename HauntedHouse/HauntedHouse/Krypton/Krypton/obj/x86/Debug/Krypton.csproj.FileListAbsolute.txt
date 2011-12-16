@@ -11,3 +11,10 @@ C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\Krypton\Krypton\obj\x86\Debug
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\Krypton\Krypton\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\Krypton\Krypton\obj\x86\Debug\Krypton.dll
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\Krypton\Krypton\obj\x86\Debug\Krypton.pdb
+C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\Krypton\Krypton\bin\x86\Debug\Content\KryptonEffect.xnb
+C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\Krypton\Krypton\bin\x86\Debug\Krypton.dll
+C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\Krypton\Krypton\bin\x86\Debug\Krypton.pdb
+C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\Krypton\Krypton\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\Krypton\Krypton\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\Krypton\Krypton\obj\x86\Debug\Krypton.dll
+C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\Krypton\Krypton\obj\x86\Debug\Krypton.pdb
