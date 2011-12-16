@@ -8,3 +8,8 @@ C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\bin\x86\Deb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\obj\x86\Debug\TiledLib.dll
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\obj\x86\Debug\TiledLib.pdb
+C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\bin\x86\Debug\TiledLib.dll
+C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\bin\x86\Debug\TiledLib.pdb
+C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\obj\x86\Debug\TiledLib.dll
+C:\Users\Administrator\Desktop\Programming\Arbitrary\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\obj\x86\Debug\TiledLib.pdb
