@@ -72,14 +72,16 @@
   <ItemGroup>
     <Compile Include="desert.tmx">
       <Name>desert</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>MapProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemoContentPipeline\HauntedHouseContentPipeline.csproj">
-      <Project>{FE73D860-B545-4E31-B33D-522CDDECC6F9}</Project>
-      <Name>HauntedHouseContentPipeline</Name>
+    <ProjectReference Include="..\..\TiledPipelineExtensions\TiledPipelineExtensions.csproj">
+      <Project>{8A0232DF-B771-4E46-A977-170C38C72C01}</Project>
+      <Name>TiledPipelineExtensions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\nickgravelyn-tiledlib-d2571c771c93\TiledLib\TiledLib\TiledLib.csproj">
+    <ProjectReference Include="..\TiledLib\TiledLib\TiledLib.csproj">
       <Project>{EC3F6988-459C-4783-89E9-F34C0CC731C7}</Project>
       <Name>TiledLib</Name>
     </ProjectReference>

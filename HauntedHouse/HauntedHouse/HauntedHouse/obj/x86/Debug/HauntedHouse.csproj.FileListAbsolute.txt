@@ -4,20 +4,21 @@ C:\Users\Callum\Documents\Visual Studio 2010\Projects\HauntedHouse\HauntedHouse\
 C:\Users\Callum\Documents\Visual Studio 2010\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Callum\Documents\Visual Studio 2010\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Debug\HauntedHouse.exe
 C:\Users\Callum\Documents\Visual Studio 2010\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Debug\HauntedHouse.pdb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\HauntedHouse.exe
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\HauntedHouse.pdb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Debug\HauntedHouse.exe
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Debug\HauntedHouse.pdb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Krypton.dll
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Krypton.pdb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\KryptonEffect.xnb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\player.xnb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\shipAnimation.xnb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Run.xnb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Gem.xnb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\desert.xnb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\desert_tiles.xnb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\HauntedHouse.exe
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\HauntedHouse.pdb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\FarseerPhysicsXNA.dll
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Krypton.dll
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\FarseerPhysicsXNA.pdb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\FarseerPhysicsXNA.xml
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\desert.xnb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Krypton.pdb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Debug\HauntedHouse.exe
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Debug\HauntedHouse.pdb

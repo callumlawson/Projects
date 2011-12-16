@@ -21,6 +21,9 @@ namespace HauntedHouse
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         KryptonEngine krypton;
+        //Temporary Map Test
+        Map map;
+
 
         private Texture2D lightTexture;
         private Light2D light2D;
@@ -65,6 +68,8 @@ namespace HauntedHouse
 
             // Create Krypton
             this.krypton = new KryptonEngine(this, "KryptonEffect");
+
+            map = new Map();
         }
 
         /// <summary>
@@ -101,6 +106,9 @@ namespace HauntedHouse
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            // TODO: use this.Content to load your game content here
+            map = Content.Load<Map>("desert");
 
             // Create a new simple point light texture to use for the lights
             this.lightTexture = LightTextureBuilder.CreatePointLight(this.GraphicsDevice, 512);
@@ -145,6 +153,7 @@ namespace HauntedHouse
             };
 
             this.krypton.Lights.Add(this.torch);
+
 
             /*
             // Make some random lights!
@@ -200,7 +209,7 @@ namespace HauntedHouse
                     krypton.Hulls.Add(hull);
                 }
             }
-            */
+            */ //Test lights
         }
 
         /// <summary>
@@ -282,6 +291,7 @@ namespace HauntedHouse
                 sprite.Draw(spriteBatch);
             }
 
+            map.Draw(spriteBatch);
             player.Draw(spriteBatch);
 
             //Test Images

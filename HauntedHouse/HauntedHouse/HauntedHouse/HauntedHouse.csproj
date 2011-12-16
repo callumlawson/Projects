@@ -124,6 +124,10 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\TiledPipelineExtensions\TiledPipelineExtensions.csproj">
+      <Project>{8A0232DF-B771-4E46-A977-170C38C72C01}</Project>
+      <Name>TiledPipelineExtensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Farseer Physics Engine 3.3.1 XNA\Farseer Physics Engine 3.3.1 XNA\Farseer Physics XNA.csproj">
       <Project>{0A850700-1ABB-4288-A391-6726B90EBEB9}</Project>
       <Name>Farseer Physics XNA</Name>
