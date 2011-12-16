@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-namespace BasicDemo
+namespace HauntedHouse
 {
     // This is not the most efficient way to store the data or perform layer rendering. It is, however,
     // close to the simplest way to interact with TiledLib in order to get data from the Tiled editor
@@ -33,7 +33,6 @@ namespace BasicDemo
         {
             foreach (var l in Layers)
             {
-                spriteBatch.Begin();
 
                 for (int y = 0; y < l.Height; y++)
                 {
@@ -52,7 +51,6 @@ namespace BasicDemo
                     }
                 }
 
-                spriteBatch.End();
             }
         }
     }

@@ -1,0 +1,7 @@
+C:\Users\Callum\Projects\HauntedHouse\TiledPipelineExtensions\bin\x86\Debug\TiledPipelineExtensions.dll
+C:\Users\Callum\Projects\HauntedHouse\TiledPipelineExtensions\bin\x86\Debug\TiledPipelineExtensions.pdb
+C:\Users\Callum\Projects\HauntedHouse\TiledPipelineExtensions\bin\x86\Debug\TiledLib.dll
+C:\Users\Callum\Projects\HauntedHouse\TiledPipelineExtensions\bin\x86\Debug\TiledLib.pdb
+C:\Users\Callum\Projects\HauntedHouse\TiledPipelineExtensions\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Callum\Projects\HauntedHouse\TiledPipelineExtensions\obj\x86\Debug\TiledPipelineExtensions.dll
+C:\Users\Callum\Projects\HauntedHouse\TiledPipelineExtensions\obj\x86\Debug\TiledPipelineExtensions.pdb

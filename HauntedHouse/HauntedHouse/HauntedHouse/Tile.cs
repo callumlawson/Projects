@@ -34,7 +34,7 @@ namespace HauntedHouse
     /// <summary>
     /// Stores the appearance and collision behavior of a tile.
     /// </summary>
-    struct Tile
+    struct TileTODO
     {
         public Texture2D Texture;
         public TileCollision Collision;
@@ -47,7 +47,7 @@ namespace HauntedHouse
         /// <summary>
         /// Constructs a new tile.
         /// </summary>
-        public Tile(Texture2D texture, TileCollision collision)
+        public TileTODO(Texture2D texture, TileCollision collision)
         {
             Width = texture.Width;
             Height = texture.Height;

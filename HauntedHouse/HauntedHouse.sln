@@ -2,9 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HauntedHouse", "HauntedHouse\HauntedHouse\HauntedHouse.csproj", "{AB9B73C4-8AC9-4AE7-81A0-5EE02FA8E5F5}"
-	ProjectSection(ProjectDependencies) = postProject
-		{FE73D860-B545-4E31-B33D-522CDDECC6F9} = {FE73D860-B545-4E31-B33D-522CDDECC6F9}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HauntedHouseContent", "HauntedHouse\HauntedHouseContent\HauntedHouseContent.contentproj", "{854D75C9-FB93-4F72-9BC0-B21913EDAD94}"
 EndProject
@@ -14,13 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KryptonContent", "HauntedHo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Farseer Physics XNA", "HauntedHouse\Farseer Physics Engine 3.3.1 XNA\Farseer Physics Engine 3.3.1 XNA\Farseer Physics XNA.csproj", "{0A850700-1ABB-4288-A391-6726B90EBEB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicDemo", "HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemo\BasicDemo.csproj", "{C09B0C0E-5846-4C62-8C0C-D0AC52B9F45F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiledPipelineExtensions", "TiledPipelineExtensions\TiledPipelineExtensions.csproj", "{8A0232DF-B771-4E46-A977-170C38C72C01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicDemoContent", "HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemoContent\BasicDemoContent.contentproj", "{8D618B2B-7D2E-477A-9086-5710714226A3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HauntedHouseContentPipeline", "HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemoContentPipeline\HauntedHouseContentPipeline.csproj", "{FE73D860-B545-4E31-B33D-522CDDECC6F9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiledLib", "HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\TiledLib\TiledLib\TiledLib.csproj", "{EC3F6988-459C-4783-89E9-F34C0CC731C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiledLib", "HauntedHouse\TiledLib\TiledLib\TiledLib.csproj", "{EC3F6988-459C-4783-89E9-F34C0CC731C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,24 +49,14 @@ Global
 		{0A850700-1ABB-4288-A391-6726B90EBEB9}.Release|Any CPU.ActiveCfg = Release|x86
 		{0A850700-1ABB-4288-A391-6726B90EBEB9}.Release|x86.ActiveCfg = Release|x86
 		{0A850700-1ABB-4288-A391-6726B90EBEB9}.Release|x86.Build.0 = Release|x86
-		{C09B0C0E-5846-4C62-8C0C-D0AC52B9F45F}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{C09B0C0E-5846-4C62-8C0C-D0AC52B9F45F}.Debug|x86.ActiveCfg = Debug|x86
-		{C09B0C0E-5846-4C62-8C0C-D0AC52B9F45F}.Debug|x86.Build.0 = Debug|x86
-		{C09B0C0E-5846-4C62-8C0C-D0AC52B9F45F}.Release|Any CPU.ActiveCfg = Release|x86
-		{C09B0C0E-5846-4C62-8C0C-D0AC52B9F45F}.Release|x86.ActiveCfg = Release|x86
-		{C09B0C0E-5846-4C62-8C0C-D0AC52B9F45F}.Release|x86.Build.0 = Release|x86
-		{8D618B2B-7D2E-477A-9086-5710714226A3}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{8D618B2B-7D2E-477A-9086-5710714226A3}.Debug|x86.ActiveCfg = Debug|x86
-		{8D618B2B-7D2E-477A-9086-5710714226A3}.Release|Any CPU.ActiveCfg = Release|x86
-		{8D618B2B-7D2E-477A-9086-5710714226A3}.Release|x86.ActiveCfg = Release|x86
-		{FE73D860-B545-4E31-B33D-522CDDECC6F9}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{FE73D860-B545-4E31-B33D-522CDDECC6F9}.Debug|Any CPU.Build.0 = Debug|x86
-		{FE73D860-B545-4E31-B33D-522CDDECC6F9}.Debug|x86.ActiveCfg = Debug|x86
-		{FE73D860-B545-4E31-B33D-522CDDECC6F9}.Debug|x86.Build.0 = Debug|x86
-		{FE73D860-B545-4E31-B33D-522CDDECC6F9}.Release|Any CPU.ActiveCfg = Release|x86
-		{FE73D860-B545-4E31-B33D-522CDDECC6F9}.Release|Any CPU.Build.0 = Release|x86
-		{FE73D860-B545-4E31-B33D-522CDDECC6F9}.Release|x86.ActiveCfg = Release|x86
-		{FE73D860-B545-4E31-B33D-522CDDECC6F9}.Release|x86.Build.0 = Release|x86
+		{8A0232DF-B771-4E46-A977-170C38C72C01}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{8A0232DF-B771-4E46-A977-170C38C72C01}.Debug|Any CPU.Build.0 = Debug|x86
+		{8A0232DF-B771-4E46-A977-170C38C72C01}.Debug|x86.ActiveCfg = Debug|x86
+		{8A0232DF-B771-4E46-A977-170C38C72C01}.Debug|x86.Build.0 = Debug|x86
+		{8A0232DF-B771-4E46-A977-170C38C72C01}.Release|Any CPU.ActiveCfg = Debug|x86
+		{8A0232DF-B771-4E46-A977-170C38C72C01}.Release|Any CPU.Build.0 = Debug|x86
+		{8A0232DF-B771-4E46-A977-170C38C72C01}.Release|x86.ActiveCfg = Debug|x86
+		{8A0232DF-B771-4E46-A977-170C38C72C01}.Release|x86.Build.0 = Debug|x86
 		{EC3F6988-459C-4783-89E9-F34C0CC731C7}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{EC3F6988-459C-4783-89E9-F34C0CC731C7}.Debug|Any CPU.Build.0 = Debug|x86
 		{EC3F6988-459C-4783-89E9-F34C0CC731C7}.Debug|x86.ActiveCfg = Debug|x86

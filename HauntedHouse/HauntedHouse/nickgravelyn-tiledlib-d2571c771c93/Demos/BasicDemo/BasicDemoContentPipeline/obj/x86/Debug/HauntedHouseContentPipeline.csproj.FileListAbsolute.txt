@@ -1,7 +1,0 @@
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemoContentPipeline\bin\x86\Debug\BasicDemoContentPipeline.dll
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemoContentPipeline\bin\x86\Debug\BasicDemoContentPipeline.pdb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemoContentPipeline\bin\x86\Debug\TiledLib.dll
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemoContentPipeline\bin\x86\Debug\TiledLib.pdb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemoContentPipeline\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemoContentPipeline\obj\x86\Debug\BasicDemoContentPipeline.dll
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\nickgravelyn-tiledlib-d2571c771c93\Demos\BasicDemo\BasicDemoContentPipeline\obj\x86\Debug\BasicDemoContentPipeline.pdb
