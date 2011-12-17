@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Krypton;
+
 
 namespace HauntedHouse
 {
@@ -9,47 +11,40 @@ namespace HauntedHouse
     // close to the simplest way to interact with TiledLib in order to get data from the Tiled editor
     // to the game using custom game types.
 
-    public class Tile
-    {
-        public Texture2D Texture;
-        public Rectangle SourceRectangle;
-        public SpriteEffects SpriteEffects;
-        public bool IsShadowCaster;
-        public bool Drawable;
-    }
-
-    public class Layer
-    {
-        public int Width;
-        public int Height;
-        public Tile[] Tiles;
-    }
-
     public class Map
     {
-        public int TileWidth;
-        public int TileHeight;
-        public List<Layer> Layers = new List<Layer>();
+        public int TileGridWidth;
+        public int TileGridHeight;
+        public List<ObjectLayer> ObjectLayers = new List<ObjectLayer>();
+        public List<TileLayer> TileLayers = new List<TileLayer>();
+
+        private List<Sprite> sprites;
+        KryptonEngine krypton;
+
+        public void Intialise(KryptonEngine krypton, List<Sprite> sprites)
+        {
+            this.krypton = krypton;
+            this.sprites = sprites;
+        }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var layer in Layers)
+            foreach (var layer in TileLayers)
             {
-           
                 for (int y = 0; y < layer.Height; y++)
                 {
                     for (int x = 0; x < layer.Width; x++)
                     {
-                        Tile t = layer.Tiles[y * layer.Width + x];
-                        if (t.Drawable)
+                        Tile tile = layer.Tiles[y * layer.Width + x];
+
+                        if (tile.Exists)
                         {
-                            spriteBatch.Draw(t.Texture, new Rectangle(x * TileWidth, y * TileHeight, TileWidth, TileHeight), t.SourceRectangle, Color.White, 0, Vector2.Zero, t.SpriteEffects, 0);
+                            tile.Intialise(new Vector2(x, y));
+                            tile.Draw(spriteBatch);
                         }
                     }
                 }
             }
         }
     }
-
-
 }

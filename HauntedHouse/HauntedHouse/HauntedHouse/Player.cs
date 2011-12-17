@@ -44,7 +44,7 @@ namespace HauntedHouse
         MouseState previousMouseState;
 
         //Player move speed
-        int playerMoveSpeed = 2;
+        int playerMoveSpeed = 5;
 
         //Torch
         public float TorchAngle

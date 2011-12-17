@@ -27,6 +27,11 @@ C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Co
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\shipAnimation.xnb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Gem.xnb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\PlayerDraft.xnb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\twolayers.xnb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\testmap2.xnb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Platform.xnb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\TexturedStoneWall1024.xnb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Impassable.xnb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\HauntedHouse.exe
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\HauntedHouse.pdb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\FarseerPhysicsXNA.dll
@@ -38,8 +43,3 @@ C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Debug\Re
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Debug\HauntedHouse.exe
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Debug\HauntedHouse.pdb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Platform.xnb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\TexturedStoneWall1024.xnb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\twolayers.xnb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\testmap2.xnb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Impassable.xnb

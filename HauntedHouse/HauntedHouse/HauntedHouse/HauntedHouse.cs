@@ -69,7 +69,7 @@ namespace HauntedHouse
             // Create Krypton
             this.krypton = new KryptonEngine(this, "KryptonEffect");
 
-            map = new Map();
+           // map = new Map(krypton);
         }
 
         /// <summary>
@@ -109,6 +109,7 @@ namespace HauntedHouse
 
             // TODO: use this.Content to load your game content here
             map = Content.Load<Map>("testmap2");
+            map.Intialise(krypton,sprites);
 
             // Create a new simple point light texture to use for the lights
             this.lightTexture = LightTextureBuilder.CreatePointLight(this.GraphicsDevice, 512);
@@ -121,6 +122,13 @@ namespace HauntedHouse
             testSprite = new Sprite(playerImage, new Vector2(100, -100), false,krypton);
             testSprite.Position = new Vector2(200, 20);
             testSprite.Velocity = new Vector2(0.2f, 0f);
+
+          //  for (int x = 0; x < 400; x++)
+           // {
+          //      Sprite spam = new Sprite(playerImage, new Vector2((float)random.NextDouble() * 500 - 500, (float)random.NextDouble() * 500 - 500), true, krypton);
+          //      spam.Velocity = new Vector2((float)random.NextDouble() * 2 -1 , (float)random.NextDouble() * 2 -1);
+          //      sprites.Add(spam);
+         //   }
 
             //Dont add it cuase
             //sprites.Add(testSprite);

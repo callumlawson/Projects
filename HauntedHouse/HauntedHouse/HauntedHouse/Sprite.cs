@@ -11,7 +11,7 @@ using FarseerPhysics.Common.Decomposition;
 
 namespace HauntedHouse
 {
-    class Sprite
+    public class Sprite
     {
         //Is the sprite animated?
         public bool Animated = false;
@@ -76,6 +76,8 @@ namespace HauntedHouse
         Vertices textureVertices;
         List<Vertices> vertices;
 
+        public Rectangle sourceRectangle;
+
         /*
         public Sprite(SpriteAnimation animation, Vector2 position)
         {
@@ -109,8 +111,10 @@ namespace HauntedHouse
                 hulls = new List<ShadowHull>();
                 findShadowHull(Texture);
             }
+
+            sourceRectangle = new Rectangle(0, 0, Width, Height);
         }
-        
+
         public void findShadowHull(Texture2D texture)
         {
             //Create an array to hold the data from the texture
@@ -181,14 +185,14 @@ namespace HauntedHouse
             }
         }
 
-        virtual public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
             // Draw the animation
             if (Animated)
             {
                 Animation.Draw(spriteBatch);
             }
-            else spriteBatch.Draw(Texture, Position, null, Color.White, Angle, Vector2.Zero, Scale, SpriteEffects.None, 0f);
+            else spriteBatch.Draw(Texture, Position, sourceRectangle, Color.White, Angle, Vector2.Zero, Scale, SpriteEffects.None, 0f);
         }
     }
 }

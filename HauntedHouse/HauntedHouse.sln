@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HauntedHouse", "HauntedHouse\HauntedHouse\HauntedHouse.csproj", "{AB9B73C4-8AC9-4AE7-81A0-5EE02FA8E5F5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{920945F9-046D-46B4-9D3C-6E8C077303A2} = {920945F9-046D-46B4-9D3C-6E8C077303A2}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HauntedHouseContent", "HauntedHouse\HauntedHouseContent\HauntedHouseContent.contentproj", "{854D75C9-FB93-4F72-9BC0-B21913EDAD94}"
 EndProject

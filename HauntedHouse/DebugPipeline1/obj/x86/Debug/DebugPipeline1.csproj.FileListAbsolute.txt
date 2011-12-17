@@ -2,10 +2,10 @@ C:\Users\Callum\Projects\HauntedHouse\DebugPipeline1\bin\Debug\Targets\Debugging
 C:\Users\Callum\Projects\HauntedHouse\DebugPipeline1\bin\Debug\DebugPipeline1.exe.config
 C:\Users\Callum\Projects\HauntedHouse\DebugPipeline1\bin\Debug\DebugPipeline1.exe
 C:\Users\Callum\Projects\HauntedHouse\DebugPipeline1\bin\Debug\DebugPipeline1.pdb
-C:\Users\Callum\Projects\HauntedHouse\DebugPipeline1\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Callum\Projects\HauntedHouse\DebugPipeline1\obj\x86\Debug\DebugPipeline1.exe
-C:\Users\Callum\Projects\HauntedHouse\DebugPipeline1\obj\x86\Debug\DebugPipeline1.pdb
 C:\Users\Callum\Projects\HauntedHouse\DebugPipeline1\bin\Debug\TiledPipelineExtensions.dll
 C:\Users\Callum\Projects\HauntedHouse\DebugPipeline1\bin\Debug\TiledLib.dll
 C:\Users\Callum\Projects\HauntedHouse\DebugPipeline1\bin\Debug\TiledPipelineExtensions.pdb
 C:\Users\Callum\Projects\HauntedHouse\DebugPipeline1\bin\Debug\TiledLib.pdb
+C:\Users\Callum\Projects\HauntedHouse\DebugPipeline1\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Callum\Projects\HauntedHouse\DebugPipeline1\obj\x86\Debug\DebugPipeline1.exe
+C:\Users\Callum\Projects\HauntedHouse\DebugPipeline1\obj\x86\Debug\DebugPipeline1.pdb
