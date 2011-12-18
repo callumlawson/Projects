@@ -22,26 +22,29 @@ namespace HauntedHouseContentPipeline
         public Vector2 GridSize;
     }
 
-    [ContentSerializerRuntimeType("HauntedHouse.Object, HauntedHouse")]
+    [ContentSerializerRuntimeType("HauntedHouse.Entity, HauntedHouse")]
     public class HauntedHouseMapObjectContent
     {
-        public String ObjectType;
-        public String ObjectName;
-        public Rectangle ObjectBounds;
+        public String EntityType;
+        public String EntityName;
+        public Rectangle EntityBounds;
+        public Dictionary<String, String> Properties;
     }
 
     // For each layer, we store the size of the layer and the tiles.
     [ContentSerializerRuntimeType("HauntedHouse.TileLayer, HauntedHouse")]
     public class HauntedHouseTileLayerContent
     {
+        public String LayerName;
         public int Width;
         public int Height;
         public HauntedHouseMapTileContent[] Tiles;
     }
 
-    [ContentSerializerRuntimeType("HauntedHouse.ObjectLayer, HauntedHouse")]
+    [ContentSerializerRuntimeType("HauntedHouse.EntityLayer, HauntedHouse")]
     public class HauntedHouseObjectLayerContent
     {
+        public String LayerName;
         public int Width;
         public int Height;
         public HauntedHouseMapObjectContent[] Objects;
@@ -79,6 +82,7 @@ namespace HauntedHouseContentPipeline
             foreach (LayerContent layer in input.Layers)
             {
                 // we only care about tile layers in our demo
+                
                 TileLayerContent tileLayerContent = layer as TileLayerContent;
                 MapObjectLayerContent mapObjectLayerContent = layer as MapObjectLayerContent;
 
@@ -89,6 +93,7 @@ namespace HauntedHouseContentPipeline
                     {
                         Width = tileLayerContent.Width,
                         Height = tileLayerContent.Height,
+                        LayerName = tileLayerContent.Name,
                     };
 
                     // we need to build up our tile list now
@@ -160,9 +165,11 @@ namespace HauntedHouseContentPipeline
                     {
                         Width = mapObjectLayerContent.Width,
                         Height = mapObjectLayerContent.Height,
+                        LayerName = mapObjectLayerContent.Name,
                     };
 
                     //Variables
+                    Dictionary<String,String> properties = null;
                     Rectangle bounds = new Rectangle();
                     String name = null;
                     String type = null;
@@ -172,11 +179,10 @@ namespace HauntedHouseContentPipeline
                     MapObjectContent[] mapLayerObjects = mapObjectLayerContent.Objects.ToArray();
                     for (int i = 0; i < outLayer.Objects.Length; i++)
                     {
-                        if (mapLayerObjects[i].Type == "Light")
+                        if (mapLayerObjects[i].Properties != null)
                         {
-                            int a;
+                            properties = new Dictionary<string, string>(mapLayerObjects[i].Properties);
                         }
-
                         bounds = mapLayerObjects[i].Bounds;
                         name = mapLayerObjects[i].Name;
                         type = mapLayerObjects[i].Type;
@@ -184,9 +190,10 @@ namespace HauntedHouseContentPipeline
                         // now insert the tile into our output
                         outLayer.Objects[i] = new HauntedHouseMapObjectContent
                         {
-                          ObjectName =  name,
-                          ObjectType = type,
-                          ObjectBounds = bounds
+                          Properties = properties,
+                          EntityName =  name,
+                          EntityType = type,
+                          EntityBounds = bounds
                         };
                     }
 

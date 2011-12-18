@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Krypton;
 using Krypton.Lights;
+using System.Diagnostics;
 
 namespace HauntedHouse
 {
@@ -84,7 +85,8 @@ namespace HauntedHouse
             this.krypton.Initialize();
             krypton.SpriteBatchCompatablityEnabled = true;
             krypton.CullMode = CullMode.None;
-            krypton.AmbientColor = new Color(40, 50, 40);
+            krypton.Bluriness = 3;
+            krypton.AmbientColor = new Color(50, 50, 50);
 
             //Sprites list
             sprites = new List<Sprite>();
@@ -109,10 +111,10 @@ namespace HauntedHouse
 
             // TODO: use this.Content to load your game content here
             map = Content.Load<Map>("testmap2");
-            map.Intialise(krypton,sprites);
+            map.Intialise(krypton,sprites,this.Content,this.GraphicsDevice);
 
             // Create a new simple point light texture to use for the lights
-            this.lightTexture = LightTextureBuilder.CreatePointLight(this.GraphicsDevice, 512);
+            this.lightTexture = LightTextureBuilder.CreatePointLight(this.GraphicsDevice, 1024);
 
             // Load sprites
             playerImage = Content.Load<Texture2D>("playerDraft");
@@ -123,12 +125,12 @@ namespace HauntedHouse
             testSprite.Position = new Vector2(200, 20);
             testSprite.Velocity = new Vector2(0.2f, 0f);
 
-          //  for (int x = 0; x < 400; x++)
-           // {
-          //      Sprite spam = new Sprite(playerImage, new Vector2((float)random.NextDouble() * 500 - 500, (float)random.NextDouble() * 500 - 500), true, krypton);
-          //      spam.Velocity = new Vector2((float)random.NextDouble() * 2 -1 , (float)random.NextDouble() * 2 -1);
-          //      sprites.Add(spam);
-         //   }
+            for (int x = 0; x < 20; x++)
+           {
+                Sprite spam = new Sprite(playerImage, new Vector2((float)random.NextDouble() * 500 + 700, (float)random.NextDouble() * 500 + 400), true, krypton);
+                spam.Velocity = new Vector2((float)random.NextDouble() * 1.5f -1 , (float)random.NextDouble() * 1.5f -1);
+               sprites.Add(spam);
+          }
 
             //Dont add it cuase
             //sprites.Add(testSprite);
@@ -149,7 +151,7 @@ namespace HauntedHouse
             // Create a light we can control
             torch = new Light2D()
             {
-                Texture = this.lightTexture,
+                Texture = lightTexture,
                 X = 0,
                 Y = 0,
                 Range = 600,
@@ -158,8 +160,7 @@ namespace HauntedHouse
                 ShadowType = ShadowType.Illuminated,
                 Fov = MathHelper.PiOver2 * (float)(0.5)
             };
-
-            this.krypton.Lights.Add(this.torch);
+            krypton.Lights.Add(torch);
 
 
             /*
@@ -236,7 +237,7 @@ namespace HauntedHouse
         protected override void Update(GameTime gameTime)
         {
             //Clear Hulls from last cycle
-            krypton.Hulls.Clear();
+            //krypton.Hulls.Clear();
 
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)

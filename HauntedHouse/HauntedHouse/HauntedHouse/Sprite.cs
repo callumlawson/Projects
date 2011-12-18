@@ -177,6 +177,7 @@ namespace HauntedHouse
         {
             foreach (ShadowHull hull in hulls)
             {
+                krypton.Hulls.Remove(hull);
                hull.Position = this.Position;
                hull.Angle = this.Angle;
                hull.Scale = new Vector2(this.Scale);

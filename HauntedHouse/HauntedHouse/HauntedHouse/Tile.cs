@@ -21,7 +21,6 @@ namespace HauntedHouse
             private List<Sprite> sprites;
             Sprite tileSprite;
 
-
             public void Intialise(Vector2 gridPosition)
             {
                 GridPosition = gridPosition;
@@ -36,7 +35,7 @@ namespace HauntedHouse
             {
                 spriteBatch.Draw(
                              Texture,
-                             new Rectangle((int)(GridSize.X * GridPosition.X), (int)(GridSize.Y * GridPosition.Y - SourceRectangle.Height), (int)SourceRectangle.Width, (int)SourceRectangle.Height),
+                             new Rectangle((int)(GridSize.X * GridPosition.X), (int)(GridSize.Y * GridPosition.Y), (int)SourceRectangle.Width, (int)SourceRectangle.Height),
                              SourceRectangle,
                              Color.White,
                              0,

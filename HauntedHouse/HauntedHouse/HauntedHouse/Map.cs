@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Krypton;
-
+using HauntedHouse.Entities;
 
 namespace HauntedHouse
 {
@@ -13,18 +13,49 @@ namespace HauntedHouse
 
     public class Map
     {
+        //Loaded on deserialisation
         public int TileGridWidth;
         public int TileGridHeight;
-        public List<ObjectLayer> ObjectLayers = new List<ObjectLayer>();
+        public List<EntityLayer> EntityLayers = new List<EntityLayer>();
         public List<TileLayer> TileLayers = new List<TileLayer>();
 
+        //Private variables
         private List<Sprite> sprites;
+        private List<Platform> platforms;
         KryptonEngine krypton;
+        ContentManager content;
+        Texture2D placeHolder;
 
-        public void Intialise(KryptonEngine krypton, List<Sprite> sprites)
+        public void Intialise(KryptonEngine krypton, List<Sprite> sprites, ContentManager content,GraphicsDevice graphicsDevice)
         {
+            this.content = content;
             this.krypton = krypton;
             this.sprites = sprites;
+            placeHolder = content.Load<Texture2D>("PlaceHolder");
+            platforms = new List<Platform>();
+
+            foreach (var layer in TileLayers)
+            {
+                for (int y = 0; y < layer.Height; y++)
+                {
+                    for (int x = 0; x < layer.Width; x++)
+                    {
+                        Tile tile = layer.Tiles[y * layer.Width + x];
+                        if (tile.Exists)
+                        {
+                            tile.Intialise(new Vector2(x, y));
+                        }
+                    }
+                }
+            }
+
+            foreach (var layer in EntityLayers)
+            {
+                foreach (Entity entity in layer.Entities)
+                {
+                    entity.Intialise(platforms, krypton, content,graphicsDevice);
+                }
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -35,14 +66,24 @@ namespace HauntedHouse
                 {
                     for (int x = 0; x < layer.Width; x++)
                     {
-                        Tile tile = layer.Tiles[y * layer.Width + x];
-
-                        if (tile.Exists)
+                        if (layer.Tiles[y * layer.Width + x] != null)
                         {
-                            tile.Intialise(new Vector2(x, y));
-                            tile.Draw(spriteBatch);
+                            Tile tile = layer.Tiles[y * layer.Width + x];
+                            if (tile.Exists)
+                            {
+                                tile.Draw(spriteBatch);
+                            }
                         }
                     }
+                }
+            }
+
+            foreach (var layer in EntityLayers)
+            {
+                foreach(Entity entity in layer.Entities)
+                {
+                    //For debugging
+                    //spriteBatch.Draw(placeHolder,entity.EntityBounds,Color.WhiteSmoke);
                 }
             }
         }

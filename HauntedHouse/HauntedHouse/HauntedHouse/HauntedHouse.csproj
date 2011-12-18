@@ -109,11 +109,12 @@
   <ItemGroup>
     <Compile Include="Animation.cs" />
     <Compile Include="Camera2D.cs" />
+    <Compile Include="Entities\Platform.cs" />
     <Compile Include="TileLayer.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="Map.cs" />
-    <Compile Include="Object.cs" />
-    <Compile Include="ObjectLayer.cs" />
+    <Compile Include="Entities\Entity.cs" />
+    <Compile Include="EntityLayer.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />

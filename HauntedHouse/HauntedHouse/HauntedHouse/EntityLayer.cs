@@ -5,10 +5,11 @@ using System.Text;
 
 namespace HauntedHouse
 {
-    public class ObjectLayer
+    public class EntityLayer
     {
+        public String LayerName;
         public int Width;
         public int Height;
-        public Object[] Objects;
+        public Entity[] Entities;
     }
 }

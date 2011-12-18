@@ -2,9 +2,10 @@ Content\player.xnb
 Content\shipAnimation.xnb
 Content\Gem.xnb
 Content\PlayerDraft.xnb
-Content\twolayers.xnb
+Content\PlaceHolder.xnb
 Content\testmap2.xnb
+Content\twolayers.xnb
+Content\Impassable.xnb
 Content\Platform.xnb
 Content\TexturedStoneWall1024.xnb
-Content\Impassable.xnb
 Content\KryptonEffect.xnb
