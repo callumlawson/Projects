@@ -35,7 +35,7 @@ namespace HauntedHouse.Entities
     {
         public TileCollision Collision;
         public Boolean IsShadowCaster;
-        public Rectangle PlatformBounds;
+        public Rectangle Bounds;
 
         KryptonEngine krypton;
 
@@ -44,7 +44,7 @@ namespace HauntedHouse.Entities
             this.krypton = krypton;
             Collision = collision;
             IsShadowCaster = isShadowCaster;
-            PlatformBounds = platformBounds;
+            Bounds = platformBounds;
             if (isShadowCaster)
             {
                 ShadowHull shadowHull = ShadowHull.CreateRectangle(new Vector2(platformBounds.Width, platformBounds.Height));

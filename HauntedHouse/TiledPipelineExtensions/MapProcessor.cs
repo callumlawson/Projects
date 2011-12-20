@@ -51,7 +51,7 @@ namespace HauntedHouseContentPipeline
     }
 
     // For the map itself, we just store the size, tile size, and a list of layers.
-    [ContentSerializerRuntimeType("HauntedHouse.Map, HauntedHouse")]
+    [ContentSerializerRuntimeType("HauntedHouse.Level, HauntedHouse")]
     public class HauntedHouseMapContent
     {
         public int TileWidth;

@@ -68,6 +68,9 @@ namespace HauntedHouse
         //List of the shadowhulls which represent this object
         List<ShadowHull> hulls;
 
+        //Sprite rectangular bounds
+        public Rectangle Bounds;
+
         //Convex hull
         //List<Vertices> list;
         //Vertices textureVertices;
@@ -90,10 +93,6 @@ namespace HauntedHouse
         }
         */
 
-        public Sprite()
-        {
-        }
-
         public Sprite(Texture2D texture, Vector2 position,bool isShadowCaster, KryptonEngine krypton)
         {
             Active = true;
@@ -102,6 +101,7 @@ namespace HauntedHouse
             Texture = texture;
             Width = texture.Width;
             Height = texture.Height;
+            Bounds = texture.Bounds;
 
             this.krypton = krypton;
 
@@ -143,11 +143,11 @@ namespace HauntedHouse
                 krypton.Hulls.Add(hull);
             }
         }
-        
 
         virtual public void Update(GameTime gameTime)
         {
-            Position += Velocity;
+            //TODO removed animation
+            //Position += Velocity;
 
             if (Animated)
             {

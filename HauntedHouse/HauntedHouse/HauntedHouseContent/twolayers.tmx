@@ -3106,4 +3106,5 @@
    <tile gid="4"/>
   </data>
  </layer>
+ <objectgroup name="Object Layer 1" width="48" height="32"/>
 </map>

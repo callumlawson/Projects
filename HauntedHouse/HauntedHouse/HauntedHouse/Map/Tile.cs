@@ -24,7 +24,7 @@ namespace HauntedHouse
             public void Intialise(Vector2 gridPosition)
             {
                 GridPosition = gridPosition;
-
+                
                 //this.sprites = sprites;
                 //tileSprite = new Sprite(Texture, Position, false, krypton);
                // tileSprite.sourceRectangle = SourceRectangle;

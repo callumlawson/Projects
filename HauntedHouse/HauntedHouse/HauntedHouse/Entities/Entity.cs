@@ -20,15 +20,22 @@ namespace HauntedHouse
         public Rectangle EntityBounds;
         public Dictionary<String, String> Properties;
 
-        public void Intialise(List<Platform> platforms,KryptonEngine krypton,ContentManager content,GraphicsDevice graphicsDevice)
+        public void Intialise(List<Platform> platforms,List<Sprite> sprites, Player player,KryptonEngine krypton,ContentManager content,GraphicsDevice graphicsDevice, Level level)
         {
+            if (EntityType == "Player")
+            {
+                Texture2D playerImage = content.Load<Texture2D>("playerDraft");
+                Sprite testSprite = new Sprite(playerImage, new Vector2(0,0), false, krypton);
+                level.setPlayer(new Player(new Vector2(EntityBounds.X, EntityBounds.Y), testSprite,level));
+            }
+
             if (EntityType == "Platform")
             {
                 TileCollision tileCollision = TileCollision.Platform;
                 if (Properties["CollisionType"] == "Platform") {tileCollision = TileCollision.Platform;}
                 if (Properties["CollisionType"] == "Passable") { tileCollision = TileCollision.Passable; }
                 if (Properties["CollisionType"] == "Impassable") { tileCollision = TileCollision.Impassable; }
-                Platform platform = new Platform(EntityBounds, tileCollision, Convert.ToBoolean(Properties["IsShadowCaster"]),krypton);
+                Platform platform = new Platform(EntityBounds, tileCollision, Convert.ToBoolean(Properties["IsShadowCaster"]), krypton);
                 platforms.Add(platform);
             }
 

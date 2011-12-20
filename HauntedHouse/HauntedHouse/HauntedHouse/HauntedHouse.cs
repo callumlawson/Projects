@@ -23,11 +23,9 @@ namespace HauntedHouse
         SpriteBatch spriteBatch;
         KryptonEngine krypton;
         //Temporary Map Test
-        Map map;
-
+        Level level;
 
         private Texture2D lightTexture;
-        private Light2D light2D;
 
         Random random = new Random();
 
@@ -37,22 +35,17 @@ namespace HauntedHouse
 
         Texture2D playerImage;
         Texture2D gemImage;
+        Texture2D stairsImage;
 
         //List of all the active sprites
         List<Sprite> sprites;
 
         //List of all the levels in the game
-        List<Level> levels;
-
-        //Player
-        Player player;
+        //List<Level> levels;
 
         //TestSprite
-        Sprite testSprite;
         Sprite testSprite2;
-
-        //Torch
-        Light2D torch;
+        
 
         public HauntedHouse()
         {
@@ -70,7 +63,6 @@ namespace HauntedHouse
             // Create Krypton
             this.krypton = new KryptonEngine(this, "KryptonEffect");
 
-           // map = new Map(krypton);
         }
 
         /// <summary>
@@ -82,11 +74,11 @@ namespace HauntedHouse
         protected override void Initialize()
         {
             // Make sure to initialize krpyton, unless it has been added to the Game's list of Components
-            this.krypton.Initialize();
+            krypton.Initialize();
             krypton.SpriteBatchCompatablityEnabled = true;
             krypton.CullMode = CullMode.None;
-            krypton.Bluriness = 3;
-            krypton.AmbientColor = new Color(50, 50, 50);
+            krypton.Bluriness = 2;
+            krypton.AmbientColor = new Color(40, 50, 40);
 
             //Sprites list
             sprites = new List<Sprite>();
@@ -96,6 +88,10 @@ namespace HauntedHouse
             
             //Set vertical scale
             verticalUnits = GraphicsDevice.Viewport.Height;
+
+            // TODO: use this.Content to load your game content here
+            level = Content.Load<Level>("testmap2");
+            level.Intialise(krypton, this.Content, this.GraphicsDevice,sprites);
 
             base.Initialize();
         }
@@ -109,58 +105,24 @@ namespace HauntedHouse
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
-            map = Content.Load<Map>("testmap2");
-            map.Intialise(krypton,sprites,this.Content,this.GraphicsDevice);
+            playerImage = Content.Load<Texture2D>("player");
+            gemImage = Content.Load<Texture2D>("gem");
+            stairsImage = Content.Load<Texture2D>("helloWorld");
 
             // Create a new simple point light texture to use for the lights
             this.lightTexture = LightTextureBuilder.CreatePointLight(this.GraphicsDevice, 1024);
 
-            // Load sprites
-            playerImage = Content.Load<Texture2D>("playerDraft");
-            gemImage = Content.Load<Texture2D>("gem");
+            for (int x = 0; x < 200; x++)
+            {
+               // Sprite spam = new Sprite(playerImage, new Vector2((float)random.NextDouble() * 500 + 700, (float)random.NextDouble() * 500 + 400), true, krypton);
+               // spam.Velocity = new Vector2((float)random.NextDouble() * 1.5f -1 , (float)random.NextDouble() * 1.5f -1);
+               // sprites.Add(spam);
+            }
 
-            //Test Sprite
-            testSprite = new Sprite(playerImage, new Vector2(100, -100), false,krypton);
-            testSprite.Position = new Vector2(200, 20);
-            testSprite.Velocity = new Vector2(0.2f, 0f);
-
-            for (int x = 0; x < 20; x++)
-           {
-                Sprite spam = new Sprite(playerImage, new Vector2((float)random.NextDouble() * 500 + 700, (float)random.NextDouble() * 500 + 400), true, krypton);
-                spam.Velocity = new Vector2((float)random.NextDouble() * 1.5f -1 , (float)random.NextDouble() * 1.5f -1);
-               sprites.Add(spam);
-          }
-
-            //Dont add it cuase
-            //sprites.Add(testSprite);
-
-            //Create player
-            player = new Player(Vector2.Zero,testSprite);
-            // Load the player resources
-            Animation playerAnimation = new Animation();
-            Texture2D playerTexture = Content.Load<Texture2D>("shipAnimation");
-            playerAnimation.Initialize(playerTexture, Vector2.Zero, 115, 69, 8, 45, Color.White, 1f, true, this.GraphicsDevice);
-            player.Position = new Vector2(200, 200);
-
-            testSprite2 = new Sprite(playerImage, new Vector2(100, -100),true, krypton);
+            testSprite2 = new Sprite(gemImage, new Vector2(100, -100),true, krypton);
             testSprite2.Position = new Vector2(100, 20);
             testSprite2.Velocity = new Vector2(0f, 0.1f);
             sprites.Add(testSprite2);
-
-            // Create a light we can control
-            torch = new Light2D()
-            {
-                Texture = lightTexture,
-                X = 0,
-                Y = 0,
-                Range = 600,
-                Intensity = 0.5f,
-                Color = Color.White,
-                ShadowType = ShadowType.Illuminated,
-                Fov = MathHelper.PiOver2 * (float)(0.5)
-            };
-            krypton.Lights.Add(torch);
 
 
             /*
@@ -236,28 +198,19 @@ namespace HauntedHouse
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            //Clear Hulls from last cycle
-            //krypton.Hulls.Clear();
-
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            torch.Position = player.Position + new Vector2(57, 60);
-            torch.Angle = player.TorchAngle;
+            //Update the level
+            level.Update(gameTime);
 
-            //Update all the sprites
-            foreach (Sprite sprite in sprites)
-            {
-                sprite.Update(gameTime);
-            }
-
-            player.Update(gameTime);
+            //player.Update(gameTime);
 
             //Update the camera
             camera.Update(gameTime);
             //Follow the player
-            camera.setTarget(player.Position);
+            camera.setTarget(level.Player.Position);
 
             // update the matrix, per camera
             krypton.Matrix = camera.View;
@@ -293,15 +246,12 @@ namespace HauntedHouse
 
             // TODO: Add your drawing code here
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.View);
-
-            map.Draw(spriteBatch);
+            level.Draw(spriteBatch);
 
             foreach (Sprite sprite in sprites)
             {
                 sprite.Draw(spriteBatch);
             }
-
-            player.Draw(spriteBatch);
 
             //Test Images
             //spriteBatch.Draw(playerImage, Vector2.Zero, Color.White);

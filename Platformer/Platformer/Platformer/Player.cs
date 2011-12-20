@@ -357,6 +357,7 @@ namespace Platformer
         {
             // Get the player's bounding rectangle and find neighboring tiles.
             Rectangle bounds = BoundingRectangle;
+
             int leftTile = (int)Math.Floor((float)bounds.Left / Tile.Width);
             int rightTile = (int)Math.Ceiling(((float)bounds.Right / Tile.Width)) - 1;
             int topTile = (int)Math.Floor((float)bounds.Top / Tile.Height);
@@ -411,7 +412,6 @@ namespace Platformer
                     }
                 }
             }
-
             // Save the new bounds bottom.
             previousBottom = bounds.Bottom;
         }
