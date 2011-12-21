@@ -85,7 +85,7 @@ namespace HauntedHouse
 
             //Create camera
             camera = new Camera2D(GraphicsDevice);
-            
+
             //Set vertical scale
             verticalUnits = GraphicsDevice.Viewport.Height;
 
@@ -202,18 +202,17 @@ namespace HauntedHouse
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            //Update the level
-            level.Update(gameTime);
-
-            //player.Update(gameTime);
-
-            //Update the camera
-            camera.Update(gameTime);
             //Follow the player
             camera.setTarget(level.Player.Position);
 
+            //Update the camera
+            camera.Update(gameTime);
+
             // update the matrix, per camera
             krypton.Matrix = camera.View;
+
+            //Update the level
+            level.Update(gameTime);
 
             // TODO: Add your update logic here
             base.Update(gameTime);
@@ -237,7 +236,7 @@ namespace HauntedHouse
             this.krypton.LightMapPrepare();
 
             // Make sure we clear the backbuffer *after* Krypton is done pre-rendering
-            this.GraphicsDevice.Clear(Color.White);
+            this.GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // ----- DRAW STUFF HERE ----- //
             // By drawing here, you ensure that your scene is properly lit by krypton.
@@ -246,21 +245,9 @@ namespace HauntedHouse
 
             // TODO: Add your drawing code here
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.View);
+
             level.Draw(spriteBatch);
 
-            foreach (Sprite sprite in sprites)
-            {
-                sprite.Draw(spriteBatch);
-            }
-
-            //Test Images
-            //spriteBatch.Draw(playerImage, Vector2.Zero, Color.White);
-           // spriteBatch.Draw(gemImage, new Vector2(-20, -20), Color.White);
-           // spriteBatch.Draw(gemImage, new Vector2(-200, -20), Color.White);
-              spriteBatch.Draw(gemImage, new Vector2(-50, 20), Color.White);
-           // spriteBatch.Draw(gemImage, new Vector2(12, 400), Color.White);
-           // spriteBatch.Draw(gemImage, new Vector2(67, 134), Color.White);
-            
             //spriteBatch.Draw(playerImage, new Vector2(200,200), Color.White);
 
             spriteBatch.End();

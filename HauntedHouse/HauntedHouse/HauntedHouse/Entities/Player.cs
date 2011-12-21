@@ -84,21 +84,21 @@ namespace HauntedHouse
         {
             get { return isTorchOn; }
         }
-        bool isTorchOn;
+        bool isTorchOn = true;
 
         //Physics Constants
         // Constants for controling horizontal movement
-        private const float MoveAcceleration = 13000.0f;
-        private const float MaxMoveSpeed = 1200.0f;
-        private const float GroundDragFactor = 0.48f;
-        private const float AirDragFactor = 0.58f;
+        private const float MoveAcceleration = 40000.0f;
+        private const float MaxMoveSpeed = 10000.0f;
+        private const float GroundDragFactor = 0.38f;
+        private const float AirDragFactor = 0.48f;
 
         // Constants for controlling vertical movement
-        private const float MaxJumpTime = 0.05f;
-        private const float JumpLaunchVelocity = -2800.0f;
-        private const float GravityAcceleration = 3400.0f;
-        private const float MaxFallSpeed = 200.0f;
-        private const float JumpControlPower = 0.10f;
+        private const float MaxJumpTime = 0.35f;
+        private const float JumpLaunchVelocity = -1800.0f;
+        private const float GravityAcceleration = 4200.0f;
+        private const float MaxFallSpeed = 1500.0f;
+        private const float JumpControlPower = 0.90f;
 
         // Input configuration
         private const float MoveStickScale = 1.0f;
@@ -128,9 +128,7 @@ namespace HauntedHouse
             playerSprite.Position = this.position;
             this.level = level;
             this.platforms = level.Platforms;
-
             random = new Random();
-
             Health = 100;
         }
 
@@ -138,10 +136,12 @@ namespace HauntedHouse
         {
             //Find the bounds
             playerSprite.Position = this.position;
-            playerBounds.X = (int)Position.X;
-            playerBounds.Y = (int)Position.Y;
+            playerBounds.X = (int)Math.Floor((double)Position.X);
+            playerBounds.Y = (int)Math.Floor((double)Position.Y);
             playerBounds.Width = playerSprite.Width;
             playerBounds.Height = playerSprite.Height;
+
+            playerSprite.Update(gameTime);
 
             // If the player is now colliding with the level, separate them.
             UpdateInput(gameTime);
@@ -152,29 +152,21 @@ namespace HauntedHouse
             movement = 0.0f;
             isJumping = false;
             //Update the sprite
-         
-            playerSprite.Update(gameTime);
         }
+
+          
 
         public void UpdateInput(GameTime gameTime)
         {
             // Save the previous state of the keyboard and game pad so we can determinesingle key/button presses
-            previousGamePadState = gamePadState;
-            previousKeyboardState = keyboardState;
-            previousMouseState = mouseState;
+           // previousGamePadState = gamePadState;
+           // previousKeyboardState = keyboardState;
+          //  previousMouseState = mouseState;
 
             // Read the current state of the keyboard and gamepad and store it
             keyboardState = Keyboard.GetState();
             gamePadState = GamePad.GetState(PlayerIndex.One);
             mouseState = Mouse.GetState();
-
-            Vector2 rightStickDirection = gamePadState.ThumbSticks.Right;
-            rightStickDirection.Normalize();
-            torchAngle = -(float)Math.Atan2(rightStickDirection.Y, rightStickDirection.X);
-            //TODO make much betterer
-            Vector2 mouseDirection = new Vector2(mouseState.X - 640, mouseState.Y - 480);
-            mouseDirection.Normalize();
-            torchAngle = (float)Math.Atan2(mouseDirection.Y, mouseDirection.X);
 
             // Get analog horizontal movement.
             movement = gamePadState.ThumbSticks.Left.X * MoveStickScale;
@@ -203,6 +195,15 @@ namespace HauntedHouse
                 keyboardState.IsKeyDown(Keys.Space) ||
                 keyboardState.IsKeyDown(Keys.Up) ||
                 keyboardState.IsKeyDown(Keys.W);
+
+                Vector2 rightStickDirection = gamePadState.ThumbSticks.Right;
+            rightStickDirection.Normalize();
+            torchAngle = -(float)Math.Atan2(rightStickDirection.Y, rightStickDirection.X);
+            //TODO make much betterer
+            Vector2 mouseDirection = new Vector2(mouseState.X - 640, mouseState.Y - 480);
+            mouseDirection.Normalize();
+            torchAngle = (float)Math.Atan2(mouseDirection.Y, mouseDirection.X);
+               
         }
 
         /// <summary>
@@ -230,9 +231,6 @@ namespace HauntedHouse
                 // Begin or continue a jump
                 if ((!wasJumping && IsOnGround) || jumpTime > 0.0f)
                 {
-                    if (jumpTime == 0.0f)
-                       // jumpSound.Play();
-
                     jumpTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     //sprite.PlayAnimation(jumpAnimation);
                 }
@@ -325,30 +323,32 @@ namespace HauntedHouse
                             float absDepthY = Math.Abs(depth.Y);
 
                             // Resolve the collision along the shallow axis.
-                            if (absDepthY < absDepthX || collision == TileCollision.Platform)
+                            if ((absDepthY < absDepthX || collision == TileCollision.Platform) && !isOnGround)
                             {
                                 // If we crossed the top of a tile, we are on the ground.
                                 if (previousBottom <= tileBounds.Top)
                                     isOnGround = true;
 
                                 // Ignore platforms, unless we are on the ground.
-                                if (collision == TileCollision.Impassable || IsOnGround)
-                                {
-                                    // Resolve the collision along the Y axis.
-                                    Position = new Vector2(Position.X, Position.Y + depth.Y);
+                               // if (collision == TileCollision.Impassable || IsOnGround)
+                                //
+                                     //Resolve the collision along the Y axis.
+                                    Position = new Vector2(Position.X, Position.Y + depth.Y + 1);
+                                    //velocity.X = 0;
+                                    velocity.Y = 0;
 
                                     // Perform further collisions with the new bounds.
-                                    bounds = playerBounds;
-                                }
+                                 //   bounds = playerBounds;
+                               // }
                             }
-                            else if (collision == TileCollision.Impassable) // Ignore platforms.
-                            {
+                            //else if (collision == TileCollision.Impassable) // Ignore platforms.
+                            //{
                                 // Resolve the collision along the X axis.
-                                Position = new Vector2(Position.X + depth.X, Position.Y);
+                             //   Position = new Vector2(Position.X + depth.X, Position.Y);
 
                                 // Perform further collisions with the new bounds.
-                                bounds = playerBounds;
-                            }
+                            //    bounds = playerBounds;
+                           // }
                         }
                     }
                 }

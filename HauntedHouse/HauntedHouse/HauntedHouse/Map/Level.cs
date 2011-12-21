@@ -101,20 +101,21 @@ namespace HauntedHouse
 
         public void Update(GameTime gameTime)
         {
+                torch.Position = player.Position + new Vector2(57, 60);
+                torch.Angle = player.TorchAngle;
+                player.Update(gameTime);
+              
                 //Update all the sprites
                 foreach (Sprite sprite in sprites)
                 {
                     sprite.Update(gameTime);
-                }
-
-                    player.Update(gameTime);
-                    torch.Position = player.Position + new Vector2(57, 60);
-                    torch.Angle = player.TorchAngle;
+                }    
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             DrawTiles(spriteBatch);
+
             player.Draw(spriteBatch);
 
             foreach (var layer in EntityLayers)
