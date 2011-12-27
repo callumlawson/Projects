@@ -31,6 +31,14 @@ namespace HauntedHouse
         Vector2 position = Vector2.Zero;
 
         // Physics state
+        public SpriteEffects Flip
+        {
+            get { return flip; }
+            set { flip = value; }
+        }
+        SpriteEffects flip = SpriteEffects.None;
+
+        // Physics state
         public bool IsShadowCaster
         {
             get { return isShadowCaster; }
@@ -188,12 +196,14 @@ namespace HauntedHouse
 
         public void Draw(SpriteBatch spriteBatch)
         {
+
+
             // Draw the animation
             if (Animated)
             {
                 Animation.Draw(spriteBatch);
             }
-            else spriteBatch.Draw(Texture, Position, sourceRectangle, Color.White, Angle, Vector2.Zero, Scale, SpriteEffects.None, 0f);
+            else spriteBatch.Draw(Texture, Position, sourceRectangle, Color.White, Angle, Vector2.Zero, Scale, flip, 0f);
         }
     }
 }

@@ -65,7 +65,7 @@ namespace HauntedHouse
                         Tile tile = layer.Tiles[y * layer.Width + x];
                         if (tile.Exists)
                         {
-                            tile.Intialise(new Vector2(x, y));
+                            tile.Intialise(new Vector2(x, y),content);
                         }
                     }
                 }
@@ -75,7 +75,7 @@ namespace HauntedHouse
             {
                 foreach (Entity entity in layer.Entities)
                 {
-                    entity.Intialise(platforms, sprites, player, krypton, content, graphicsDevice, this);
+                    entity.Intialise(platforms, sprites, krypton, content, graphicsDevice, this);
                 }
             }
 
@@ -114,9 +114,32 @@ namespace HauntedHouse
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            DrawTiles(spriteBatch);
+            //Draw the layers in order
+            foreach (var layer in TileLayers)
+            {
+                if (layer.LayerName == "Background")
+                {
+                    drawTileLayer(layer, spriteBatch);
+                }
+            }
+
+            foreach (var layer in TileLayers)
+            {
+                if (layer.LayerName == "Midground")
+                {
+                    drawTileLayer(layer, spriteBatch);
+                }
+            }
 
             player.Draw(spriteBatch);
+
+            foreach (var layer in TileLayers)
+            {
+                if (layer.LayerName == "Forground")
+                {
+                    drawTileLayer(layer, spriteBatch);
+                }
+            }
 
             foreach (var layer in EntityLayers)
             {
@@ -128,28 +151,22 @@ namespace HauntedHouse
             }
         }
 
-
-        private void DrawTiles(SpriteBatch spriteBatch)
+        public void drawTileLayer(TileLayer layer,SpriteBatch spriteBatch)
         {
-              foreach (var layer in TileLayers)
+            for (int y = 0; y < layer.Height; y++)
             {
-                for (int y = 0; y < layer.Height; y++)
+                for (int x = 0; x < layer.Width; x++)
                 {
-                    for (int x = 0; x < layer.Width; x++)
+                    if (layer.Tiles[y * layer.Width + x] != null)
                     {
-                        if (layer.Tiles[y * layer.Width + x] != null)
+                        Tile tile = layer.Tiles[y * layer.Width + x];
+                        if (tile.Exists)
                         {
-                            Tile tile = layer.Tiles[y * layer.Width + x];
-                            if (tile.Exists)
-                            {
-                                tile.Draw(spriteBatch);
-                            }
+                            tile.Draw(spriteBatch);
                         }
                     }
                 }
             }
-
         }
-
     }
 }

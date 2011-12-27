@@ -60,6 +60,10 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="C3.XNA.Primitives2D, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\XNAPrimitiveShapesLibrary\C3.XNA.Primitives2D.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -109,6 +113,7 @@
   <ItemGroup>
     <Compile Include="Animation.cs" />
     <Compile Include="Camera2D.cs" />
+    <Compile Include="Entities\Hazard.cs" />
     <Compile Include="Utilities\Circle.cs" />
     <Compile Include="Entities\Platform.cs" />
     <Compile Include="Map\TileLayer.cs" />
@@ -124,6 +129,7 @@
     <Compile Include="Map\Tile.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="C3.XNA.Primitives2D.dll" />
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
   </ItemGroup>

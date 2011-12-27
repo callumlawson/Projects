@@ -13,7 +13,8 @@ namespace HauntedHouseContentPipeline
     [ContentSerializerRuntimeType("HauntedHouse.Tile, HauntedHouse")]
     public class HauntedHouseMapTileContent
     {
-        public ExternalReference<Texture2DContent> Texture;
+        public String TileSource;
+        //public ExternalReference<Texture2DContent> Texture;
         public Rectangle SourceRectangle;
         public SpriteEffects SpriteEffects;
         public bool IsShadowCaster;
@@ -66,7 +67,7 @@ namespace HauntedHouseContentPipeline
         public override HauntedHouseMapContent Process(MapContent input, ContentProcessorContext context)
         {
             // build the textures
-            TiledHelpers.BuildTileSetTextures(input, context);
+            //TiledHelpers.BuildTileSetTextures(input, context);
 
             // generate source rectangles
             TiledHelpers.GenerateTileSourceRectangles(input);
@@ -114,6 +115,7 @@ namespace HauntedHouseContentPipeline
                         Rectangle sourceRect = new Rectangle();
                         bool isShadowCaster = new bool();
                         bool exists = new bool();
+                        String imageSource = "NotDefined";
                         exists = true;
 
                         // iterate all the tile sets
@@ -124,6 +126,7 @@ namespace HauntedHouseContentPipeline
                                 // if our tile index is in this set
                                 if (tileIndex - tileSet.FirstId < tileSet.Tiles.Count)
                                 {
+                                    imageSource = tileSet.Image;
                                     // store the texture content and source rectangle
                                     textureContent = tileSet.Texture;
                                     sourceRect = tileSet.Tiles[(int)(tileIndex - tileSet.FirstId)].Source;
@@ -144,8 +147,9 @@ namespace HauntedHouseContentPipeline
                         // now insert the tile into our output
                         outLayer.Tiles[i] = new HauntedHouseMapTileContent
                         {
+                            TileSource = imageSource,
                             Exists = exists,
-                            Texture = textureContent,
+                            //Texture = textureContent,
                             SourceRectangle = sourceRect,
                             SpriteEffects = spriteEffects,
                             IsShadowCaster = isShadowCaster,

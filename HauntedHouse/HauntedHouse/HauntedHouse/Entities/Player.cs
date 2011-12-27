@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using HauntedHouse;
 using Microsoft.Xna.Framework.Input;
 using HauntedHouse.Entities;
+using C3.XNA;
 
 namespace HauntedHouse
 {
@@ -33,18 +34,15 @@ namespace HauntedHouse
 
         //Input
         KeyboardState keyboardState;
-        KeyboardState previousKeyboardState;
-
         // Gamepad states used to determine button presses
         GamePadState gamePadState;
-        GamePadState previousGamePadState;
-
         // To determin mouse clicks
         MouseState mouseState;
-        MouseState previousMouseState;
 
         //Player move speed
         int playerMoveSpeed = 5;
+
+        Vector2 Spawn;
 
         //Torch
         public float TorchAngle
@@ -67,6 +65,7 @@ namespace HauntedHouse
         Rectangle playerBounds;
         List<Platform> platforms;
         private float previousBottom;
+        bool wasCollision; //Was there a collision this frame?
 
         /// <summary>
         /// Gets whether or not the player's feet are on the ground.
@@ -126,6 +125,7 @@ namespace HauntedHouse
             playerSprite = sprite;
             this.position = position;
             playerSprite.Position = this.position;
+            Spawn = position;
             this.level = level;
             this.platforms = level.Platforms;
             random = new Random();
@@ -136,9 +136,9 @@ namespace HauntedHouse
         {
             //Find the bounds
             playerSprite.Position = this.position;
-            playerBounds.X = (int)Math.Floor((double)Position.X);
+            playerBounds.X = (int)Math.Floor((double)Position.X + 24);
             playerBounds.Y = (int)Math.Floor((double)Position.Y);
-            playerBounds.Width = playerSprite.Width;
+            playerBounds.Width = playerSprite.Width - 48;
             playerBounds.Height = playerSprite.Height;
 
             playerSprite.Update(gameTime);
@@ -147,14 +147,12 @@ namespace HauntedHouse
             UpdateInput(gameTime);
 
             ApplyPhysics(gameTime); //Handle collisions called by apply physics
-
+            
             // Clear input.
             movement = 0.0f;
             isJumping = false;
             //Update the sprite
         }
-
-          
 
         public void UpdateInput(GameTime gameTime)
         {
@@ -162,6 +160,10 @@ namespace HauntedHouse
            // previousGamePadState = gamePadState;
            // previousKeyboardState = keyboardState;
           //  previousMouseState = mouseState;
+
+            Vector2 rightStickDirection = gamePadState.ThumbSticks.Right;
+            rightStickDirection.Normalize();
+            torchAngle = -(float)Math.Atan2(rightStickDirection.Y, rightStickDirection.X);
 
             // Read the current state of the keyboard and gamepad and store it
             keyboardState = Keyboard.GetState();
@@ -196,9 +198,7 @@ namespace HauntedHouse
                 keyboardState.IsKeyDown(Keys.Up) ||
                 keyboardState.IsKeyDown(Keys.W);
 
-                Vector2 rightStickDirection = gamePadState.ThumbSticks.Right;
-            rightStickDirection.Normalize();
-            torchAngle = -(float)Math.Atan2(rightStickDirection.Y, rightStickDirection.X);
+            
             //TODO make much betterer
             Vector2 mouseDirection = new Vector2(mouseState.X - 640, mouseState.Y - 480);
             mouseDirection.Normalize();
@@ -290,11 +290,11 @@ namespace HauntedHouse
             HandleCollisions();
 
             // If the collision stopped us from moving, reset the velocity to zero.
-            if (Position.X == previousPosition.X)
-                velocity.X = 0;
+           // if (Position.X == previousPosition.X)
+            //    velocity.X = 0;
 
-            if (Position.Y == previousPosition.Y)
-                velocity.Y = 0;
+           // if (Position.Y == previousPosition.Y)
+            //    velocity.Y = 0;
         }
 
         private void HandleCollisions()
@@ -302,6 +302,7 @@ namespace HauntedHouse
             Rectangle bounds = playerBounds;
             // For each potentially colliding platform
 
+            wasCollision = false;
             isOnGround = false;
 
                 for (int platformIndex = 0; platformIndex < platforms.Count; platformIndex++)
@@ -323,42 +324,53 @@ namespace HauntedHouse
                             float absDepthY = Math.Abs(depth.Y);
 
                             // Resolve the collision along the shallow axis.
-                            if ((absDepthY < absDepthX || collision == TileCollision.Platform) && !isOnGround)
+                            if ((absDepthY < absDepthX))
                             {
+                                isOnGround = true;
+
                                 // If we crossed the top of a tile, we are on the ground.
                                 if (previousBottom <= tileBounds.Top)
                                     isOnGround = true;
 
-                                // Ignore platforms, unless we are on the ground.
-                               // if (collision == TileCollision.Impassable || IsOnGround)
-                                //
-                                     //Resolve the collision along the Y axis.
-                                    Position = new Vector2(Position.X, Position.Y + depth.Y + 1);
-                                    //velocity.X = 0;
-                                    velocity.Y = 0;
 
-                                    // Perform further collisions with the new bounds.
-                                 //   bounds = playerBounds;
-                               // }
-                            }
-                            //else if (collision == TileCollision.Impassable) // Ignore platforms.
-                            //{
-                                // Resolve the collision along the X axis.
-                             //   Position = new Vector2(Position.X + depth.X, Position.Y);
+                                //Resolve the collision along the Y axis.
+                                Position = new Vector2(Position.X, Position.Y + depth.Y);
+                                velocity.Y = 0;
+                                wasCollision = true;
 
                                 // Perform further collisions with the new bounds.
-                            //    bounds = playerBounds;
-                           // }
+                                //bounds = playerBounds;
+                            }
+                            else if ((absDepthY >= absDepthX))
+                            {
+                                isOnGround = true;
+                                //Resolve the collision along the Y axis.
+                                Position = new Vector2(Position.X + depth.X, Position.Y);
+                                velocity.X = 0;
+ 
+                                wasCollision = true;
+                            }
+         
                         }
                     }
                 }
                 // Save the new bounds bottom.
-                //previousBottom = bounds.Bottom;
+               // previousBottom = bounds.Bottom;
            }
       
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            if (velocity.X < 0)
+            {
+                playerSprite.Flip = SpriteEffects.FlipHorizontally;
+            }
+            else { playerSprite.Flip = SpriteEffects.None; }
+
+            #if DEBUG
+            spriteBatch.DrawRectangle(playerBounds,Color.Red);
+            #endif
+
             playerSprite.Draw(spriteBatch);
         }
 

@@ -1,14 +1,6 @@
 Content\player.xnb
-Content\shipAnimation.xnb
-Content\Gem.xnb
-Content\PlayerDraft.xnb
+Content\TileSets\TilesetIndoors.xnb
 Content\PlaceHolder.xnb
-Content\helloWorld.xnb
-Content\twolayers.xnb
-Content\testmap2.xnb
-Content\Platform.xnb
-Content\TexturedStoneWall1024.xnb
-Content\Impassable.xnb
-Content\Staircase.xnb
-Content\Chandelier.xnb
+Content\Levels\testmap2.xnb
+Content\Levels\newTest.xnb
 Content\KryptonEffect.xnb

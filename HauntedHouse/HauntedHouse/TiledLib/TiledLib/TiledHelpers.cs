@@ -77,7 +77,7 @@ namespace TiledLib
         /// Additionally reads in the property information for the tiles and stores them alongside the source rectangles
         /// in a Tile object stored in the TileSet's Tiles list.
         /// </summary>
-        public static void GenerateTileSourceRectangles(MapContent input, string textureRoot = "")
+        public static void GenerateTileSourceRectangles(MapContent input, string textureRoot = "TileSets/")
         {
             // do some processing on tile sets to load external textures and figure out tile regions
             foreach (var tileSet in input.TileSets)

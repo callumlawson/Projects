@@ -42,27 +42,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="player.png">
-      <Name>player</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="shipAnimation.png">
-      <Name>shipAnimation</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Gem.png">
-      <Name>Gem</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\TiledPipelineExtensions\TiledPipelineExtensions.csproj">
       <Project>{8A0232DF-B771-4E46-A977-170C38C72C01}</Project>
       <Name>TiledPipelineExtensions</Name>
@@ -73,18 +52,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PlayerDraft.png">
-      <Name>PlayerDraft</Name>
+    <Compile Include="player.png">
+      <Name>player</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="twolayers.tmx">
-      <Name>twolayers</Name>
-      <Importer>TmxImporter</Importer>
-      <Processor>MapProcessor</Processor>
-      <SubType>Designer</SubType>
+    <Folder Include="Hazards\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TileSets\TilesetIndoors.png">
+      <Name>TilesetIndoors</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -95,18 +76,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="testmap2.tmx">
-      <Name>testmap2</Name>
+    <Compile Include="Levels\newTest.tmx">
+      <Name>newTest</Name>
       <Importer>TmxImporter</Importer>
       <Processor>MapProcessor</Processor>
-      <SubType>Designer</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="helloWorld.png">
-      <Name>helloWorld</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

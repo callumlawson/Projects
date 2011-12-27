@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Media;
 using Krypton;
 using Krypton.Lights;
 using System.Diagnostics;
+using C3.XNA;
 
 namespace HauntedHouse
 {
@@ -90,7 +91,7 @@ namespace HauntedHouse
             verticalUnits = GraphicsDevice.Viewport.Height;
 
             // TODO: use this.Content to load your game content here
-            level = Content.Load<Level>("testmap2");
+            level = Content.Load<Level>("Levels/newTest");
             level.Intialise(krypton, this.Content, this.GraphicsDevice,sprites);
 
             base.Initialize();
@@ -106,8 +107,6 @@ namespace HauntedHouse
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             playerImage = Content.Load<Texture2D>("player");
-            gemImage = Content.Load<Texture2D>("gem");
-            stairsImage = Content.Load<Texture2D>("helloWorld");
 
             // Create a new simple point light texture to use for the lights
             this.lightTexture = LightTextureBuilder.CreatePointLight(this.GraphicsDevice, 1024);
@@ -118,11 +117,6 @@ namespace HauntedHouse
                // spam.Velocity = new Vector2((float)random.NextDouble() * 1.5f -1 , (float)random.NextDouble() * 1.5f -1);
                // sprites.Add(spam);
             }
-
-            testSprite2 = new Sprite(gemImage, new Vector2(100, -100),true, krypton);
-            testSprite2.Position = new Vector2(100, 20);
-            testSprite2.Velocity = new Vector2(0f, 0.1f);
-            sprites.Add(testSprite2);
 
 
             /*

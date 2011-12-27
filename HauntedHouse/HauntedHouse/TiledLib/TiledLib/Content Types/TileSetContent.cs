@@ -57,7 +57,7 @@ namespace TiledLib
             XmlNode imageNode = node["image"];
             this.Image = imageNode.Attributes["source"].Value;
 
-            // if the image is in any directory up from us, just take the filename
+            //if the image is in any directory up from us, just take the filename
             if (this.Image.StartsWith(".."))
                 this.Image = Path.GetFileName(this.Image);
 

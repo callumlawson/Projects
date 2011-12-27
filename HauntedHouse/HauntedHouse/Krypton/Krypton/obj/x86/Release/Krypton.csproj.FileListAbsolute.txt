@@ -1,0 +1,7 @@
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\Krypton\Krypton\bin\x86\Release\Content\KryptonEffect.xnb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\Krypton\Krypton\bin\x86\Release\Krypton.dll
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\Krypton\Krypton\bin\x86\Release\Krypton.pdb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\Krypton\Krypton\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\Krypton\Krypton\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\Krypton\Krypton\obj\x86\Release\Krypton.dll
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\Krypton\Krypton\obj\x86\Release\Krypton.pdb

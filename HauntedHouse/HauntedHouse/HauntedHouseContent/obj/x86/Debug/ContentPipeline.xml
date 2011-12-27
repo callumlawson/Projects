@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline" xmlns:Processors="Microsoft.Xna.Framework.Content.Pipeline.Processors" xmlns:Framework="Microsoft.Xna.Framework">
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
       <Source>player.png</Source>
@@ -8,34 +8,16 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\player.xnb</Output>
-      <Time>2011-12-13T22:16:29.8834524+00:00</Time>
+      <Time>2011-12-27T21:16:51.8848734+00:00</Time>
     </Item>
     <Item>
-      <Source>shipAnimation.png</Source>
-      <Name>shipAnimation</Name>
+      <Source>TileSets\TilesetIndoors.png</Source>
+      <Name>TileSets\TilesetIndoors</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\shipAnimation.xnb</Output>
-      <Time>2011-12-13T22:31:40.1816306+00:00</Time>
-    </Item>
-    <Item>
-      <Source>Gem.png</Source>
-      <Name>Gem</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Gem.xnb</Output>
-      <Time>2011-12-14T00:40:14.0865462+00:00</Time>
-    </Item>
-    <Item>
-      <Source>PlayerDraft.png</Source>
-      <Name>PlayerDraft</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\PlayerDraft.xnb</Output>
-      <Time>2011-12-16T21:52:33.7021655+00:00</Time>
+      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\TileSets\TilesetIndoors.xnb</Output>
+      <Time>2011-12-27T20:55:48.8369323+00:00</Time>
     </Item>
     <Item>
       <Source>PlaceHolder.png</Source>
@@ -44,116 +26,25 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\PlaceHolder.xnb</Output>
-      <Time>2011-12-17T21:17:20.2840395+00:00</Time>
+      <Time>2011-12-27T21:23:02.4500685+00:00</Time>
     </Item>
     <Item>
-      <Source>helloWorld.png</Source>
-      <Name>helloWorld</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\helloWorld.xnb</Output>
-      <Time>2011-12-19T23:03:04.2983202+00:00</Time>
-    </Item>
-    <Item>
-      <Source>twolayers.tmx</Source>
-      <Name>twolayers</Name>
+      <Source>Levels\testmap2.tmx</Source>
+      <Name>Levels\testmap2</Name>
       <Importer>TmxImporter</Importer>
       <Processor>MapProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\twolayers.xnb</Output>
-      <Time>2011-12-18T02:33:32.1486752+00:00</Time>
-      <Request>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Platform.xnb</Request>
-      <Request>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\TexturedStoneWall1024.xnb</Request>
+      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Levels\testmap2.xnb</Output>
+      <Time>2011-12-27T21:15:01.1705409+00:00</Time>
     </Item>
     <Item>
-      <Source>testmap2.tmx</Source>
-      <Name>testmap2</Name>
+      <Source>Levels\newTest.tmx</Source>
+      <Name>Levels\newTest</Name>
       <Importer>TmxImporter</Importer>
       <Processor>MapProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\testmap2.xnb</Output>
-      <Time>2011-12-20T03:16:22.4506048+00:00</Time>
-      <Request>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Impassable.xnb</Request>
-      <Request>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Platform.xnb</Request>
-      <Request>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\TexturedStoneWall1024.xnb</Request>
-      <Request>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Staircase.xnb</Request>
-      <Request>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Chandelier.xnb</Request>
-    </Item>
-    <Item>
-      <Source>Platform.png</Source>
-      <Name>Platform</Name>
-      <Importer>TextureImporter</Importer>
-      <Parameters>
-        <Data Key="GenerateMipmaps" Type="bool">false</Data>
-        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
-        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">Color</Data>
-        <Data Key="ColorKeyEnabled" Type="bool">false</Data>
-        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Platform.xnb</Output>
-      <Time>2011-12-16T21:52:33.7021655+00:00</Time>
-    </Item>
-    <Item>
-      <Source>TexturedStoneWall1024.png</Source>
-      <Name>TexturedStoneWall1024</Name>
-      <Importer>TextureImporter</Importer>
-      <Parameters>
-        <Data Key="GenerateMipmaps" Type="bool">false</Data>
-        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
-        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">Color</Data>
-        <Data Key="ColorKeyEnabled" Type="bool">false</Data>
-        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\TexturedStoneWall1024.xnb</Output>
-      <Time>2011-12-16T21:52:33.7081658+00:00</Time>
-    </Item>
-    <Item>
-      <Source>Impassable.png</Source>
-      <Name>Impassable</Name>
-      <Importer>TextureImporter</Importer>
-      <Parameters>
-        <Data Key="GenerateMipmaps" Type="bool">false</Data>
-        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
-        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">Color</Data>
-        <Data Key="ColorKeyEnabled" Type="bool">false</Data>
-        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Impassable.xnb</Output>
-      <Time>2011-12-16T21:52:33.7011654+00:00</Time>
-    </Item>
-    <Item>
-      <Source>Staircase.png</Source>
-      <Name>Staircase</Name>
-      <Importer>TextureImporter</Importer>
-      <Parameters>
-        <Data Key="GenerateMipmaps" Type="bool">false</Data>
-        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
-        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">Color</Data>
-        <Data Key="ColorKeyEnabled" Type="bool">false</Data>
-        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Staircase.xnb</Output>
-      <Time>2011-12-19T23:03:04.2983202+00:00</Time>
-    </Item>
-    <Item>
-      <Source>Chandelier.png</Source>
-      <Name>Chandelier</Name>
-      <Importer>TextureImporter</Importer>
-      <Parameters>
-        <Data Key="GenerateMipmaps" Type="bool">false</Data>
-        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
-        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">Color</Data>
-        <Data Key="ColorKeyEnabled" Type="bool">false</Data>
-        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Chandelier.xnb</Output>
-      <Time>2011-12-20T03:18:19.2552856+00:00</Time>
+      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Levels\newTest.xnb</Output>
+      <Time>2011-12-27T21:53:51.3848215+00:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -169,11 +60,11 @@
     <Assemblies>
       <Assembly>
         <Key>C:\Users\Callum\Projects\HauntedHouse\TiledPipelineExtensions\bin\x86\Debug\TiledPipelineExtensions.dll</Key>
-        <Value>2011-12-20T00:45:04.0263486+00:00</Value>
+        <Value>2011-12-27T21:32:51.4617581+00:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\bin\x86\Debug\TiledLib.dll</Key>
-        <Value>2011-12-19T23:01:36.4592961+00:00</Value>
+        <Value>2011-12-27T21:32:51.2917483+00:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>

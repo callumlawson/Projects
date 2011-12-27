@@ -20,13 +20,19 @@ namespace HauntedHouse
         public Rectangle EntityBounds;
         public Dictionary<String, String> Properties;
 
-        public void Intialise(List<Platform> platforms,List<Sprite> sprites, Player player,KryptonEngine krypton,ContentManager content,GraphicsDevice graphicsDevice, Level level)
+        public void Intialise(List<Platform> platforms,List<Sprite> sprites,KryptonEngine krypton,ContentManager content,GraphicsDevice graphicsDevice, Level level)
         {
             if (EntityType == "Player")
             {
-                Texture2D playerImage = content.Load<Texture2D>("playerDraft");
+                Texture2D playerImage = content.Load<Texture2D>("player");
                 Sprite testSprite = new Sprite(playerImage, new Vector2(0,0), false, krypton);
-                level.setPlayer(new Player(new Vector2(EntityBounds.X, EntityBounds.Y), testSprite,level));
+                Player aPlayer = new Player(new Vector2(EntityBounds.X, EntityBounds.Y), testSprite, level);
+                level.setPlayer(aPlayer);
+            }
+
+            if (EntityType == "Hazard")
+            {
+
             }
 
             if (EntityType == "Platform")

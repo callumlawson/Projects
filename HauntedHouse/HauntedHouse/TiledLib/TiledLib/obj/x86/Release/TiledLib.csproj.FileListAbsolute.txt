@@ -1,0 +1,5 @@
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\bin\x86\Release\TiledLib.dll
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\bin\x86\Release\TiledLib.pdb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\obj\x86\Release\TiledLib.dll
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\obj\x86\Release\TiledLib.pdb

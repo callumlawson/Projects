@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Krypton;
 
 namespace HauntedHouse
 {
         public class Tile
         {
-            public Texture2D Texture;
+            public String TileSource;
+            Texture2D Texture;
             public Rectangle SourceRectangle;
             public SpriteEffects SpriteEffects;
             public bool IsShadowCaster;
@@ -21,10 +23,12 @@ namespace HauntedHouse
             private List<Sprite> sprites;
             Sprite tileSprite;
 
-            public void Intialise(Vector2 gridPosition)
+            public void Intialise(Vector2 gridPosition, ContentManager content)
             {
                 GridPosition = gridPosition;
-                
+                TileSource = TileSource.Remove(TileSource.Length - 4); //Remove the .png extension
+                Texture = content.Load<Texture2D>("TileSets/" + TileSource);
+
                 //this.sprites = sprites;
                 //tileSprite = new Sprite(Texture, Position, false, krypton);
                // tileSprite.sourceRectangle = SourceRectangle;
