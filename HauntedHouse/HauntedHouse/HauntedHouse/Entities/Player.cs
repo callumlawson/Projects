@@ -95,9 +95,9 @@ namespace HauntedHouse
         // Constants for controlling vertical movement
         private const float MaxJumpTime = 0.35f;
         private const float JumpLaunchVelocity = -1800.0f;
-        private const float GravityAcceleration = 4200.0f;
-        private const float MaxFallSpeed = 1500.0f;
-        private const float JumpControlPower = 0.90f;
+        private const float GravityAcceleration = 3000.0f;
+        private const float MaxFallSpeed = 1200.0f;
+        private const float JumpControlPower = 0.50f;
 
         // Input configuration
         private const float MoveStickScale = 1.0f;
@@ -198,12 +198,10 @@ namespace HauntedHouse
                 keyboardState.IsKeyDown(Keys.Up) ||
                 keyboardState.IsKeyDown(Keys.W);
 
-            
             //TODO make much betterer
             Vector2 mouseDirection = new Vector2(mouseState.X - 640, mouseState.Y - 480);
             mouseDirection.Normalize();
-            torchAngle = (float)Math.Atan2(mouseDirection.Y, mouseDirection.X);
-               
+            torchAngle = (float)Math.Atan2(mouseDirection.Y, mouseDirection.X);  
         }
 
         /// <summary>

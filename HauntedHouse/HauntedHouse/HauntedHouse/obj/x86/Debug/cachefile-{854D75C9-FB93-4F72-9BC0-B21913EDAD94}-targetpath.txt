@@ -1,5 +1,4 @@
 Content\player.xnb
 Content\TileSets\TilesetIndoors.xnb
 Content\PlaceHolder.xnb
-Content\Levels\testmap2.xnb
 Content\Levels\newTest.xnb

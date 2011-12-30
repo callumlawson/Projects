@@ -36,7 +36,6 @@ C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Kr
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Debug\HauntedHouse.exe
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Debug\HauntedHouse.pdb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\C3.XNA.Primitives2D.dll
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Levels\testmap2.xnb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\TileSets\TilesetIndoors.xnb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\PlaceHolder.xnb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Levels\newTest.xnb

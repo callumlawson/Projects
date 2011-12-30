@@ -18,7 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiledPipelineExtensions", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiledLib", "HauntedHouse\TiledLib\TiledLib\TiledLib.csproj", "{EC3F6988-459C-4783-89E9-F34C0CC731C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugPipeline1", "DebugPipeline1\DebugPipeline1.csproj", "{920945F9-046D-46B4-9D3C-6E8C077303A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugPipeline", "DebugPipeline1\DebugPipeline.csproj", "{920945F9-046D-46B4-9D3C-6E8C077303A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

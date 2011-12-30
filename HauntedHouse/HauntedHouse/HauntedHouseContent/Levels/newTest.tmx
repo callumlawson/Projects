@@ -6176,7 +6176,7 @@
   </object>
  </objectgroup>
  <objectgroup name="Agents" width="100" height="30">
-  <object name="ThePlayer" type="Player" x="208" y="624" width="32" height="32"/>
+  <object name="ThePlayer" type="Player" x="1184" y="512" width="32" height="32"/>
  </objectgroup>
  <layer name="Forground" width="100" height="30">
   <data>

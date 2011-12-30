@@ -23,8 +23,14 @@ namespace HauntedHouse
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         KryptonEngine krypton;
+        KryptonEngine ambiantLight;
+
         //Temporary Map Test
         Level level;
+
+        //Render offscreen test
+        RenderTarget2D renderTarget;
+        Texture2D shadowMap;
 
         private Texture2D lightTexture;
 
@@ -63,6 +69,7 @@ namespace HauntedHouse
 
             // Create Krypton
             this.krypton = new KryptonEngine(this, "KryptonEffect");
+            this.ambiantLight = new KryptonEngine(this, "KryptonEffect");
 
         }
 
@@ -78,8 +85,15 @@ namespace HauntedHouse
             krypton.Initialize();
             krypton.SpriteBatchCompatablityEnabled = true;
             krypton.CullMode = CullMode.None;
-            krypton.Bluriness = 2;
-            krypton.AmbientColor = new Color(40, 50, 40);
+            krypton.Bluriness = 3;
+            krypton.AmbientColor = new Color(40, 40, 40);
+
+            ambiantLight.Initialize();
+            //ambiantLight.SpriteBatchCompatablityEnabled = true;
+            //ambiantLight.CullMode = CullMode.None;
+            ambiantLight.Bluriness = 0;
+            ambiantLight.AmbientColor = new Color(100,100,100);
+            //ambiantLight.AmbientColor = new Color(255, 255, 255);
 
             //Sprites list
             sprites = new List<Sprite>();
@@ -110,6 +124,10 @@ namespace HauntedHouse
 
             // Create a new simple point light texture to use for the lights
             this.lightTexture = LightTextureBuilder.CreatePointLight(this.GraphicsDevice, 1024);
+
+            //Offscreen render
+            PresentationParameters pp = GraphicsDevice.PresentationParameters;
+            renderTarget = new RenderTarget2D(GraphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight, true, GraphicsDevice.DisplayMode.Format, DepthFormat.Depth24,0, RenderTargetUsage.PreserveContents);
 
             for (int x = 0; x < 200; x++)
             {
@@ -207,6 +225,28 @@ namespace HauntedHouse
 
             //Update the level
             level.Update(gameTime);
+            
+
+            //Now draw a new layer of graphics
+            {
+            ambiantLight.LightMapPrepare();
+
+            GraphicsDevice.SetRenderTarget(renderTarget);
+
+            GraphicsDevice.Clear(new Color(0, 0, 0, 0));
+
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.View);
+
+            level.PostLightDraw(spriteBatch, gameTime);
+
+            spriteBatch.End();
+
+            ambiantLight.Draw(gameTime);
+
+            GraphicsDevice.SetRenderTarget(null);
+            shadowMap = (Texture2D)renderTarget;
+            }
+
 
             // TODO: Add your update logic here
             base.Update(gameTime);
@@ -228,9 +268,10 @@ namespace HauntedHouse
             // Make sure not to change the position of any lights or shadow hulls after this call, as it won't take effect till the next frame!
             //this.krypton.Matrix = wvp;
             this.krypton.LightMapPrepare();
+            this.ambiantLight.LightMapPrepare();
 
             // Make sure we clear the backbuffer *after* Krypton is done pre-rendering
-            this.GraphicsDevice.Clear(Color.CornflowerBlue);
+            this.GraphicsDevice.Clear(Color.Black);
 
             // ----- DRAW STUFF HERE ----- //
             // By drawing here, you ensure that your scene is properly lit by krypton.
@@ -240,9 +281,7 @@ namespace HauntedHouse
             // TODO: Add your drawing code here
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.View);
 
-            level.Draw(spriteBatch);
-
-            //spriteBatch.Draw(playerImage, new Vector2(200,200), Color.White);
+            level.PreLightDraw(spriteBatch, gameTime);
 
             spriteBatch.End();
 
@@ -251,6 +290,11 @@ namespace HauntedHouse
 
             // Draw krypton (This can be omited if krypton is in the Component list. It will simply draw krypton when base.Draw is called
             this.krypton.Draw(gameTime);
+
+            //Draw the new texture
+            spriteBatch.Begin();
+            spriteBatch.Draw(shadowMap,Vector2.Zero,Color.White);
+            spriteBatch.End();
 
             if (Keyboard.GetState().IsKeyDown(Keys.H))
             {

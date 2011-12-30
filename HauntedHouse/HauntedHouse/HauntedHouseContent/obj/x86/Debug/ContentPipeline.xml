@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\TileSets\TilesetIndoors.xnb</Output>
-      <Time>2011-12-27T20:55:48.8369323+00:00</Time>
+      <Time>2011-12-30T20:02:23.8942034+00:00</Time>
     </Item>
     <Item>
       <Source>PlaceHolder.png</Source>
@@ -29,22 +29,13 @@
       <Time>2011-12-27T21:23:02.4500685+00:00</Time>
     </Item>
     <Item>
-      <Source>Levels\testmap2.tmx</Source>
-      <Name>Levels\testmap2</Name>
-      <Importer>TmxImporter</Importer>
-      <Processor>MapProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Levels\testmap2.xnb</Output>
-      <Time>2011-12-27T21:15:01.1705409+00:00</Time>
-    </Item>
-    <Item>
       <Source>Levels\newTest.tmx</Source>
       <Name>Levels\newTest</Name>
       <Importer>TmxImporter</Importer>
       <Processor>MapProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Levels\newTest.xnb</Output>
-      <Time>2011-12-27T21:53:51.3848215+00:00</Time>
+      <Time>2011-12-30T19:48:50.1364171+00:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

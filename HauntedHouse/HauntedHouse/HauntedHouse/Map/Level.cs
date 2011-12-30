@@ -88,7 +88,7 @@ namespace HauntedHouse
                 Range = 600,
                 Intensity = 0.5f,
                 Color = Color.White,
-                ShadowType = ShadowType.Illuminated,
+                ShadowType = ShadowType.Solid,
                 Fov = MathHelper.PiOver2 * (float)(0.5)
             };
             krypton.Lights.Add(torch);
@@ -112,7 +112,7 @@ namespace HauntedHouse
                 }    
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void PreLightDraw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             //Draw the layers in order
             foreach (var layer in TileLayers)
@@ -133,20 +133,23 @@ namespace HauntedHouse
 
             player.Draw(spriteBatch);
 
-            foreach (var layer in TileLayers)
-            {
-                if (layer.LayerName == "Forground")
-                {
-                    drawTileLayer(layer, spriteBatch);
-                }
-            }
-
             foreach (var layer in EntityLayers)
             {
                 foreach(Entity entity in layer.Entities)
                 {
                     //For debugging
                     //spriteBatch.Draw(placeHolder,entity.EntityBounds,Color.WhiteSmoke);
+                }
+            }
+        }
+
+        public void PostLightDraw(SpriteBatch spriteBatch, GameTime gameTime)
+        {
+            foreach (var layer in TileLayers)
+            {
+                if (layer.LayerName == "Forground")
+                {
+                    drawTileLayer(layer, spriteBatch);
                 }
             }
         }
