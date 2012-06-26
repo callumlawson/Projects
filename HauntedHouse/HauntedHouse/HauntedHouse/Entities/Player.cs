@@ -282,10 +282,12 @@ namespace HauntedHouse
 
             // Apply velocity.
             Position += velocity * elapsed;
-            Position = new Vector2((float)Math.Round(Position.X), (float)Math.Round(Position.Y));
+         
 
             // If the player is now colliding with the level, separate them.
             HandleCollisions();
+
+            Position = new Vector2((float)Math.Round(Position.X), (float)Math.Round(Position.Y));
 
             // If the collision stopped us from moving, reset the velocity to zero.
            // if (Position.X == previousPosition.X)

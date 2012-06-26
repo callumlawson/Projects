@@ -50,9 +50,13 @@ namespace HauntedHouse
         //List of all the levels in the game
         //List<Level> levels;
 
-        //TestSprite
-        Sprite testSprite2;
-        
+        //FPS
+        int frameRate = 0;
+        int frameCounter = 0;
+        TimeSpan elapsedTime = TimeSpan.Zero;
+
+        //Font
+        SpriteFont stdFont;
 
         public HauntedHouse()
         {
@@ -60,6 +64,7 @@ namespace HauntedHouse
             this.graphics = new GraphicsDeviceManager(this);
             this.graphics.PreferredBackBufferWidth = 1280;
             this.graphics.PreferredBackBufferHeight = 720;
+            //this.graphics.ToggleFullScreen();
 
             // Allow the window to be resized (to demonstrate render target recreation)
             this.Window.AllowUserResizing = true;
@@ -70,7 +75,6 @@ namespace HauntedHouse
             // Create Krypton
             this.krypton = new KryptonEngine(this, "KryptonEffect");
             this.ambiantLight = new KryptonEngine(this, "KryptonEffect");
-
         }
 
         /// <summary>
@@ -86,13 +90,13 @@ namespace HauntedHouse
             krypton.SpriteBatchCompatablityEnabled = true;
             krypton.CullMode = CullMode.None;
             krypton.Bluriness = 3;
-            krypton.AmbientColor = new Color(40, 40, 40);
+            krypton.AmbientColor = new Color(15, 15, 15);
 
             ambiantLight.Initialize();
             //ambiantLight.SpriteBatchCompatablityEnabled = true;
             //ambiantLight.CullMode = CullMode.None;
             ambiantLight.Bluriness = 0;
-            ambiantLight.AmbientColor = new Color(100,100,100);
+            ambiantLight.AmbientColor = new Color(40, 40, 40);
             //ambiantLight.AmbientColor = new Color(255, 255, 255);
 
             //Sprites list
@@ -106,7 +110,7 @@ namespace HauntedHouse
 
             // TODO: use this.Content to load your game content here
             level = Content.Load<Level>("Levels/newTest");
-            level.Intialise(krypton, this.Content, this.GraphicsDevice,sprites);
+            level.Intialise(krypton, this.Content, this.GraphicsDevice, sprites);
 
             base.Initialize();
         }
@@ -127,16 +131,17 @@ namespace HauntedHouse
 
             //Offscreen render
             PresentationParameters pp = GraphicsDevice.PresentationParameters;
-            renderTarget = new RenderTarget2D(GraphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight, true, GraphicsDevice.DisplayMode.Format, DepthFormat.Depth24,0, RenderTargetUsage.PreserveContents);
+            renderTarget = new RenderTarget2D(GraphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight, true, GraphicsDevice.DisplayMode.Format, DepthFormat.Depth24, 0, RenderTargetUsage.PreserveContents);
 
-            for (int x = 0; x < 200; x++)
-            {
-               // Sprite spam = new Sprite(playerImage, new Vector2((float)random.NextDouble() * 500 + 700, (float)random.NextDouble() * 500 + 400), true, krypton);
-               // spam.Velocity = new Vector2((float)random.NextDouble() * 1.5f -1 , (float)random.NextDouble() * 1.5f -1);
-               // sprites.Add(spam);
-            }
+            stdFont = Content.Load<SpriteFont>("Font/stdFont");
 
-
+            //for (int x = 0; x < 200; x++)
+            //{
+                // Sprite spam = new Sprite(playerImage, new Vector2((float)random.NextDouble() * 500 + 700, (float)random.NextDouble() * 500 + 400), true, krypton);
+                // spam.Velocity = new Vector2((float)random.NextDouble() * 1.5f -1 , (float)random.NextDouble() * 1.5f -1);
+                // sprites.Add(spam);
+           // }
+            
             /*
             // Make some random lights!
             for (int i = 0; i < 9; i++)
@@ -166,7 +171,7 @@ namespace HauntedHouse
                 this.krypton.Lights.Add(light);
             }
              */
-            
+
             /*
             int x = 10;
             int y = 10;
@@ -191,7 +196,8 @@ namespace HauntedHouse
                     krypton.Hulls.Add(hull);
                 }
             }
-            */ //Test lights
+            */
+            //Test lights //Test code - light spammer
         }
 
         /// <summary>
@@ -210,6 +216,16 @@ namespace HauntedHouse
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            //For FPS
+            elapsedTime += gameTime.ElapsedGameTime;
+
+            if (elapsedTime > TimeSpan.FromSeconds(1))
+            {
+                elapsedTime -= TimeSpan.FromSeconds(1);
+                frameRate = frameCounter;
+                frameCounter = 0;
+            }
+
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
@@ -225,28 +241,27 @@ namespace HauntedHouse
 
             //Update the level
             level.Update(gameTime);
-            
 
             //Now draw a new layer of graphics
             {
-            ambiantLight.LightMapPrepare();
+                ambiantLight.LightMapPrepare();
 
-            GraphicsDevice.SetRenderTarget(renderTarget);
+                GraphicsDevice.SetRenderTarget(renderTarget);
 
-            GraphicsDevice.Clear(new Color(0, 0, 0, 0));
+                GraphicsDevice.Clear(new Color(0, 0, 0, 0));
 
-            spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.View);
+                spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.View);
 
-            level.PostLightDraw(spriteBatch, gameTime);
+                level.PostLightDraw(spriteBatch, gameTime);
 
-            spriteBatch.End();
+                spriteBatch.End();
 
-            ambiantLight.Draw(gameTime);
+                ambiantLight.Draw(gameTime);
 
-            GraphicsDevice.SetRenderTarget(null);
-            shadowMap = (Texture2D)renderTarget;
+                GraphicsDevice.SetRenderTarget(null);
+
+                shadowMap = (Texture2D)renderTarget;
             }
-
 
             // TODO: Add your update logic here
             base.Update(gameTime);
@@ -258,20 +273,27 @@ namespace HauntedHouse
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            //FPS
+            frameCounter++;
+
+            string fps = string.Format("fps: {0}", frameRate);
+
             // Create a world view projection matrix to use with krypton
             //Matrix world = Matrix.Identity;
             //Matrix view = camera.SimView;
             //Matrix projection = Matrix.CreateOrthographic(this.verticalUnits * this.GraphicsDevice.Viewport.AspectRatio, this.verticalUnits, 0, 1);
-           // Matrix wvp = world * view * projection;
+            // Matrix wvp = world * view * projection;
 
             // Assign the matrix and pre-render the lightmap.
             // Make sure not to change the position of any lights or shadow hulls after this call, as it won't take effect till the next frame!
             //this.krypton.Matrix = wvp;
-            this.krypton.LightMapPrepare();
-            this.ambiantLight.LightMapPrepare();
+            krypton.LightMapPrepare();
+            ambiantLight.LightMapPrepare();
 
             // Make sure we clear the backbuffer *after* Krypton is done pre-rendering
-            this.GraphicsDevice.Clear(Color.Black);
+            this.GraphicsDevice.Clear(new Color(0,0,0,0));
+
+            camera.Zoom = 0.5f;
 
             // ----- DRAW STUFF HERE ----- //
             // By drawing here, you ensure that your scene is properly lit by krypton.
@@ -293,9 +315,15 @@ namespace HauntedHouse
 
             //Draw the new texture
             spriteBatch.Begin();
-            spriteBatch.Draw(shadowMap,Vector2.Zero,Color.White);
+
+            spriteBatch.Draw(shadowMap, Vector2.Zero, Color.White);
+
+            spriteBatch.DrawString(stdFont,fps, new Vector2(33, 33), Color.Black);
+            spriteBatch.DrawString(stdFont, fps, new Vector2(32, 32), Color.White);
+
             spriteBatch.End();
 
+          #if DEBUG
             if (Keyboard.GetState().IsKeyDown(Keys.H))
             {
                 // Draw hulls
@@ -307,6 +335,7 @@ namespace HauntedHouse
                 // Draw hulls
                 this.DebugDrawLights();
             }
+          #endif 
 
             base.Draw(gameTime);
         }
@@ -329,7 +358,6 @@ namespace HauntedHouse
             {
                 this.krypton.RenderHelper.BufferAddShadowHull(hull);
             }
-
 
             foreach (var effectPass in krypton.RenderHelper.Effect.CurrentTechnique.Passes)
             {

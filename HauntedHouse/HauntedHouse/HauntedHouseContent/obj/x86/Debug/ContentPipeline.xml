@@ -35,7 +35,7 @@
       <Processor>MapProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Levels\newTest.xnb</Output>
-      <Time>2011-12-30T19:48:50.1364171+00:00</Time>
+      <Time>2012-06-26T13:17:21.1679496+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -51,7 +51,7 @@
     <Assemblies>
       <Assembly>
         <Key>C:\Users\Callum\Projects\HauntedHouse\TiledPipelineExtensions\bin\x86\Debug\TiledPipelineExtensions.dll</Key>
-        <Value>2011-12-27T21:32:51.4617581+00:00</Value>
+        <Value>2012-06-02T23:17:56.0225165+01:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\bin\x86\Debug\TiledLib.dll</Key>

@@ -42,9 +42,9 @@ namespace HauntedHouse
 
         //Torch
         Light2D torch;
+        Light2D torchGlow;
 
-
-        public void Intialise(KryptonEngine krypton,ContentManager content,GraphicsDevice graphicsDevice, List<Sprite> sprites)
+        public void Intialise(KryptonEngine krypton, ContentManager content, GraphicsDevice graphicsDevice, List<Sprite> sprites)
         {
             this.content = content;
             this.krypton = krypton;
@@ -65,7 +65,7 @@ namespace HauntedHouse
                         Tile tile = layer.Tiles[y * layer.Width + x];
                         if (tile.Exists)
                         {
-                            tile.Intialise(new Vector2(x, y),content);
+                            tile.Intialise(new Vector2(x, y), content);
                         }
                     }
                 }
@@ -85,13 +85,26 @@ namespace HauntedHouse
                 Texture = LightTextureBuilder.CreatePointLight(graphicsDevice, 1024),
                 X = 0,
                 Y = 0,
-                Range = 600,
-                Intensity = 0.5f,
+                Range = 800,
+                Intensity = 0.6f,
                 Color = Color.White,
-                ShadowType = ShadowType.Solid,
-                Fov = MathHelper.PiOver2 * (float)(0.5)
+                ShadowType = ShadowType.Illuminated,
+                Fov = MathHelper.PiOver2 * (float)(0.3)
             };
             krypton.Lights.Add(torch);
+
+            torchGlow = new Light2D()
+            {
+                Texture = LightTextureBuilder.CreatePointLight(graphicsDevice, 1024),
+                X = 0,
+                Y = 0,
+                Range = 700,
+                Intensity = 0.25f,
+                Color = Color.White,
+                ShadowType = ShadowType.Solid,
+                //Fov = MathHelper.PiOver2 * (float)(0.5)
+            };
+            krypton.Lights.Add(torchGlow);
         }
 
         public void setPlayer(Player player)
@@ -101,15 +114,16 @@ namespace HauntedHouse
 
         public void Update(GameTime gameTime)
         {
-                torch.Position = player.Position + new Vector2(57, 60);
-                torch.Angle = player.TorchAngle;
-                player.Update(gameTime);
-              
-                //Update all the sprites
-                foreach (Sprite sprite in sprites)
-                {
-                    sprite.Update(gameTime);
-                }    
+            torch.Position = player.Position + new Vector2(57, 60);
+            torchGlow.Position = player.Position + new Vector2(57, 50);
+            torch.Angle = player.TorchAngle;
+            player.Update(gameTime);
+
+            //Update all the sprites
+            foreach (Sprite sprite in sprites)
+            {
+                sprite.Update(gameTime);
+            }
         }
 
         public void PreLightDraw(SpriteBatch spriteBatch, GameTime gameTime)
@@ -135,12 +149,17 @@ namespace HauntedHouse
 
             foreach (var layer in EntityLayers)
             {
-                foreach(Entity entity in layer.Entities)
+                foreach (Entity entity in layer.Entities)
                 {
+
                     //For debugging
-                    //spriteBatch.Draw(placeHolder,entity.EntityBounds,Color.WhiteSmoke);
+                    #if DEBUG
+                      spriteBatch.Draw(placeHolder,entity.EntityBounds,Color.WhiteSmoke);
+                    #endif
                 }
             }
+
+
         }
 
         public void PostLightDraw(SpriteBatch spriteBatch, GameTime gameTime)
@@ -154,7 +173,7 @@ namespace HauntedHouse
             }
         }
 
-        public void drawTileLayer(TileLayer layer,SpriteBatch spriteBatch)
+        public void drawTileLayer(TileLayer layer, SpriteBatch spriteBatch)
         {
             for (int y = 0; y < layer.Height; y++)
             {

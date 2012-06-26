@@ -1,17 +1,6 @@
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\KryptonEffect.xnb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\player.xnb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\shipAnimation.xnb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\Gem.xnb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\PlayerDraft.xnb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\PlaceHolder.xnb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\helloWorld.xnb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\twolayers.xnb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\testmap2.xnb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\Platform.xnb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\TexturedStoneWall1024.xnb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\Impassable.xnb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\Staircase.xnb
-C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\Chandelier.xnb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\HauntedHouse.exe
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\HauntedHouse.pdb
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\C3.XNA.Primitives2D.dll
@@ -24,3 +13,7 @@ C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Release\
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Release\HauntedHouse.exe
 C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\obj\x86\Release\HauntedHouse.pdb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\TileSets\TilesetIndoors.xnb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\Levels\newTest.xnb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\TileSets\Copy of TilesetIndoors.xnb
+C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\Font\stdFont.xnb

@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
 using Microsoft.Xna.Framework.Input;
-
 using Krypton.Common;
 
 namespace Krypton.Lights
@@ -27,8 +25,26 @@ namespace Krypton.Lights
         private float mFov = MathHelper.TwoPi;
         private float mIntensity = 1;
         private ShadowType mShadowType = ShadowType.Solid;
+        private bool mflicker = false;
+        private float originalIntensity = 1;
+
+        //Flicker
+        private int phaseDuration = 10;
+        private int step = 0;
+        private float randFactor = 1;
+
+        Random random = new Random();
 
         #region Parameters
+
+        /// <summary>
+        /// Does it flicker?
+        /// </summary>
+        public bool Flicker
+        {
+            get { return this.mflicker; }
+            set { this.mflicker = value; }
+        }
 
         /// <summary>
         /// The light's position
@@ -111,7 +127,11 @@ namespace Krypton.Lights
         public float Intensity
         {
             get { return this.mIntensity; }
-            set { this.mIntensity = MathHelper.Clamp(value, 0.01f, 3f); }
+            set
+            {
+                this.mIntensity = MathHelper.Clamp(value, 0.01f, 3f);
+                originalIntensity = mIntensity;
+            }
         }
 
         /// <summary>
@@ -144,6 +164,17 @@ namespace Krypton.Lights
             // Draw the light only if it's on
             if (!this.mIsOn)
                 return;
+
+            if (mflicker)
+             {
+                 step+=1;
+                 if (step % (phaseDuration  + 30) == 0) { 
+                    randFactor = random.Next(50)/30 + 0.8f;
+                    phaseDuration = (int)randFactor;
+                    if (step == 360) { step = 0; }
+                 }
+                 mIntensity = (float)Math.Sin((step * randFactor) / 20) * (originalIntensity/30) + originalIntensity;
+             }
 
             // Make sure we only render the following hulls
             helper.ShadowHullVertices.Clear();

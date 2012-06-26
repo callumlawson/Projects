@@ -3008,34 +3008,15 @@
   </data>
  </layer>
  <objectgroup name="Lights" width="100" height="30">
-  <object name="Lamp" type="Light" x="480" y="448" width="32" height="32">
+  <object name="Lamp" type="Light" x="448" y="480" width="32" height="32">
    <properties>
     <property name="B" value="0"/>
+    <property name="Flicker" value="true"/>
     <property name="Fov" value="4"/>
     <property name="G" value="200"/>
-    <property name="Intensity" value="0.8"/>
+    <property name="Intensity" value="0.7"/>
     <property name="R" value="200"/>
-    <property name="Range" value="300"/>
-   </properties>
-  </object>
-  <object name="Lamp" type="Light" x="1440" y="576" width="32" height="32">
-   <properties>
-    <property name="B" value="0"/>
-    <property name="Fov" value="4"/>
-    <property name="G" value="200"/>
-    <property name="Intensity" value="0.8"/>
-    <property name="R" value="200"/>
-    <property name="Range" value="300"/>
-   </properties>
-  </object>
-  <object name="Lamp" type="Light" x="2272" y="544" width="32" height="32">
-   <properties>
-    <property name="B" value="0"/>
-    <property name="Fov" value="4"/>
-    <property name="G" value="200"/>
-    <property name="Intensity" value="0.8"/>
-    <property name="R" value="200"/>
-    <property name="Range" value="300"/>
+    <property name="Range" value="500"/>
    </properties>
   </object>
   <object name="Lamp" type="Light" x="2880" y="416" width="32" height="32">
@@ -5452,14 +5433,14 @@
    <tile gid="0"/>
    <tile gid="185"/>
    <tile gid="187"/>
+   <tile gid="29"/>
+   <tile gid="30"/>
+   <tile gid="31"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="29"/>
+   <tile gid="30"/>
+   <tile gid="31"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -6172,6 +6153,48 @@
    <properties>
     <property name="CollisionType" value="Platform"/>
     <property name="IsShadowCaster" value="true"/>
+   </properties>
+  </object>
+  <object type="Platform" x="32" y="768" width="96" height="32">
+   <properties>
+    <property name="CollisionType" value="Platform"/>
+    <property name="IsShadowCaster" value="true"/>
+   </properties>
+  </object>
+  <object type="Platform" x="192" y="768" width="96" height="32">
+   <properties>
+    <property name="CollisionType" value="Platform"/>
+    <property name="IsShadowCaster" value="true"/>
+   </properties>
+  </object>
+  <object name="Lamp" type="Light" x="2272" y="576" width="32" height="32">
+   <properties>
+    <property name="B" value="0"/>
+    <property name="Fov" value="4"/>
+    <property name="G" value="200"/>
+    <property name="Intensity" value="0.7"/>
+    <property name="R" value="200"/>
+    <property name="Range" value="500"/>
+   </properties>
+  </object>
+  <object name="Lamp" type="Light" x="1440" y="576" width="32" height="32">
+   <properties>
+    <property name="B" value="0"/>
+    <property name="Fov" value="4"/>
+    <property name="G" value="200"/>
+    <property name="Intensity" value="0.7"/>
+    <property name="R" value="200"/>
+    <property name="Range" value="500"/>
+   </properties>
+  </object>
+  <object name="Lamp" type="Light" x="352" y="192" width="32" height="32">
+   <properties>
+    <property name="B" value="0"/>
+    <property name="Fov" value="4"/>
+    <property name="G" value="0"/>
+    <property name="Intensity" value="0.5"/>
+    <property name="R" value="250"/>
+    <property name="Range" value="50"/>
    </properties>
   </object>
  </objectgroup>

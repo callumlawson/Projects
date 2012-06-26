@@ -62,19 +62,23 @@ namespace HauntedHouse
                     ShadowType = ShadowType.Illuminated,
                     Fov = MathHelper.PiOver2 * (float) (0.5)
                  * */
-
-                Light2D light = new Light2D
-                {
-                    Texture = LightTextureBuilder.CreatePointLight(graphicsDevice, 1024),
-                    X = EntityBounds.X,
-                    Y = EntityBounds.Y,
-                    Range = (float)Convert.ToInt32(Properties["Range"]),
-                    Intensity = (float)Convert.ToDouble(Properties["Intensity"]),
-                    Color = color,
-                    ShadowType = ShadowType.Illuminated,
-                    Fov = MathHelper.PiOver2 * (float)Convert.ToDouble(Properties["Fov"])
-                };
-                krypton.Lights.Add(light);
+                
+                    Light2D light = new Light2D
+                    {
+                        Texture = LightTextureBuilder.CreatePointLight(graphicsDevice, 1024),
+                        X = EntityBounds.X,
+                        Y = EntityBounds.Y,
+                        Range = (float)Convert.ToInt32(Properties["Range"]),
+                        Intensity = (float)Convert.ToDouble(Properties["Intensity"]),
+                        Color = color,
+                        ShadowType = ShadowType.Illuminated,
+                        Fov = MathHelper.PiOver2 * (float)Convert.ToDouble(Properties["Fov"])
+                    };
+                    
+                //Optional Properties
+                    if(Properties.ContainsKey("Flicker")){ light.Flicker = (bool)Convert.ToBoolean(Properties["Flicker"]);}
+                   
+                    krypton.Lights.Add(light);
             }
         }
     }
