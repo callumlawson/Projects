@@ -163,20 +163,20 @@ namespace HauntedHouse
             //TODO removed animation
             //Position += Velocity;
 
-            if (Animated)
-            {
+            //if (Animated)
+           // {
                 //Update the position of the Animation
-                Animation.Position = Position;
+                //Animation.Position = Position;
                 //Update Animation
-                Animation.Update(gameTime);
-            }
-            else
-            {
+                //Animation.Update(gameTime);
+           // }
+            //else
+            //{
                 if (isShadowCaster)
                 {
                     updateHulls(gameTime);
                 }
-            }
+           // }
 
             // If the enemy is past the screen or its health reaches 0 then deactivateit
             //if (Position.X < -Width || Position.Y > 520)
@@ -205,11 +205,11 @@ namespace HauntedHouse
 
 
             // Draw the animation
-            if (Animated)
-            {
-                Animation.Draw(spriteBatch);
-            }
-            else spriteBatch.Draw(Texture, Position, sourceRectangle, Color.White, Angle, Vector2.Zero, Scale, flip, 0f);
+            //if (Animated)
+           // {
+            //    Animation.Draw(spriteBatch);
+           // }
+            spriteBatch.Draw(Texture, Position, sourceRectangle, Color.White, Angle, Vector2.Zero, Scale, flip, 0f);
         }
     }
 }

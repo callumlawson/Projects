@@ -44,7 +44,7 @@ namespace HauntedHouse
         int frameCount;
 
         // The index of the current frame we are displaying
-        int currentFrame;
+        public int currentFrame;
 
         // The color of the frame we will be displaying
         public Color Color;
@@ -53,7 +53,7 @@ namespace HauntedHouse
         Rectangle sourceRect = new Rectangle();
 
         // The area where we want to display the image strip in the game
-        Rectangle destinationRect = new Rectangle();
+        public Rectangle destinationRect = new Rectangle();
 
         // Width of a given frame
         public int FrameWidth;
@@ -70,12 +70,14 @@ namespace HauntedHouse
         // Width of a given frame
         public Vector2 Position;
 
-        public void Initialize(Texture2D texture, Vector2 position,
+        public SpriteEffects spriteEffects = SpriteEffects.None;
+
+        public Animation(Texture2D texture, Vector2 position,
                                 int frameWidth, int frameHeight, int frameCount,
-                                int frametime, Color color, float scale, bool looping, GraphicsDevice device)
+                                int frametime, float scale, bool looping, GraphicsDevice device)
         {
             // Keep a local copy of the values passed in
-            this.Color = color;
+            //this.Color = color;
             this.FrameWidth = frameWidth;
             this.FrameHeight = frameHeight;
             this.frameCount = frameCount;
@@ -87,12 +89,12 @@ namespace HauntedHouse
             spriteStrip = texture;
 
             // Fading and Alpha init
-            LoopFade = true;
-            Fade = false;
-            AlphaValue = 255;
-            FadeIncrement = 1;
-            FadeDelay = 0.5f;
-            currentFadeDelay = FadeDelay;
+            //LoopFade = true;
+            //Fade = false;
+            //AlphaValue = 255;
+            //FadeIncrement = 1;
+           // FadeDelay = 0.5f;
+           // currentFadeDelay = FadeDelay;
 
             // Set the time to zero
             elapsedTime = 0;
@@ -106,15 +108,18 @@ namespace HauntedHouse
 
         public void renderFirstFrame()
         {
+            //Offscreen Render
             PresentationParameters pp = new PresentationParameters();
             renderTarget = new RenderTarget2D(device, FrameWidth, FrameWidth, true, device.DisplayMode.Format, DepthFormat.Depth24);
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, Vector2 position)
         {
             // Do not update the game if we are not active
             if (Active == false)
                 return;
+
+            this.Position = position;
 
             // Update the elapsed time
             elapsedTime += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -141,6 +146,7 @@ namespace HauntedHouse
 
 
             //Fading
+            /*
             if (Fade)
             {
                 currentFadeDelay -= elapsedTime;
@@ -157,6 +163,7 @@ namespace HauntedHouse
                 AlphaValue = (byte)MathHelper.Clamp(AlphaValue, 0, 255);
                 Color.A = (byte)AlphaValue;
             }
+             */
 
             // Grab the correct frame in the image strip by multiplying the currentFrame index by the frame width
             sourceRect = new Rectangle(currentFrame * FrameWidth, 0, FrameWidth, FrameHeight);
@@ -172,12 +179,13 @@ namespace HauntedHouse
         // Draw the Animation Strip
         public void Draw(SpriteBatch spriteBatch)
         {
+            
             // Only draw the animation when we are active
             if (Active)
             {
                // Vector2 origin = new Vector2(destinationRect.Center.X,destinationRect.Center.Y)
-                Vector2 origin = new Vector2(0,0);
-                spriteBatch.Draw(spriteStrip, destinationRect, sourceRect, Color, Rotation, origin , SpriteEffects.None, 1.0f);
+                //Vector2 origin = new Vector2(0,0);
+                spriteBatch.Draw(spriteStrip, destinationRect, sourceRect, Color.White, Rotation, new Vector2(-destinationRect.Width/2,-destinationRect.Height/2) , spriteEffects, 0f);
             }
         }
 

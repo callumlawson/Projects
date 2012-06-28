@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using HauntedHouse;
 using Microsoft.Xna.Framework.Input;
@@ -16,7 +17,6 @@ namespace HauntedHouse
     {
         //The players sprite
         Sprite playerSprite;
-        Animation idleAnimation;
 
         // Physics state
         public Vector2 Position
@@ -43,9 +43,6 @@ namespace HauntedHouse
         // To determin mouse clicks
         MouseState mouseState;
 
-        //Player move speed
-        int playerMoveSpeed = 5;
-
         Vector2 Spawn;
 
         //Torch
@@ -60,16 +57,6 @@ namespace HauntedHouse
             get { return position; }
         }
         Vector2 torchPostion;
-
-        //Level - the current game level
-        Level level;
-
-        //Collisions
-        //Bounds
-        Rectangle playerBounds;
-        List<Platform> platforms;
-        private float previousBottom;
-        bool wasCollision; //Was there a collision this frame?
 
         /// <summary>
         /// Gets whether or not the player's feet are on the ground.
@@ -88,6 +75,23 @@ namespace HauntedHouse
             get { return isTorchOn; }
         }
         bool isTorchOn = true;
+
+        public Vector2 Velocity
+        {
+            get { return velocity; }
+            set { velocity = value; }
+        }
+        Vector2 velocity;
+
+        //Level - the current game level
+        Level level;
+
+        //Collisions
+        //Bounds
+        Rectangle playerBounds;
+        List<Platform> platforms;
+        private float previousBottom;
+        bool wasCollision; //Was there a collision this frame?
 
         //Physics Constants
         // Constants for controling horizontal movement
@@ -108,25 +112,26 @@ namespace HauntedHouse
         private const float MoveStickScale = 1.0f;
         private const Buttons JumpButton = Buttons.A;
 
-        public Vector2 Velocity
-        {
-            get { return velocity; }
-            set { velocity = value; }
-        }
-        Vector2 velocity;
-
         // Jumping state
         private bool isJumping;
         private bool wasJumping;
         private float jumpTime;
+
+        //Content Manager
+        ContentManager content;
+
+        //Animations
+        Animation currentAnimation;
+        Animation runningAnimation;
 
         /// <summary>
         /// Current user movement input.
         /// </summary>
         private float movementDirection;
 
-        public Player(Vector2 position,Sprite sprite,ScreenDebuger screenDebuger,Level level)
+        public Player(Vector2 position,Sprite sprite,ScreenDebuger screenDebuger,ContentManager content,GraphicsDevice graphicsDevice,Level level)
         {
+            this.content = content;
             this.screenDebuger = screenDebuger;
             playerSprite = sprite;
             this.position = position;
@@ -136,6 +141,9 @@ namespace HauntedHouse
             this.platforms = level.Platforms;
             random = new Random();
             Health = 100;
+
+            runningAnimation = new Animation(content.Load<Texture2D>("SpriteSheets/running"), position, 100, 100, 8, 150, 1f, true, graphicsDevice);
+            currentAnimation = runningAnimation;
         }
 
         public void Update(GameTime gameTime)
@@ -148,6 +156,7 @@ namespace HauntedHouse
             playerBounds.Height = playerSprite.Height;
 
             playerSprite.Update(gameTime);
+            currentAnimation.Update(gameTime,Position);
 
             // If the player is now colliding with the level, separate them.
             UpdateInput(gameTime);
@@ -163,6 +172,12 @@ namespace HauntedHouse
 
             screenDebuger.writeTempDebug("X Velocity", velocity.X.ToString());
             screenDebuger.writeTempDebug("Y Velocity", velocity.Y.ToString());
+
+            screenDebuger.writeTempDebug("Animation Position", currentAnimation.Position.ToString());
+            screenDebuger.writeTempDebug("Animation Frame", currentAnimation.currentFrame.ToString());
+            screenDebuger.writeTempDebug("Player Position", this.Position.ToString());
+
+            screenDebuger.writeTempDebug("Animation Destination Rectangle", currentAnimation.destinationRect.ToString());
             
             // Clear input.
             movementDirection = 0.0f;
@@ -379,17 +394,33 @@ namespace HauntedHouse
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            SpriteEffects spriteEffect;
             if (velocity.X < 0)
             {
-                playerSprite.Flip = SpriteEffects.FlipHorizontally;
+                spriteEffect = SpriteEffects.FlipHorizontally;
             }
-            else { playerSprite.Flip = SpriteEffects.None; }
+            else { spriteEffect = SpriteEffects.None; }
 
-            #if DEBUG
+            if (Math.Abs(velocity.X) < 30)
+            {
+                currentAnimation.Active = false;
+                currentAnimation.currentFrame = 0;
+                playerSprite.Flip = spriteEffect;
+                playerSprite.Draw(spriteBatch);
+            }
+            else //we are running
+            {
+                currentAnimation.Active = true;
+                currentAnimation = runningAnimation;
+                currentAnimation.spriteEffects = spriteEffect;
+                currentAnimation.Draw(spriteBatch);
+            }
+
+            spriteBatch.DrawRectangle(playerBounds, Color.Red);
+
+     #if DEBUG
             spriteBatch.DrawRectangle(playerBounds,Color.Red);
-            #endif
-
-            playerSprite.Draw(spriteBatch);
+     #endif  
         }
 
        // Get the width of the player ship

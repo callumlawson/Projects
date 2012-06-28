@@ -60,7 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Hazards\" />
-    <Folder Include="SpriteSheets\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TileSets\TilesetIndoors.png">
@@ -95,6 +94,13 @@
       <Name>stdFont</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SpriteSheets\running.png">
+      <Name>running</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

@@ -340,13 +340,13 @@ namespace HauntedHouse
             spriteBatch.DrawString(stdFont, fps, new Vector2(32, 32), Color.White);
 
             //Location on the screen
-            int xCord = 50;
-            int yCord = 150;
+            int xCord = 30;
+            int yCord = 180;
 
             //Draws two kinds of debug - permanent and temporary -temporary should go off screen after a certain number of writes
             for (int x = 0; x < screenDebuger.DebugStrings.Count; x++ )
             {
-                spriteBatch.DrawString(stdFont, screenDebuger.DebugStrings[x] as string, new Vector2(xCord, yCord - x * 23), Color.White);
+                spriteBatch.DrawString(stdFont, screenDebuger.DebugStrings[x] as string, new Vector2(xCord, yCord - x * 18), Color.White);
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.H))

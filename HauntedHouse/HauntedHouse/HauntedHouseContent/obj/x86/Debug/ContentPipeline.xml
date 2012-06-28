@@ -44,7 +44,7 @@
       <Processor>MapProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Levels\newTest.xnb</Output>
-      <Time>2012-06-27T13:01:14.8435902+01:00</Time>
+      <Time>2012-06-28T15:19:09.3432426+01:00</Time>
     </Item>
     <Item>
       <Source>Font\stdFont.spritefont</Source>
@@ -53,7 +53,16 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Font\stdFont.xnb</Output>
-      <Time>2012-06-27T11:27:47.2196957+01:00</Time>
+      <Time>2012-06-28T14:47:13.8686949+01:00</Time>
+    </Item>
+    <Item>
+      <Source>SpriteSheets\running.png</Source>
+      <Name>SpriteSheets\running</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\SpriteSheets\running.xnb</Output>
+      <Time>2011-12-20T02:07:58+00:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

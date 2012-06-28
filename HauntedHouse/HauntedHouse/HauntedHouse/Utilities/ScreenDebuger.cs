@@ -10,7 +10,7 @@ namespace HauntedHouse.Utilities
     {
         //ArrayList variableStrings;
       
-        int numDebugStrings = 4;
+        int numDebugStrings = 7;
 
    
         Dictionary<string, string> debugStringsDict;

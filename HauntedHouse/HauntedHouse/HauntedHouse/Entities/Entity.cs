@@ -28,7 +28,7 @@ namespace HauntedHouse
             {
                 Texture2D playerImage = content.Load<Texture2D>("player");
                 Sprite testSprite = new Sprite(playerImage, new Vector2(0,0), false, krypton);
-                Player aPlayer = new Player(new Vector2(EntityBounds.X, EntityBounds.Y), testSprite,screenDebuger, level);
+                Player aPlayer = new Player(new Vector2(EntityBounds.X, EntityBounds.Y), testSprite,screenDebuger,content,graphicsDevice,level);
                 level.setPlayer(aPlayer);
             }
 
