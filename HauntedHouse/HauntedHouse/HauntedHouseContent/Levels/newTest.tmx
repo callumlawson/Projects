@@ -3008,7 +3008,7 @@
   </data>
  </layer>
  <objectgroup name="Lights" width="100" height="30">
-  <object name="Lamp" type="Light" x="448" y="480" width="32" height="32">
+  <object name="Lamp" type="Light" x="480" y="480" width="32" height="32">
    <properties>
     <property name="B" value="0"/>
     <property name="Flicker" value="true"/>
@@ -3019,7 +3019,7 @@
     <property name="Range" value="500"/>
    </properties>
   </object>
-  <object name="Lamp" type="Light" x="2880" y="416" width="32" height="32">
+  <object name="Lamp" type="Light" x="2880" y="448" width="32" height="32">
    <properties>
     <property name="B" value="0"/>
     <property name="Fov" value="4"/>
@@ -6177,7 +6177,7 @@
     <property name="Range" value="500"/>
    </properties>
   </object>
-  <object name="Lamp" type="Light" x="1440" y="576" width="32" height="32">
+  <object name="Lamp" type="Light" x="1440" y="608" width="32" height="32">
    <properties>
     <property name="B" value="0"/>
     <property name="Fov" value="4"/>

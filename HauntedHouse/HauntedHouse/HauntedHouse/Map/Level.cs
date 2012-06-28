@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Krypton;
 using HauntedHouse.Entities;
+using HauntedHouse.Utilities;
 using Krypton.Lights;
 
 namespace HauntedHouse
@@ -24,6 +25,7 @@ namespace HauntedHouse
         KryptonEngine krypton;
         ContentManager content;
         Texture2D placeHolder;
+        Texture2D interestingLight;
 
         //Entities
         List<Sprite> sprites;
@@ -44,12 +46,17 @@ namespace HauntedHouse
         Light2D torch;
         Light2D torchGlow;
 
-        public void Intialise(KryptonEngine krypton, ContentManager content, GraphicsDevice graphicsDevice, List<Sprite> sprites)
+        //Debug
+        ScreenDebuger screenDebuger;
+
+        public void Intialise(KryptonEngine krypton, ContentManager content, GraphicsDevice graphicsDevice,ScreenDebuger screenDebuger, List<Sprite> sprites)
         {
             this.content = content;
             this.krypton = krypton;
             this.sprites = sprites;
+            this.screenDebuger = screenDebuger;
             placeHolder = content.Load<Texture2D>("PlaceHolder");
+            interestingLight = content.Load<Texture2D>("player");
             platforms = new List<Platform>();
 
             //Texture2D playerImage = content.Load<Texture2D>("playerDraft");
@@ -75,7 +82,7 @@ namespace HauntedHouse
             {
                 foreach (Entity entity in layer.Entities)
                 {
-                    entity.Intialise(platforms, sprites, krypton, content, graphicsDevice, this);
+                    entity.Intialise(platforms, sprites, krypton, content, graphicsDevice,screenDebuger , this);
                 }
             }
 
@@ -151,10 +158,9 @@ namespace HauntedHouse
             {
                 foreach (Entity entity in layer.Entities)
                 {
-
                     //For debugging
                     #if DEBUG
-                      spriteBatch.Draw(placeHolder,entity.EntityBounds,Color.WhiteSmoke);
+                      //spriteBatch.Draw(placeHolder,entity.EntityBounds,Color.WhiteSmoke);
                     #endif
                 }
             }

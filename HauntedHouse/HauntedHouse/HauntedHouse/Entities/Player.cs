@@ -8,6 +8,7 @@ using HauntedHouse;
 using Microsoft.Xna.Framework.Input;
 using HauntedHouse.Entities;
 using C3.XNA;
+using HauntedHouse.Utilities;
 
 namespace HauntedHouse
 {
@@ -27,6 +28,9 @@ namespace HauntedHouse
 
         // Amount of hit points that player has
         public int Health;
+
+        //Debug
+        ScreenDebuger screenDebuger;
 
         //Random number gen
         Random random;
@@ -87,14 +91,15 @@ namespace HauntedHouse
 
         //Physics Constants
         // Constants for controling horizontal movement
-        private const float MoveAcceleration = 40000.0f;
-        private const float MaxMoveSpeed = 10000.0f;
-        private const float GroundDragFactor = 0.38f;
-        private const float AirDragFactor = 0.48f;
+        private const float MoveAcceleration = 160.0f;
+        private const float MaxMoveSpeed = 1200.0f;
+        private const float GroundDragFactor = 0.75f;
+        private const float GroundDragFactorNoInput = 0.30f;
+        private const float AirDragFactor = 0.72f;
 
         // Constants for controlling vertical movement
         private const float MaxJumpTime = 0.35f;
-        private const float JumpLaunchVelocity = -1800.0f;
+        private const float JumpLaunchVelocity = -2200.0f;
         private const float GravityAcceleration = 3000.0f;
         private const float MaxFallSpeed = 1200.0f;
         private const float JumpControlPower = 0.50f;
@@ -118,10 +123,11 @@ namespace HauntedHouse
         /// <summary>
         /// Current user movement input.
         /// </summary>
-        private float movement;
+        private float movementDirection;
 
-        public Player(Vector2 position,Sprite sprite,Level level)
+        public Player(Vector2 position,Sprite sprite,ScreenDebuger screenDebuger,Level level)
         {
+            this.screenDebuger = screenDebuger;
             playerSprite = sprite;
             this.position = position;
             playerSprite.Position = this.position;
@@ -147,9 +153,19 @@ namespace HauntedHouse
             UpdateInput(gameTime);
 
             ApplyPhysics(gameTime); //Handle collisions called by apply physics
+
+            //Debug
+            if (isJumping) { screenDebuger.writeTempDebug("Is Jumping", isJumping.ToString()); }
+            else { screenDebuger.writeTempDebug("Is Jumping", "False"); }
+
+            if(isOnGround) { screenDebuger.writeTempDebug("Is On Ground",isOnGround.ToString()); }
+            else { screenDebuger.writeTempDebug("Is On Ground", "False"); }
+
+            screenDebuger.writeTempDebug("X Velocity", velocity.X.ToString());
+            screenDebuger.writeTempDebug("Y Velocity", velocity.Y.ToString());
             
             // Clear input.
-            movement = 0.0f;
+            movementDirection = 0.0f;
             isJumping = false;
             //Update the sprite
         }
@@ -171,27 +187,27 @@ namespace HauntedHouse
             mouseState = Mouse.GetState();
 
             // Get analog horizontal movement.
-            movement = gamePadState.ThumbSticks.Left.X * MoveStickScale;
+            movementDirection = gamePadState.ThumbSticks.Left.X * MoveStickScale;
 
             // Ignore small movements to prevent running in place.
-            if (Math.Abs(movement) < 0.5f)
-                movement = 0.0f;
+            if (Math.Abs(movementDirection) < 0.5f)
+                movementDirection = 0.0f;
 
             // If any digital horizontal movement input is found, override the analog movement.
             if (gamePadState.IsButtonDown(Buttons.DPadLeft) ||
                 keyboardState.IsKeyDown(Keys.Left) ||
                 keyboardState.IsKeyDown(Keys.A))
             {
-                movement = -1.0f;
+                movementDirection = -1.0f;
             }
             else if (gamePadState.IsButtonDown(Buttons.DPadRight) ||
                      keyboardState.IsKeyDown(Keys.Right) ||
                      keyboardState.IsKeyDown(Keys.D))
             {
-                movement = 1.0f;
+                movementDirection = 1.0f;
             }
 
-            // Check if the player wants to jump.
+            // Check if the player wants to jump. (and Debug)
             isJumping =
                 gamePadState.IsButtonDown(JumpButton) ||
                 keyboardState.IsKeyDown(Keys.Space) ||
@@ -260,19 +276,22 @@ namespace HauntedHouse
         /// </summary>
         public void ApplyPhysics(GameTime gameTime)
         {
+            // Base velocity is a combination of horizontal movement control and
+            // acceleration downward due to gravity.
+            
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             Vector2 previousPosition = Position;
 
-            // Base velocity is a combination of horizontal movement control and
-            // acceleration downward due to gravity.
-            velocity.X += movement * MoveAcceleration * elapsed;
+            velocity.Y = DoJump(velocity.Y, gameTime);
             velocity.Y = MathHelper.Clamp(velocity.Y + GravityAcceleration * elapsed, -MaxFallSpeed, MaxFallSpeed);
 
-            velocity.Y = DoJump(velocity.Y, gameTime);
+            velocity.X += movementDirection*MoveAcceleration;
 
             // Apply pseudo-drag horizontally.
-            if (IsOnGround)
+            if (IsOnGround && movementDirection == 0)
+                velocity.X *= GroundDragFactorNoInput;
+            else if (isOnGround)
                 velocity.X *= GroundDragFactor;
             else
                 velocity.X *= AirDragFactor;
@@ -283,18 +302,17 @@ namespace HauntedHouse
             // Apply velocity.
             Position += velocity * elapsed;
          
-
             // If the player is now colliding with the level, separate them.
             HandleCollisions();
 
-            Position = new Vector2((float)Math.Round(Position.X), (float)Math.Round(Position.Y));
+            Position = new Vector2((float)Math.Ceiling(Position.X), (float)Math.Ceiling(Position.Y));
 
             // If the collision stopped us from moving, reset the velocity to zero.
            // if (Position.X == previousPosition.X)
             //    velocity.X = 0;
 
-           // if (Position.Y == previousPosition.Y)
-            //    velocity.Y = 0;
+            if (Position.Y == previousPosition.Y)
+            { velocity.Y = 0; }
         }
 
         private void HandleCollisions()
@@ -343,7 +361,7 @@ namespace HauntedHouse
                             }
                             else if ((absDepthY >= absDepthX))
                             {
-                                isOnGround = true;
+                               // isOnGround = true; we dont want to be able to jump when in contact with walls
                                 //Resolve the collision along the Y axis.
                                 Position = new Vector2(Position.X + depth.X, Position.Y);
                                 velocity.X = 0;

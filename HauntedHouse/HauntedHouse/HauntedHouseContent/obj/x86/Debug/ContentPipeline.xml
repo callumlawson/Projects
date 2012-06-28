@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\TileSets\TilesetIndoors.xnb</Output>
-      <Time>2011-12-30T20:02:23.8942034+00:00</Time>
+      <Time>2012-06-26T19:08:14.3010971+01:00</Time>
     </Item>
     <Item>
       <Source>PlaceHolder.png</Source>
@@ -29,13 +29,31 @@
       <Time>2011-12-27T21:23:02.4500685+00:00</Time>
     </Item>
     <Item>
+      <Source>TileSets\Copy of TilesetIndoors.png</Source>
+      <Name>TileSets\Copy of TilesetIndoors</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\TileSets\Copy of TilesetIndoors.xnb</Output>
+      <Time>2012-06-26T18:18:59.794109+01:00</Time>
+    </Item>
+    <Item>
       <Source>Levels\newTest.tmx</Source>
       <Name>Levels\newTest</Name>
       <Importer>TmxImporter</Importer>
       <Processor>MapProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Levels\newTest.xnb</Output>
-      <Time>2012-06-26T13:17:21.1679496+01:00</Time>
+      <Time>2012-06-27T13:01:14.8435902+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Font\stdFont.spritefont</Source>
+      <Name>Font\stdFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Debug\Content\Font\stdFont.xnb</Output>
+      <Time>2012-06-27T11:27:47.2196957+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -51,7 +69,7 @@
     <Assemblies>
       <Assembly>
         <Key>C:\Users\Callum\Projects\HauntedHouse\TiledPipelineExtensions\bin\x86\Debug\TiledPipelineExtensions.dll</Key>
-        <Value>2012-06-02T23:17:56.0225165+01:00</Value>
+        <Value>2012-06-27T11:25:22.4944179+01:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\bin\x86\Debug\TiledLib.dll</Key>

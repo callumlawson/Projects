@@ -9,6 +9,7 @@ using Krypton;
 using Krypton.Lights;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using HauntedHouse.Utilities;
 
 namespace HauntedHouse
 {
@@ -20,13 +21,14 @@ namespace HauntedHouse
         public Rectangle EntityBounds;
         public Dictionary<String, String> Properties;
 
-        public void Intialise(List<Platform> platforms,List<Sprite> sprites,KryptonEngine krypton,ContentManager content,GraphicsDevice graphicsDevice, Level level)
+
+        public void Intialise(List<Platform> platforms,List<Sprite> sprites,KryptonEngine krypton,ContentManager content,GraphicsDevice graphicsDevice, ScreenDebuger screenDebuger, Level level)
         {
             if (EntityType == "Player")
             {
                 Texture2D playerImage = content.Load<Texture2D>("player");
                 Sprite testSprite = new Sprite(playerImage, new Vector2(0,0), false, krypton);
-                Player aPlayer = new Player(new Vector2(EntityBounds.X, EntityBounds.Y), testSprite, level);
+                Player aPlayer = new Player(new Vector2(EntityBounds.X, EntityBounds.Y), testSprite,screenDebuger, level);
                 level.setPlayer(aPlayer);
             }
 

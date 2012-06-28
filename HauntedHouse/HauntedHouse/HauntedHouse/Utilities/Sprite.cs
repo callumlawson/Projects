@@ -17,7 +17,7 @@ namespace HauntedHouse
         public bool Animated = false;
 
         // Animation representing the Sprite
-        public Animation Animation;
+        private Animation animation;
 
         // Texture2D representing the Sprite
         public Texture2D Texture;
@@ -89,7 +89,7 @@ namespace HauntedHouse
 
         public Rectangle sourceRectangle;
 
-        /*
+       /*
         public Sprite(SpriteAnimation animation, Vector2 position)
         {
             Initialize();
@@ -121,6 +121,12 @@ namespace HauntedHouse
             }
 
             sourceRectangle = new Rectangle(0, 0, Width, Height);
+        }
+
+        public Animation Animation
+        {
+            get { return this.animation; }
+            set { this.animation = value; }
         }
 
         public void findShadowHull(Texture2D texture)
@@ -175,8 +181,8 @@ namespace HauntedHouse
             // If the enemy is past the screen or its health reaches 0 then deactivateit
             //if (Position.X < -Width || Position.Y > 520)
             //{
-                // By setting the Active flag to false, the game will remove this object from the 
-                // active game list
+            // By setting the Active flag to false, the game will remove this object from the 
+            // active game list
             //    Active = false;
             //}
         }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -11,6 +12,7 @@ using Microsoft.Xna.Framework.Media;
 using Krypton;
 using Krypton.Lights;
 using System.Diagnostics;
+using HauntedHouse.Utilities;
 using C3.XNA;
 
 namespace HauntedHouse
@@ -50,13 +52,17 @@ namespace HauntedHouse
         //List of all the levels in the game
         //List<Level> levels;
 
+        //Debug Variables Etc
+
+        ScreenDebuger screenDebuger;
+
         //FPS
         int frameRate = 0;
         int frameCounter = 0;
         TimeSpan elapsedTime = TimeSpan.Zero;
-
         //Font
         SpriteFont stdFont;
+
 
         public HauntedHouse()
         {
@@ -65,6 +71,8 @@ namespace HauntedHouse
             this.graphics.PreferredBackBufferWidth = 1280;
             this.graphics.PreferredBackBufferHeight = 720;
             //this.graphics.ToggleFullScreen();
+
+            screenDebuger = new ScreenDebuger();
 
             // Allow the window to be resized (to demonstrate render target recreation)
             this.Window.AllowUserResizing = true;
@@ -110,7 +118,7 @@ namespace HauntedHouse
 
             // TODO: use this.Content to load your game content here
             level = Content.Load<Level>("Levels/newTest");
-            level.Intialise(krypton, this.Content, this.GraphicsDevice, sprites);
+            level.Intialise(krypton, this.Content, this.GraphicsDevice, this.screenDebuger , sprites);
 
             base.Initialize();
         }
@@ -273,11 +281,6 @@ namespace HauntedHouse
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            //FPS
-            frameCounter++;
-
-            string fps = string.Format("fps: {0}", frameRate);
-
             // Create a world view projection matrix to use with krypton
             //Matrix world = Matrix.Identity;
             //Matrix view = camera.SimView;
@@ -313,33 +316,52 @@ namespace HauntedHouse
             // Draw krypton (This can be omited if krypton is in the Component list. It will simply draw krypton when base.Draw is called
             this.krypton.Draw(gameTime);
 
-            //Draw the new texture
+            //Draw the new texture - goes over basic shadowmap etc
             spriteBatch.Begin();
 
             spriteBatch.Draw(shadowMap, Vector2.Zero, Color.White);
+            //Debug hulls and lights
+#if DEBUG
+            DebugDraw(spriteBatch);
+#endif
+            spriteBatch.End();  
 
-            spriteBatch.DrawString(stdFont,fps, new Vector2(33, 33), Color.Black);
+            base.Draw(gameTime);
+        }
+
+        public void DebugDraw(SpriteBatch spriteBactch)
+        {
+            frameCounter++;
+
+            string fps = string.Format("fps: {0}", frameRate);
+
+            //FPS
+            spriteBatch.DrawString(stdFont, fps, new Vector2(33, 33), Color.Black);
             spriteBatch.DrawString(stdFont, fps, new Vector2(32, 32), Color.White);
 
-            spriteBatch.End();
+            //Location on the screen
+            int xCord = 50;
+            int yCord = 150;
 
-          #if DEBUG
+            //Draws two kinds of debug - permanent and temporary -temporary should go off screen after a certain number of writes
+            for (int x = 0; x < screenDebuger.DebugStrings.Count; x++ )
+            {
+                spriteBatch.DrawString(stdFont, screenDebuger.DebugStrings[x] as string, new Vector2(xCord, yCord - x * 23), Color.White);
+            }
+
             if (Keyboard.GetState().IsKeyDown(Keys.H))
             {
                 // Draw hulls
                 this.DebugDrawHulls(false);
             }
-
             if (Keyboard.GetState().IsKeyDown(Keys.L))
             {
                 // Draw hulls
                 this.DebugDrawLights();
             }
-          #endif 
-
-            base.Draw(gameTime);
         }
 
+        //Debug Hulls and lights... currently a problem with this
         private void DebugDrawHulls(bool drawSolid)
         {
             this.krypton.RenderHelper.Effect.CurrentTechnique = this.krypton.RenderHelper.Effect.Techniques["DebugDraw"];

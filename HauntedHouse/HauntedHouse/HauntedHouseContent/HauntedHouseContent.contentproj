@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Hazards\" />
+    <Folder Include="SpriteSheets\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TileSets\TilesetIndoors.png">

@@ -1,6 +1,6 @@
 Content\player.xnb
 Content\TileSets\TilesetIndoors.xnb
 Content\PlaceHolder.xnb
-Content\Levels\newTest.xnb
 Content\TileSets\Copy of TilesetIndoors.xnb
+Content\Levels\newTest.xnb
 Content\Font\stdFont.xnb

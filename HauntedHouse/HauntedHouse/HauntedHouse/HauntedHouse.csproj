@@ -111,7 +111,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animation.cs" />
+    <Compile Include="Utilities\Animation.cs" />
     <Compile Include="Camera2D.cs" />
     <Compile Include="Entities\Hazard.cs" />
     <Compile Include="Utilities\Circle.cs" />
@@ -124,6 +124,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="HauntedHouse.cs" />
+    <Compile Include="Utilities\ScreenDebuger.cs" />
     <Compile Include="Utilities\RectangleExtensions.cs" />
     <Compile Include="Utilities\Sprite.cs" />
     <Compile Include="Map\Tile.cs" />

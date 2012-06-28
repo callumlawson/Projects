@@ -29,15 +29,6 @@
       <Time>2011-12-27T21:23:02.4500685+00:00</Time>
     </Item>
     <Item>
-      <Source>Levels\newTest.tmx</Source>
-      <Name>Levels\newTest</Name>
-      <Importer>TmxImporter</Importer>
-      <Processor>MapProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\Levels\newTest.xnb</Output>
-      <Time>2012-06-26T21:17:33.6049039+01:00</Time>
-    </Item>
-    <Item>
       <Source>TileSets\Copy of TilesetIndoors.png</Source>
       <Name>TileSets\Copy of TilesetIndoors</Name>
       <Importer>TextureImporter</Importer>
@@ -45,6 +36,15 @@
       <Options>None</Options>
       <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\TileSets\Copy of TilesetIndoors.xnb</Output>
       <Time>2012-06-26T18:18:59.794109+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Levels\newTest.tmx</Source>
+      <Name>Levels\newTest</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>MapProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\HauntedHouse\bin\x86\Release\Content\Levels\newTest.xnb</Output>
+      <Time>2012-06-26T22:13:13.0259078+01:00</Time>
     </Item>
     <Item>
       <Source>Font\stdFont.spritefont</Source>
@@ -69,7 +69,7 @@
     <Assemblies>
       <Assembly>
         <Key>C:\Users\Callum\Projects\HauntedHouse\TiledPipelineExtensions\bin\x86\Debug\TiledPipelineExtensions.dll</Key>
-        <Value>2012-06-26T18:13:40.9268708+01:00</Value>
+        <Value>2012-06-27T01:55:46.9447083+01:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Users\Callum\Projects\HauntedHouse\HauntedHouse\TiledLib\TiledLib\bin\x86\Release\TiledLib.dll</Key>
